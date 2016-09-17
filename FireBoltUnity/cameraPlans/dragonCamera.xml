@@ -33,6 +33,7 @@
           <framings>
             <framing framingType="Full" framingTarget="dragon" />
           </framings>
+		  <angle angleSetting="Medium" target="m005"/>
           <movements>
             <movement type="Dolly" directive="With" subject="dragon" />
             <movement type="Focus" directive="With" subject="dragon" />

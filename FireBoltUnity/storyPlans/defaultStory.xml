@@ -2,36 +2,36 @@
 <story name="000000000" xmlns="http://liquidnarrative.csc.ncsu.edu/impulse/v1.336">
   <actions>
     <action type="create" name="create_cowboy">
-      <property name="position" value="(0, 0 ,0)" />
+      <property name="position" value="(5, 0 ,5)" />
       <property name="end-angle" value="0" />
       <property name="time" value="0-1" />
       <property name="actor" value="cowboy" />
     </action>
 	
     <action type="walk" name="walk">
-      <property name="origin" value="(0,0,0)" />
-      <property name="destination" value="(0,0, 5)" />
+      <property name="origin" value="(5,0,5)" />
+      <property name="destination" value="(5,0, 10)" />
       <property name="end-angle" value="0" />
-      <property name="time" value="2-20000" />
+      <property name="time" value="2-4745" />
       <property name="actor" value="cowboy" />
     </action>
 	
     <action type="idle" name="stay">
-      <property name="time" value="20000-40000" />
+      <property name="time" value="5000-5200" />
       <property name="actor" value="cowboy" />
     </action>
 	
-	<action type="rotate" name="rotate">
-      <property name="time" value="40000-60000" />
+	<action type="turn" name="rotatingInPlace">
+      <property name="time" value="5200-7000" />
       <property name="actor" value="cowboy" />
 	  <property name="end-angle" value="90"/>
     </action>
 	
 	<action type="walk" name="walk2">
-      <property name="origin" value="(0,0,5)" />
-      <property name="destination" value="(5,0, 5)" />
+      <property name="origin" value="(5,0,10)" />
+      <property name="destination" value="(10,0, 10)" />
       <property name="end-angle" value="90" />
-      <property name="time" value="60000-100000" />
+      <property name="time" value="10000-100000" />
       <property name="actor" value="cowboy" />
     </action>
 	
@@ -47,7 +47,7 @@
       <action-type-ref name="remove" />
       <action-type-ref name="attack" />
 	  <action-type-ref name="whipTo" />
-	  <action-type-ref name="rotate" />
+	  <action-type-ref name="turn" />
     </action-type>
     <action-type name="has-position">
       <action-type-ref name="create" />
@@ -65,7 +65,7 @@
     <action-type name="has-end-angle">
       <action-type-ref name="move" />
       <action-type-ref name="walk" />
-	  <action-type-ref name="rotate"/>
+	  <action-type-ref name="turn"/>
       <action-type-ref name="run" />
       <action-type-ref name="create" />
     </action-type>
@@ -75,7 +75,7 @@
 		<action-type name="idle" />
 		<action-type name="create" />
 		<action-type name="remove" />
-		<action-type name="rotate" />
+		<action-type name="turn" />
 		<action-type name="whipTo"/>
 	</action-types>
   <action-properties>

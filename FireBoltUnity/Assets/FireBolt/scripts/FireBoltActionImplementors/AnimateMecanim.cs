@@ -43,6 +43,7 @@ namespace Assets.scripts
         public override bool Init()
         {
             //short circuit if this has clearly been initialized before
+           
             if(animator && overrideController && animation && 
                 (!assignEndState ||(assignEndState && state)))
             {
@@ -101,14 +102,14 @@ namespace Assets.scripts
                 Debug.LogError(string.Format("unable to find animation [{0}] in animations folder", animName));
                 return false;
             }
-            animation.wrapMode = loop ? WrapMode.Loop : WrapMode.Once;                
+            animation.wrapMode = loop ? WrapMode.Loop : WrapMode.Once;
             
          
 
             if (!string.IsNullOrEmpty(stateName))
             {
                 assignEndState = true;
-                state = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/FireBolt/Resources/" + stateName);
+                state = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/FireBolt/Resources/Animations/" + stateName);
                 //state = ElPresidente.Instance.GetActiveAssetBundle().LoadAsset<AnimationClip>(stateName);
                 if (state == null)
                 {

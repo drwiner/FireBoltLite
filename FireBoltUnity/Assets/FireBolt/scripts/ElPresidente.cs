@@ -27,7 +27,7 @@ public class ElPresidente : MonoBehaviour {
     FireBoltActionList executingDiscourseActions;
 
     public static string timestampFormat = "HH:mm:ss.FF";
-
+    
     private float lastTickLogged;
     public Text debugText;
 	public float myTime;
@@ -391,7 +391,8 @@ public class ElPresidente : MonoBehaviour {
 
     public void speedToggle()
     {
-        Time.timeScale = (Time.timeScale + 1f) % 4;        
+        Time.timeScale = 1f;
+        //Time.timeScale = (Time.timeScale + 1f) % 4;        
     }
 
     public void setTime(float targetPercentComplete)

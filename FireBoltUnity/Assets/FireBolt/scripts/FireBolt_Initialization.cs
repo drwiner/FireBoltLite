@@ -7,7 +7,7 @@ public class FireBolt_Initialization : MonoBehaviour
 	void Start () 
     {
         ElPresidente elPresidente = this.GetComponent<ElPresidente>();
-        elPresidente.Init(null,40,false,false);
+        elPresidente.Init();
 
         //elPresidente.createdGameObjects.Add(cowboy,
 	}

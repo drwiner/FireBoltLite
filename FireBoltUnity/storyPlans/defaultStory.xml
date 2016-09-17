@@ -26,14 +26,6 @@
       <property name="actor" value="cowboy" />
 	  <property name="end-angle" value="90"/>
     </action>
-
-	
-	;example functionAction
-	;<action type="whipTo" name="step6">
-    ;  <property name="start" value="pudge"/>      
-	;  <property name="finish" value = "crate"/>
-    ;  <property name="time" value="7000-10000"/>
-    ;</action>
 	
 	</actions>
 	

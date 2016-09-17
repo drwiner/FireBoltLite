@@ -8,6 +8,8 @@ public class FireBolt_Initialization : MonoBehaviour
     {
         ElPresidente elPresidente = this.GetComponent<ElPresidente>();
         elPresidente.Init(null,40,false,false);
+
+        //elPresidente.createdGameObjects.Add(cowboy,
 	}
 	
 	// Update is called once per frame

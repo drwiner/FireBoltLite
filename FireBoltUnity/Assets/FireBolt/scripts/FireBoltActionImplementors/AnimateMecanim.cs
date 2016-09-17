@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using CM = CinematicModel;
+using UnityEditor;
 
 namespace Assets.scripts
 {
@@ -94,6 +95,7 @@ namespace Assets.scripts
         private bool findAnimations()
         {
             //find animations
+            animation = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/FireBolt/Resources/Animations/" + animName) as AnimationClip;
             if (ElPresidente.Instance.GetActiveAssetBundle().Contains(animName))
             {
                 animation = ElPresidente.Instance.GetActiveAssetBundle().LoadAsset<AnimationClip>(animName);

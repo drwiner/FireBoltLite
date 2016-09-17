@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CM=CinematicModel;
+using UnityEditor;
 //using UnityEditor;
 
 namespace Assets.scripts
@@ -56,15 +57,12 @@ namespace Assets.scripts
                 return true;
             }
             GameObject model = null;
-            if (ElPresidente.Instance.GetActiveAssetBundle().Contains(modelName))
-            {
-                model = ElPresidente.Instance.GetActiveAssetBundle().LoadAsset<GameObject>(modelName);
-            }
+            model = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/FireBolt/Resources/Constants/" + modelName) as GameObject;
 
             if (model == null)
             {
-                Debug.LogError(string.Format("could not load asset[{0}] from assetbundle[{1}]", 
-                                             modelName, ElPresidente.Instance.GetActiveAssetBundle().name));
+                Debug.LogError(string.Format("could not load asset[{0}] from resources/constants", 
+                                             modelName));
                 return false;
             }
 

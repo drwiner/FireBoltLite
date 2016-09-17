@@ -58,6 +58,23 @@
       </animateActions>
     </domainAction>
 	
+	<domainAction name="rotate">
+      <params>
+        <param name="actor" />
+		<param name="end-angle" />
+      </params>
+      <createActions />
+      <destroyActions />
+      <attachActions />
+      <translateActions />
+      <rotateActions>
+		<rotateAction actorNameParamName="actor" destinationParamName="end-angle"/>
+	  </rotateActions>
+      <animateActions>
+        <animateAction actorNameParamName="actor" name="idle" />
+      </animateActions>
+    </domainAction>
+	
     <domainAction name="create">
       <params>
         <param name="actor" />

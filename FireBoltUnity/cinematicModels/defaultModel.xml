@@ -71,7 +71,7 @@
 		<rotateAction actorNameParamName="actor" destinationParamName="end-angle"/>
 	  </rotateActions>
       <animateActions>
-        <animateAction actorNameParamName="actor" name="turnInPlace" />
+        <animateAction actorNameParamName="actor" name="turninplace" />
       </animateActions>
     </domainAction>
 	
@@ -129,11 +129,11 @@
 
   </domainActions>
   <actors>
-    <actor name="cowboy" model="cowboy.prefab" pointOfInterest="10">
+    <actor name="cowboy" model="cowboy.prefab" pointOfInterest="-1">
       <animationMappings>
         <animationMapping animateActionName="walk" animationName="cowboy_walk" loopAnimation="false" />
         <animationMapping animateActionName="idle" animationName="cowboy_idle" loopAnimation="true" />
-		<animationMapping animateActionname="turnInPlace" animationName="turning" loopAnimation = "true"/>
+		<animationMapping animateActionName="turninplace" animationName="turning" loopAnimation = "true"/>
         <animationMapping animateActionName="takeOutGun" animationName="takeOutGun" loopAnimation="false" />
 		<animationMapping animateActionName="putAwayGun" animationName="putAwayGun" loopAnimation="false" />
       </animationMappings>
@@ -147,7 +147,7 @@
     <animation name="cowboy_idle" fileName="Idle_Ready.fbx">
       <animationIndices />
     </animation>
-	<animation name="turning" fileName="humanoid_weapon_lower.fbx">
+	<animation name="turning" fileName="htr.fbx">
       <animationIndices />
     </animation>
     <animation name="takeOutGun" fileName="gunOut.fbx">

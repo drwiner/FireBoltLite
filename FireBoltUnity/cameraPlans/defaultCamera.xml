@@ -13,7 +13,7 @@
         </shotFragment>
       </shotFragments>
     </block>
-	<block storyTime="6000">
+	<block storyTime="4745">
       <shotFragments>
         <shotFragment duration="100000" focus="cowboy" f-stop="5.6" lens="25mm" shake="0">
           <angle angleSetting="Medium" target="cowboy" />

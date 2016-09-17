@@ -131,7 +131,7 @@
   <actors>
     <actor name="cowboy" model="cowboy.prefab" pointOfInterest="0">
       <animationMappings>
-        <animationMapping animateActionName="walk" animationName="cowboy_walk" loopAnimation="true" />
+        <animationMapping animateActionName="walk" animationName="cowboy_walk" loopAnimation="false" />
         <animationMapping animateActionName="idle" animationName="cowboy_idle" loopAnimation="true" />
         <animationMapping animateActionName="takeOutGun" animationName="takeOutGun" loopAnimation="false" />
 		<animationMapping animateActionName="putAwayGun" animationName="putAwayGun" loopAnimation="false" />
@@ -140,7 +140,7 @@
 	
   </actors>
   <animations>
-    <animation name="cowboy_walk" fileName="humanoid_sneak.fbx">
+    <animation name="cowboy_walk" fileName="m_walk_stroll_01.fbx">
       <animationIndices />
     </animation>
     <animation name="cowboy_idle" fileName="humanoid_idle.fbx">

@@ -10,7 +10,7 @@
 	
     <action type="walk" name="walk">
       <property name="origin" value="(0,0,0)" />
-      <property name="destination" value="(0,0, 50)" />
+      <property name="destination" value="(0,0, 5)" />
       <property name="end-angle" value="0" />
       <property name="time" value="2-20000" />
       <property name="actor" value="cowboy" />
@@ -28,8 +28,8 @@
     </action>
 	
 	<action type="walk" name="walk2">
-      <property name="origin" value="(0,0,50)" />
-      <property name="destination" value="(50,0, 50)" />
+      <property name="origin" value="(0,0,5)" />
+      <property name="destination" value="(5,0, 5)" />
       <property name="end-angle" value="90" />
       <property name="time" value="60000-100000" />
       <property name="actor" value="cowboy" />

@@ -15,6 +15,9 @@ FireBoltUnity/*.unityproj
 FireBoltUnity/*.booproj
 .screens/
 
+AVIPackage/
+AssetBundleBuilder/
+
 #===============================
 #AssetBundleBuilder Unity Project stuff
 #===============================

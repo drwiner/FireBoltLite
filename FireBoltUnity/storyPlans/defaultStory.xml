@@ -12,19 +12,27 @@
       <property name="origin" value="(0,0,0)" />
       <property name="destination" value="(0,0, 50)" />
       <property name="end-angle" value="0" />
-      <property name="time" value="2-3000" />
+      <property name="time" value="2-20000" />
       <property name="actor" value="cowboy" />
     </action>
 	
     <action type="idle" name="stay">
-      <property name="time" value="3000-6000" />
+      <property name="time" value="20000-40000" />
       <property name="actor" value="cowboy" />
     </action>
 	
 	<action type="rotate" name="rotate">
-      <property name="time" value="3000-6000" />
+      <property name="time" value="40000-60000" />
       <property name="actor" value="cowboy" />
 	  <property name="end-angle" value="90"/>
+    </action>
+	
+	<action type="walk" name="walk2">
+      <property name="origin" value="(0,0,50)" />
+      <property name="destination" value="(50,0, 50)" />
+      <property name="end-angle" value="90" />
+      <property name="time" value="60000-100000" />
+      <property name="actor" value="cowboy" />
     </action>
 	
 	</actions>

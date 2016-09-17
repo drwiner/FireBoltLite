@@ -96,37 +96,25 @@ namespace Assets.scripts
         {
             //find animations
             animation = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/FireBolt/Resources/Animations/" + animName) as AnimationClip;
-            if (ElPresidente.Instance.GetActiveAssetBundle().Contains(animName))
+            if (animation == null)
             {
-                animation = ElPresidente.Instance.GetActiveAssetBundle().LoadAsset<AnimationClip>(animName);
-
-                if (animation == null)
-                {
-                    Debug.LogError(string.Format("unable to find animation [{0}] in asset bundle[{1}]", animName, ElPresidente.Instance.GetActiveAssetBundle().name));
-                    return false;
-                }
-                animation.wrapMode = loop ? WrapMode.Loop : WrapMode.Once;                
-            }
-            else
-            {
-                Debug.Log(string.Format("asset bundle [{0}] does not contain animation[{1}]", ElPresidente.Instance.GetActiveAssetBundle().name, animName));
+                Debug.LogError(string.Format("unable to find animation [{0}] in animations folder", animName));
                 return false;
             }
+            animation.wrapMode = loop ? WrapMode.Loop : WrapMode.Once;                
+            
+         
 
-            if (!string.IsNullOrEmpty(stateName) && ElPresidente.Instance.GetActiveAssetBundle().Contains(stateName))
+            if (!string.IsNullOrEmpty(stateName))
             {
                 assignEndState = true;
-                state = ElPresidente.Instance.GetActiveAssetBundle().LoadAsset<AnimationClip>(stateName);
+                state = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/FireBolt/Resources/" + stateName);
+                //state = ElPresidente.Instance.GetActiveAssetBundle().LoadAsset<AnimationClip>(stateName);
                 if (state == null)
                 {
                     Debug.LogError(string.Format("unable to find animation [{0}] in asset bundle[{1}]", stateName, ElPresidente.Instance.GetActiveAssetBundle().name));
                     if (state == null) return false;
                 }
-            }
-            else if (!string.IsNullOrEmpty(stateName) && !ElPresidente.Instance.GetActiveAssetBundle().Contains(stateName))
-            {
-                Debug.Log(string.Format("should have looked up a state animation[{0}] and failed ", stateName));
-                return false;
             }
             return true;
         }

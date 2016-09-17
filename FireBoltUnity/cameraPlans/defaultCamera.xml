@@ -3,12 +3,23 @@
   <blocks>
     <block storyTime="2">
       <shotFragments>
-        <shotFragment anchor="9.375,1.718749" pan="-92.33732" duration="4742" focus="cowboy" f-stop="5.6" lens="25mm" shake="0">
+        <shotFragment duration="4742" focus="cowboy" f-stop="5.6" lens="25mm" shake="0">
           <angle angleSetting="Medium" target="cowboy" />
           <framings />
           <movements >
-            <movement type="Pan" directive="With" subject="pudge"/>
-            <movement type="Tilt" directive="With" subject="pudge"/>
+            <movement type="Pan" directive="With" subject="cowboy"/>
+            <movement type="Tilt" directive="With" subject="cowboy"/>
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+	<block storyTime="6000">
+      <shotFragments>
+        <shotFragment duration="100000" focus="cowboy" f-stop="5.6" lens="25mm" shake="0">
+          <angle angleSetting="Medium" target="cowboy" />
+          <framings />
+          <movements >
+            <movement type="Dolly" directive="With" subject="cowboy"/>
           </movements>
         </shotFragment>
       </shotFragments>

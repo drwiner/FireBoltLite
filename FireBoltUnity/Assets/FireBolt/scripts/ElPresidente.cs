@@ -271,10 +271,10 @@ public class ElPresidente : MonoBehaviour {
 
         if (reloadActorsAndAnimationsBundle)
         {
-            actorsAndAnimations = AssetBundle.LoadFromFile(currentInputSet.ActorsAndAnimationsBundlePath);
-            Debug.Log(string.Format("loading actors bundle[{0}] @ [{1}].  last read [{2}]",
-                         currentInputSet.ActorsAndAnimationsBundlePath, DateTime.Now.ToString(timestampFormat), storyPlanLastReadTimeStamp.ToString(timestampFormat)));
-            actorsAndAnimationsBundleLastReadTimeStamp = DateTime.Now;
+            //actorsAndAnimations = AssetBundle.LoadFromFile(currentInputSet.ActorsAndAnimationsBundlePath);
+            //Debug.Log(string.Format("loading actors bundle[{0}] @ [{1}].  last read [{2}]",
+            //             currentInputSet.ActorsAndAnimationsBundlePath, DateTime.Now.ToString(timestampFormat), storyPlanLastReadTimeStamp.ToString(timestampFormat)));
+            //actorsAndAnimationsBundleLastReadTimeStamp = DateTime.Now;
         }            
 
         if (terrain != null && reloadTerrainBundle)
@@ -282,11 +282,11 @@ public class ElPresidente : MonoBehaviour {
 
         if (reloadTerrainBundle)
         {
-            terrain = AssetBundle.LoadFromFile(currentInputSet.TerrainBundlePath);
-            Debug.Log(string.Format("loading terrain bundle[{0}] @ [{1}].  last read [{2}]",
-                                    currentInputSet.TerrainBundlePath, DateTime.Now.ToString(timestampFormat), storyPlanLastReadTimeStamp.ToString(timestampFormat)));
-            terrainBundleLastReadTimeStamp = DateTime.Now;
-            instantiateTerrain();
+           // terrain = AssetBundle.LoadFromFile(currentInputSet.TerrainBundlePath);
+            //Debug.Log(string.Format("loading terrain bundle[{0}] @ [{1}].  last read [{2}]",
+            //                        currentInputSet.TerrainBundlePath, DateTime.Now.ToString(timestampFormat), storyPlanLastReadTimeStamp.ToString(timestampFormat)));
+            //terrainBundleLastReadTimeStamp = DateTime.Now;
+            //instantiateTerrain();
         }  
 
         if (reloadStoryPlan || reloadActorsAndAnimationsBundle || reloadCinematicModel)

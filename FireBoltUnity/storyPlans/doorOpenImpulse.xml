@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<story xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="door example" xmlns="http://liquidnarrative.csc.ncsu.edu/impulse/v1.336">
+  <objects name="O">
+    <set name="doors">
+      <constant value="containment_door" />
+    </set>
+    <set name="actors">
+      <constant value="m005" />      
+    </set>
+    <set name="buttons">
+      <constant value="button_red"/>
+      <constant value="button_green"/>
+    </set>
+  </objects>
+  <action-types name="Actions">
+    <action-type name="open_door_with_button" />
+    <action-type name="walk" />
+  </action-types>
+  <action-properties>
+    <action-property name="person" action="open_door_with_button" range="actors"/>
+    <action-property name="door" action="open_door_with_button" range="doors"/>
+    <action-property name="door_from" action="open_door_with_button" range="coordinate3d"/>
+    <action-property name="door_to" action="open_door_with_button" range="coordinate3d"/>
+    <action-property name="default_button" action="open_door_with_button" range="buttons"/>
+    <action-property name="pressed_button" action="open_door_with_button" range="buttons"/>
+    <action-property name="button_position" action="open_door_with_button" range="coordinate3d"/>
+    <action-property name="origin" action="walk" range="coordinate3d"/>
+    <action-property name="destionation" action="walk" range="coordinate3d"/>
+    <action-property name="actor" action="walk" range="actors"/>
+  </action-properties>
+  <actions>
+    <action type="walk" name="walk_1">
+      <property name="actor" value="m005" />
+      <property name="origin" value="(5, 0, 5)" />
+      <property name="destination" value="(1, 0, 5)"/>
+      <property name="time" value="10-2500" />
+    </action>
+    <action type="open_door_with_button" name="open_door_with_button_1">
+      <property name="person" value="m005" />
+      <property name="door" value="containment_door" />
+      <property name="door_from" value="(0, 0, 0)" />
+      <property name="door_to" value="(2.5, 0, 0)" />
+      <property name="default_button" value="button_green"/>
+      <property name="pressed_button" value="button_red"/>
+      <property name="button_position" value="(0, 1, 5)"/>
+      <property name="time" value="2501-10000" />
+    </action>
+    <action type="walk" name="walk_2">
+      <property name="actor" value="m005" />
+      <property name="origin" value="(1, 0, 5)" />
+      <property name="destination" value="(0, 0, 1.5)"/>
+      <property name="time" value="4750-6750" />
+    </action>
+  </actions>
+  <sentences>
+    <predicate name="at">
+      <constant value="m005" />
+      <constant value="(5, 0, 5)" />
+      <constant value="0-1" />
+    </predicate>
+    <predicate name="at">
+      <constant value="containment_door" />
+      <constant value="(0, 0, 0)" />
+      <constant value="0-1" />
+    </predicate>
+    <predicate name="at">
+      <constant value="button_green" />
+      <constant value="(0, 1, 5)" />
+      <constant value="0-1" />
+    </predicate>
+  </sentences>
+</story>

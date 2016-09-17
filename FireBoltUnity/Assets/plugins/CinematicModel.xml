@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CinematicModel</name>
+    </assembly>
+    <members>
+        <member name="P:CinematicModel.FireBoltAction.MaxDurationAsText">
+            <summary>
+            this property exists to make parsing the nullable int work.  
+            use MaxDuration when querying the FireBolt Action
+            </summary>
+        </member>
+        <member name="P:CinematicModel.DomainActionParameter.Name">
+            <summary>
+            correlates name of parameter with parameter in xImpulse domain model
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:CinematicModel.Actor.PointOfInterest" -->
+        <member name="T:CinematicModel.DestroyAction">
+            <summary>
+            boom
+            </summary>
+        </member>
+        <member name="T:CinematicModel.SmartModelSettings">
+            <summary>
+            describes how the hierarchy ofthe xImpulse plan will be used to fill in missing information in the read model.
+            </summary>
+        </member>
+        <member name="P:CinematicModel.SmartModelSettings.AnimationMaxSearchDepth">
+            <summary>
+            how many steps the model will attempt to step up in the xImpulse object hierarchy when 
+            confronted with an action for which the executing actor has no animation mapping.  
+            Attempts to use animation mappings for parent objects.
+            Set to 0 to prevent searching.
+            </summary>
+        </member>
+        <member name="P:CinematicModel.SmartModelSettings.ActorMaxSearchDepth">
+            <summary>
+            how many steps the model will attempt to step up in the xImpulse object hierarchy when 
+            confronted with an actor whose name is unknown.  Will use a model defined for a parent
+            object class provided it is within maxActorSearchDepth steps of the actor in the hierarchy
+            Set to 0 to prevent searching.
+            </summary>
+        </member>
+    </members>
+</doc>

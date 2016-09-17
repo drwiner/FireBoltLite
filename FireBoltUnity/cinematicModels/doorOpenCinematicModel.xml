@@ -1,0 +1,87 @@
+<cinematicModel xmlns="http://liquidnarrative.csc.ncsu.edu/cinematicModel/v0.1" millisPerTick="1" domainDistancePerEngineDistance="1">
+  <smartModelSettings maxActorSearchDepth="2" maxAnimationSearchDepth="2" />
+  <terrain location="(0,0,0)" terrainFileName="flatDotaTerrain.prefab"/> 
+  <domainActions>
+    <domainAction name="open_door_with_button" >
+      <params>
+        <param name="person" />
+        <param name="default_button"/>
+        <param name="pressed_button"/>
+        <param name="button_position"/>
+        <param name="door"/>
+        <param name="door_from"/>
+        <param name="door_to"/>
+      </params>
+      <animateActions>
+        <animateAction name="press_button" actorNameParamName="person" effector="true"/>
+        <animateAction name="turn" actorNameParamName="person" effector="false" maxDuration="500" effectorOffsetIndexName="fully_retracted" />
+      </animateActions>
+      <createActions>
+        <createAction actorNameParamName="pressed_button" effectorOffsetIndexName="fully_extended" originParamName="button_position"/>
+      </createActions>
+      <destroyActions>
+        <destroyAction actorNameParamName="default_button" effectorOffsetIndexName="fully_extended" />
+      </destroyActions>
+      <rotateActions>
+        <rotateAction actorNameParamName="person" destinationParamName="door_from" maxDuration="500" effectorOffsetIndexName="fully_retracted" />
+      </rotateActions>
+      <translateActions>
+        <translateAction actorNameParamName="door" originParamName="door_from" destinationParamName="door_to" effectorOffsetIndexName="plus_two_seconds" />
+      </translateActions>
+    </domainAction>
+    
+    <domainAction name="walk" >
+      <params>
+        <param name="actor" />
+        <param name="origin"/>
+        <param name="destination"/>
+      </params>
+      <animateActions>
+        <animateAction name="walk" actorNameParamName="actor" effector="false"/>
+      </animateActions>
+      <createActions/>
+      <destroyActions/>
+      <rotateActions>
+        <rotateAction actorNameParamName="actor" destinationParamName="destination" maxDuration="500"/>
+      </rotateActions>
+      <translateActions>
+        <translateAction actorNameParamName="door" originParamName="door_from" destinationParamName="door_to" effectorOffsetIndexName="fully_extended" />
+      </translateActions>
+    </domainAction>
+  </domainActions>
+  
+  <actors>
+    <actor name="m005" model="m005.fbx" pointOfInterest="0.85" >
+      <animationMappings>
+        <animationMapping animateActionName="press_button" animationName="finger_poke" loopAnimation="false" />
+        <animationMapping animateActionName="turn" animationName="foot_shuffle" loopAnimation="true" />
+        <animationMapping animateActionName="walk" animationName="slow_walk" loopAnimation="true"/>
+      </animationMappings>
+    </actor>
+    <actor name="containment_door" model="containment_door.prefab" >
+      <animationMappings/>
+    </actor>
+    <actor name="button_green" model="button_green.prefab">
+      <animationMappings/>
+    </actor>
+    <actor name="button_red" model="button_red.prefab">
+      <animationMappings/>
+    </actor>
+  </actors>
+
+  <animations>
+    <animation fileName="finger_poke.fbx" name="finger_poke" >
+      <animationIndices>
+        <animationIndex name="fully_extended" timeOffset="750" />
+        <animationIndex name="fully_retracted" timeOffset="1750" />
+        <animationIndex name="plus_two_seconds" timeOffset="3750" />
+      </animationIndices>
+    </animation>
+    <animation fileName="slow_walk.fbx" animationName="slow_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="foot_shuffle.fbx" animationName="foot_shuffle">
+      <animationIndices/>
+    </animation>
+  </animations>
+</cinematicModel>

@@ -1,0 +1,576 @@
+<cinematicModel xmlns="http://liquidnarrative.csc.ncsu.edu/cinematicModel/v0.1" millisPerTick="33" domainDistancePerEngineDistance="80">
+  <smartModelSettings maxActorSearchDepth="2" maxAnimationSearchDepth="2" />
+  <terrain location="(-100,-2,-100)" terrainFileName="dota_terrain.prefab"/>
+  <!-- animation search depth should generally be at least as deep as actor search depth-->
+  <domainActions>
+    <domainAction name="spawn-creep" >
+      <params>
+        <param name="actor" />
+        <param name="position" />
+      </params>
+      <createActions>
+        <createAction actorNameParamName="actor" originParamName="position" />
+      </createActions>
+      <destroyActions/>
+      <rotateActions/>
+      <translateActions/>
+      <animateActions/>
+    </domainAction>
+
+    <domainAction name="spawn-hero" >
+      <params>
+        <param name="actor" />
+        <param name="position" />
+      </params>
+      <createActions>
+        <createAction actorNameParamName="actor" originParamName="position" />
+      </createActions>
+      <destroyActions/>
+      <rotateActions/>
+      <translateActions/>
+      <animateActions/>
+    </domainAction>
+
+    <domainAction name="spawn-courier" >
+      <params>
+        <param name="actor" />
+        <param name="position" />
+      </params>
+      <createActions>
+        <createAction actorNameParamName="actor" originParamName="position" />
+      </createActions>
+      <destroyActions/>
+      <rotateActions/>
+      <translateActions/>
+      <animateActions/>
+    </domainAction>
+    
+    <domainAction name="move" >
+      <params>
+        <param name="actor" />
+        <param name="destination" />
+        <param name="origin" />
+      </params>
+      <createActions/>
+      <destroyActions/>
+      <translateActions>
+        <translateAction  actorNameParamName="actor" destinationParamName="destination" originParamName="origin"/>
+      </translateActions>
+      <animateActions>
+        <animateAction  name="walk" actorNameParamName="actor" effector="false" endingAction="idle"/>
+      </animateActions>
+      <rotateActions/>
+    </domainAction>
+
+   <domainAction name="rot" >
+      <params>
+        <param name="actor" />
+      </params>
+      <createActions> <!--can't locate the particle effect on pudge b/c we can't talk about relative locations in CM-->
+      </createActions>
+      <destroyActions/>
+      <translateActions/>
+      <animateActions>
+        <animateAction name="rot" actorNameParamName="actor" effector="false" endingAction="idle"/>
+      </animateActions>
+      <rotateActions/>
+    </domainAction>
+    
+    <domainAction name="creep-attack" >
+      <params>
+        <param name="actor" />
+      </params>
+      <createActions>
+      </createActions>
+      <destroyActions/>
+      <translateActions/>
+      <animateActions>
+        <animateAction name="creep_attack" actorNameParamName="actor" effector="false" endingAction="idle"/>
+      </animateActions>
+      <rotateActions/>
+    </domainAction>
+
+    <domainAction name="damage" >
+      <params>
+        <param name="actor" />
+        <param name="target" />
+        <param name="source" />
+        <param name="ability" />
+        <param name="amount" />
+        <param name="target-guessed" />
+      </params>
+      <createActions>
+      </createActions>
+      <destroyActions/>
+      <translateActions/>
+      <animateActions>
+        <animateAction name="attack" actorNameParamName="source" effector="false" endingAction="idle"/>
+      </animateActions>
+      <rotateActions/>
+    </domainAction>
+
+    <domainAction name="rune-death" >
+      <params>
+        <param name="actor" />
+      </params>
+      <createActions/>
+      <destroyActions>
+        <destroyAction actorNameParamName="actor" />
+      </destroyActions>
+      <translateActions/>
+      <animateActions/>        
+      <rotateActions/>
+    </domainAction>
+
+    <domainAction name="meat-hook" >
+      <params>
+        <param name="actor" />
+        <param name="target-position"/>
+        <param name="target"/>
+      </params>
+      <createActions>
+        <!--can't locate the hook on pudge b/c we can't talk about relative locations in CM-->
+        <createAction actorNameParamName="hook" originParamName="target-position"/>
+      </createActions>
+      <destroyActions>
+      </destroyActions>
+      <translateActions/>
+      <animateActions/>
+      <rotateActions/>
+    </domainAction>
+
+    <domainAction name="die" >
+      <params>
+        <param name="actor" />
+      </params>
+      <createActions/>
+      <rotateActions/>
+      <translateActions/>
+      <destroyActions>
+        <destroyAction actorNameParamName="actor" effectorOffsetIndexName="onTheGround"/>
+      </destroyActions>
+      <animateActions>
+        <animateAction name="die" actorNameParamName="actor" effector="true"/>
+      </animateActions>
+    </domainAction>
+    
+    <domainAction name="rotate">
+      <params>
+        <param name="actor" />
+        <param name="end-angle" />
+      </params>
+      <createActions/>
+      <destroyActions/>
+      <translateActions/>
+      <rotateActions>
+        <rotateAction actorNameParamName="actor" destinationParamName="end-angle" maxDuration="400"/>
+      </rotateActions>
+      <animateActions/>
+    </domainAction>   
+  </domainActions>
+  
+  
+  <actors>
+    <actor name="Main-Actors" model="crystal_maiden_model.fbx" pointOfInterest="0.8" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="crystal_maiden_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="crystal_maiden_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="crystal_maiden_idle" loopAnimation="true"/>
+        <animationMapping animateActionName="die" animationName="crystal_maiden_die" loopAnimation="false"/>
+        <animationMapping animateActionName="attack" animationName="crystal_maiden_attack" loopAnimation="false"/>
+      </animationMappings>
+    </actor>
+    
+    <actor name="Pudge" model="pudge_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="throw_hook" animationName="throw_hook" loopAnimation="false"/>
+        <animationMapping animateActionName="catch_hook" animationName="catch_hook" loopAnimation="false"/>
+        <animationMapping animateActionName="rot" animationName="rot" loopAnimation="false"/>
+        <animationMapping animateActionName="walk" animationName="pudge_walk" loopAnimation="true" />        
+        <animationMapping animateActionName="idle" animationName="pudge_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="pudge_idle" loopAnimation="true"/>        
+        <animationMapping animateActionName="die" animationName="pudge_die" loopAnimation="false"/>
+        <animationMapping animateActionName="attack" animationName="pudge_attack" loopAnimation="false"/>
+      </animationMappings>
+    </actor>
+
+    <actor name="Mirana" model="mirana_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="mirana_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="mirana_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="mirana_idle" loopAnimation="true"/>
+        <animationMapping animateActionName="die" animationName="mirana_die" loopAnimation="false"/>
+        <animationMapping animateActionName="attack" animationName="mirana_attack" loopAnimation="false"/>
+      </animationMappings>
+    </actor>
+
+    <actor name="Crystal Maiden" model="crystal_maiden_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="crystal_maiden_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="crystal_maiden_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="crystal_maiden_idle" loopAnimation="true"/>
+        <animationMapping animateActionName="die" animationName="crystal_maiden_die" loopAnimation="false"/>
+        <animationMapping animateActionName="attack" animationName="crystal_maiden_attack" loopAnimation="false"/>
+      </animationMappings>
+    </actor>
+    
+    <actor name="Skywrath Mage" model="skywrath_mage_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="skywrath_mage_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="skywrath_mage_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="skywrath_mage_idle" loopAnimation="true"/>
+        <animationMapping animateActionName="die" animationName="skywrath_mage_die" loopAnimation="false"/>
+        <animationMapping animateActionName="attack" animationName="skywrath_mage_attack" loopAnimation="false"/>
+      </animationMappings>
+    </actor>
+    <actor name="Wisp" model="phantom_lancer_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="phantom_lancer_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="phantom_lancer_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="phantom_lancer_idle" loopAnimation="true"/>
+        <animationMapping animateActionName="die" animationName="phantom_lancer_die" loopAnimation="false"/>
+        <animationMapping animateActionName="attack" animationName="phantom_lancer_attack" loopAnimation="false"/>
+      </animationMappings>
+    </actor>
+
+    <actor name="Dazzle" model="dazzle_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="crystal_maiden_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="crystal_maiden_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="crystal_maiden_idle" loopAnimation="true"/>
+        <animationMapping animateActionName="die" animationName="crystal_maiden_die" loopAnimation="false"/>
+        <animationMapping animateActionName="attack" animationName="phantom_lancer_attack_upward" loopAnimation="false"/>
+      </animationMappings>
+    </actor>
+
+    <actor name="Legion Commander" model="rikimaru_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="rikimaru_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="rikimaru_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="rikimaru_idle" loopAnimation="true"/>
+        <animationMapping animateActionName="die" animationName="rikimaru_die" loopAnimation="false"/>
+        <animationMapping animateActionName="attack" animationName="rikimaru_attack" loopAnimation="false"/>
+      </animationMappings>
+    </actor>
+
+    <actor name="Mirana" model="mirana_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="attack" animationName="mirana_attack" loopAnimation="false" />
+        <animationMapping animateActionName="walk" animationName="mirana_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="mirana_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="mirana_idle" loopAnimation="true"/>
+        <animationMapping animateActionName="die" animationName="mirana_die" loopAnimation="false"/>
+      </animationMappings>
+    </actor>
+
+    <actor name="Ancient Apparition" model="death_prophet_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="attack" animationName="skywrath_mage_attack_2" loopAnimation="false" />
+        <animationMapping animateActionName="walk" animationName="skywrath_mage_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="skywrath_mage_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="skywrath_mage_idle" loopAnimation="true"/>
+        <animationMapping animateActionName="die" animationName="skywrath_mage_die" loopAnimation="false"/>
+      </animationMappings>
+    </actor>
+
+    <actor name="Morphling" model="naga_siren_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="naga_siren_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="naga_siren_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="naga_siren_idle" loopAnimation="true"/>
+        <animationMapping animateActionName="die" animationName="naga_siren_die" loopAnimation="false"/>
+        <animationMapping animateActionName="attack" animationName="naga_siren_attack" loopAnimation="false"/>
+      </animationMappings>
+    </actor>
+    
+    <actor name="Ember Spirit" model="templar_assassin_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="rikimaru_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="rikimaru_idle" loopAnimation="true" />
+        <animationMapping animateActionName="frozen" animationName="rikimaru_idle" loopAnimation="true"/>
+        <animationMapping animateActionName="die" animationName="rikimaru_die" loopAnimation="false"/>
+        <animationMapping animateActionName="attack" animationName="rikimaru_attack_2" loopAnimation="false"/>
+      </animationMappings>
+    </actor> 
+
+    <actor name="Towers" model="tower.prefab" pointOfInterest="0.8">
+      <animationMappings/>
+    </actor>
+    <actor name="Runes" model="m005.fbx">
+      <animationMappings/>
+    </actor>
+    <actor name="Wards" model="ward_model.fbx" >
+      <animationMappings/>
+    </actor>
+    <actor name="Couriers" model="badger_courier_model.fbx">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="courier_walk" loopAnimation="true" />
+      </animationMappings>
+    </actor>
+
+    <actor name="Creeps" model="goblin_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="bad_melee_walk" loopAnimation="true" />
+        <animationMapping animateActionName="creep_attack" animationName="pudge_attack" loopAnimation="false"/>
+        <animationMapping animateActionName="die" animationName="bad_melee_die" loopAnimation="false" />
+        <animationMapping animateActionName="idle" animationName="bad_melee_idle" loopAnimation="true"/>
+      </animationMappings>
+    </actor>
+    <actor name="npc_dota_creep_badguys_melee" model="creep_bad_melee_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="bad_melee_walk" loopAnimation="true" />
+        <animationMapping animateActionName="creep_attack" animationName="bad_melee_attack" loopAnimation="false"/>
+        <animationMapping animateActionName="die" animationName="bad_melee_die" loopAnimation="false" />
+        <animationMapping animateActionName="idle" animationName="bad_melee_idle" loopAnimation="true"/>
+      </animationMappings>
+    </actor>
+    <actor name="npc_dota_creep_goodguys_melee" model="creep_good_melee_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="good_melee_walk" loopAnimation="true" />
+        <animationMapping animateActionName="creep_attack" animationName="good_melee_attack" loopAnimation="false"/>
+        <animationMapping animateActionName="die" animationName="good_melee_die" loopAnimation="false" />
+        <animationMapping animateActionName="idle" animationName="good_melee_idle" loopAnimation="true"/>
+      </animationMappings>
+    </actor>    
+    <actor name="npc_dota_creep_badguys_ranged" model="creep_bad_ranged_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="die" animationName="bad_ranged_die" loopAnimation="false" />
+        <animationMapping animateActionName="creep_attack" animationName="bad_ranged_attack" loopAnimation="false"/>
+        <animationMapping animateActionName="walk" animationName="bad_ranged_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="bad_ranged_idle" loopAnimation="true"/>
+      </animationMappings>
+    </actor>
+    <actor name="npc_dota_creep_goodguys_ranged" model="creep_good_ranged_model.fbx" pointOfInterest="0.8">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="good_ranged_walk" loopAnimation="true" />
+        <animationMapping animateActionName="die" animationName="good_ranged_die" loopAnimation="false" />
+        <animationMapping animateActionName="creep_attack" animationName="good_ranged_attack" loopAnimation="false"/>
+        <animationMapping animateActionName="idle" animationName="good_ranged_idle" loopAnimation="true"/>
+      </animationMappings>
+    </actor>
+
+
+     <!--defaulting heroes we don't have models for as Main-Actors-->
+
+  </actors>
+  
+  <animations>
+    <animation fileName="crystal_maiden_attack.fbx" name="crystal_maiden_attack">
+      <animationIndices/>
+    </animation>
+    <animation fileName="crystal_maiden_walk.fbx" name="crystal_maiden_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="crystal_maiden_idle.fbx" name="crystal_maiden_idle">
+      <animationIndices/>
+    </animation>
+    <animation fileName="crystal_maiden_die.fbx" name="crystal_maiden_die">
+      <animationIndices>
+        <animationIndex name ="onTheGround" timeOffset ="1300"/>
+      </animationIndices>
+    </animation>
+
+    <animation fileName="mirana_attack.fbx" name="mirana_attack">
+      <animationIndices/>
+    </animation>
+    <animation fileName="mirana_walk.fbx" name="mirana_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="mirana_idle.fbx" name="mirana_idle">
+      <animationIndices/>
+    </animation>
+    <animation fileName="mirana_die.fbx" name="mirana_die">
+      <animationIndices>
+        <animationIndex name ="onTheGround" timeOffset ="2600"/>
+      </animationIndices>
+    </animation>
+
+
+    <animation fileName="skywrath_mage_walk.fbx" name="skywrath_mage_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="skywrath_mage_idle.fbx" name="skywrath_mage_idle">
+      <animationIndices/>
+    </animation>
+    <animation fileName="skywrath_mage_die.fbx" name="skywrath_mage_die">
+      <animationIndices>
+        <animationIndex name ="onTheGround" timeOffset ="3200"/>
+      </animationIndices>
+      <animation fileName="skywrath_mage_attack.fbx" name="skywrath_mage_attack">
+        <animationIndices/>
+      </animation>
+      <animation fileName="skywrath_mage_attack_2.fbx" name="skywrath_mage_attack_2">
+        <animationIndices/>
+      </animation>
+    </animation>
+
+    <animation fileName="pudge_walk.fbx" name="pudge_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="pudge_idle.fbx" name="pudge_idle">
+      <animationIndices/>
+    </animation>
+    <animation fileName="pudge_attack.fbx" name="pudge_attack">
+      <animationIndices/>
+    </animation>
+    <animation fileName="pudge_die.fbx" name="pudge_die">
+      <animationIndices>
+        <animationIndex name="onTheGround" timeOffset="1900"/>
+      </animationIndices>
+    </animation>
+    <animation fileName="pudge_hook_throw.fbx" name="throw_hook">
+      <animationIndices/>
+    </animation>
+    <animation fileName="pudge_hook_catch.fbx" name="catch_hook">
+      <animationIndices/>
+    </animation>
+    <animation fileName="pudge_rot.fbx" name="rot">
+      <animationIndices/>
+    </animation>
+    
+    <animation fileName="creep_good_melee_walk.fbx" name="good_melee_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_good_melee_attack.fbx" name="good_melee_attack">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_good_melee_idle.fbx" name="good_melee_idle">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_good_melee_die.fbx" name="good_melee_die">
+      <animationIndices>
+        <animationIndex name="onTheGround" timeOffset="1300"/>
+      </animationIndices>
+    </animation>
+    
+    <animation fileName="creep_bad_melee_walk.fbx" name="bad_melee_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_bad_melee_attack.fbx" name="bad_melee_attack">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_bad_melee_idle.fbx" name="bad_melee_idle">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_bad_melee_die.fbx" name="bad_melee_die">
+      <animationIndices>
+        <animationIndex name="onTheGround" timeOffset="2000"/>
+      </animationIndices>
+    </animation>
+
+    <animation fileName="creep_bad_ranged_walk.fbx" name="bad_ranged_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_bad_ranged_attack.fbx" name="bad_ranged_attack">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_bad_ranged_idle.fbx" name="bad_ranged_idle">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_bad_ranged_die.fbx" name="bad_ranged_die">
+      <animationIndices>
+        <animationIndex name="onTheGround" timeOffset="1600"/>
+      </animationIndices>
+    </animation>
+    
+    <animation fileName="creep_good_ranged_walk.fbx" name="good_ranged_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_good_ranged_attack.fbx" name="good_ranged_attack">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_good_ranged_idle.fbx" name="good_ranged_idle">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_good_ranged_die.fbx" name="good_ranged_die">
+      <animationIndices>
+        <animationIndex name="onTheGround" timeOffset="1100"/>
+      </animationIndices>
+    </animation>
+
+    <animation fileName="courier_walk.fbx" name="courier_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="humanoid_idle.fbx" name="idle">
+      <animationIndices/>
+    </animation>
+
+    <animation fileName="naga_siren_idle.fbx" name="naga_siren_idle">
+      <animationIndices/>
+    </animation>
+    <animation fileName="naga_siren_attack.fbx" name="naga_siren_attack">
+      <animationIndices/>
+    </animation>
+    <animation fileName="naga_siren_attack_2.fbx" name="naga_siren_attack_2">
+      <animationIndices/>
+    </animation>
+    <animation fileName="naga_siren_attack_3.fbx" name="naga_siren_attack_3">
+      <animationIndices/>
+    </animation>
+    <animation fileName="naga_siren_walk.fbx" name="naga_siren_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="naga_siren_riptide.fbx" name="naga_siren_riptide">
+      <animationIndices/>
+    </animation>
+    <animation fileName="naga_siren_die.fbx" name="naga_siren_die">
+    <animationIndices>
+      <animationIndex name="onTheGround"  timeOffset="2500"/>
+    </animationIndices>
+    </animation>
+
+    <animation fileName="phantom_lancer_attack_overhand.fbx" name="phantom_lancer_attack_overhand">
+      <animationIndices/>
+    </animation>
+    <animation fileName="phantom_lancer_attack_jump.fbx" name="phantom_lancer_attack_jump">
+      <animationIndices/>
+    </animation>
+    <animation fileName="phantom_lancer_attack_kick.fbx" name="phantom_lancer_attack_kick">
+      <animationIndices/>
+    </animation>
+    <animation fileName="phantom_lancer_die.fbx" name="phantom_lancer_die">
+    <animationIndices>
+      <animationIndex name="onTheGround"  timeOffset="1250"/>
+    </animationIndices>
+    </animation>
+    <animation fileName="phantom_lancer_attack_upward.fbx" name="phantom_lancer_attack_upward">
+      <animationIndices/>
+    </animation>
+    <animation fileName="phantom_lancer_attack_spin.fbx" name="phantom_lancer_attack_spin">
+      <animationIndices/>
+    </animation>
+    <animation fileName="phantom_lancer_walk.fbx" name="phantom_lancer_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="phantom_lancer_attack.fbx" name="phantom_lancer_attack">
+      <animationIndices/>
+    </animation>
+    <animation fileName="phantom_lancer_idle.fbx" name="phantom_lancer_idle">
+      <animationIndices/>
+    </animation>
+
+    <animation fileName="rikimaru_walk.fbx" name="rikimaru_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="rikimaru_die.fbx" name="rikimaru_die">
+      <animationIndices>
+        <animationIndex name="onTheGround"  timeOffset="1500"/>
+      </animationIndices>
+    </animation>
+    <animation fileName="rikimaru_attack.fbx" name="rikimaru_attack">
+      <animationIndices/>
+    </animation>
+    <animation fileName="rikimaru_attack_2.fbx" name="rikimaru_attack_2">
+      <animationIndices/>
+    </animation>
+    <animation fileName="rikimaru_backstab.fbx" name="rikimaru_backstab">
+      <animationIndices/>
+    </animation>
+    <animation fileName="rikimaru_idle.fbx" name="rikimaru_idle">
+      <animationIndices/>
+    </animation>
+    <animation fileName="rikimaru_smoke_screen.fbx" name="rikimaru_smoke_screen">
+      <animationIndices/>
+    </animation>
+  </animations>
+</cinematicModel>

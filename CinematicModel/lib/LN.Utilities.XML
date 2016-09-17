@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LN.Utilities</name>
+    </assembly>
+    <members>
+        <member name="M:LN.Utilities.Collections.BTree`1.Node.FindIndex(`0)">
+            <summary>
+            Finds the index of the provided element.
+            </summary>
+            <param name="item">The item to find</param>
+            <returns>The index of the specified element if found,
+                     or the bitwise-complement of the index of the
+                     least element greater than the item, or the
+                     bitwise-complement of the number of items.
+            </returns>
+        </member>
+        <member name="M:LN.Utilities.Collections.BTree`1.Node.FixExcess">
+            <summary>
+            Fix an excess number of items in this tree (treats this node as the root).
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.BTree`1.Node.LooseDelete(`0)">
+            <summary>
+            This should only be called on a child that has greater than <c>Minimum</c> children.
+            </summary>
+            <param name="item">The item to delete.</param>
+            <returns><see langword="true"/> if the item was found, <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.ElementAt(System.Int32)">
+            <summary>
+            Returns the item at the given index
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes the item at the given index
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.FindIndex(`0)">
+            <summary>
+            Finds the index of the specified item.
+            </summary>
+            <param name="item">The item to search for</param>
+            <returns>The index of the item, or the bitwise complement on the index of the least element greater than the item, or the bitwise complement of the count if no greater item is present.</returns>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.Add(`0)">
+            <summary>
+            Adds an element to the set or returns <see langword="false"/> if it was already present.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.CopyTo(`0[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Copies a specified number of elements starting at the specified index to a compatible one-dimensional array, starting at the specified array index.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Removes all elements that are in a specified collection from the current set.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Modifies the current set object so that it contains only elements that are also in a specified collection.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.UnionWith(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Modifies the current set object so that it contains all elements that are present in either the current object or the specified collection.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether a set object is a proper subset of the specified collection.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether a set object is a proper superset of the specified collection.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether a set object is a subset of the specified collection.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether a set object is a superset of the specified collection.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether the current s object and a specified collection share common elements.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.RemoveWhere(System.Func{`0,System.Boolean})">
+            <summary>
+            Removes all elements that match the conditions defined by the specified predicate from a set.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.ISortedSet`1.Reverse" -->
+        <member name="M:LN.Utilities.Collections.ISortedSet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether the current set object and the specified collection contain the same elements.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.ISortedSet`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})" -->
+        <member name="P:LN.Utilities.Collections.ISortedSet`1.LongCount">
+            <summary>
+            Gets the number of items in the set
+            </summary>
+        </member>
+        <member name="P:LN.Utilities.Collections.ISortedSet`1.Max">
+            <summary>
+            Gets the maximum item in the collection
+            </summary>
+        </member>
+        <member name="P:LN.Utilities.Collections.ISortedSet`1.Min">
+            <summary>
+            Gets the minimum item in the collection
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.SortedSet`1.Add(`0)">
+            <summary>
+            Adds an element to the set and returns a value that indicates if it was successfully added.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.SortedSet`1.Clear">
+            <summary>
+            Removes all elements from the set.
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.SortedSet`1.Contains(`0)">
+            <summary>
+            Determines whether the set contains a specific element.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.CopyTo(`0[])" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.CopyTo(`0[],System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.CopyTo(`0[],System.Int32,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.GetEnumerator" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.Remove(`0)" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.RemoveWhere(System.Func{`0,System.Boolean})" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.Reverse" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})" -->
+        <!-- Badly formed XML comment ignored for member "M:LN.Utilities.Collections.SortedSet`1.UnionWith(System.Collections.Generic.IEnumerable{`0})" -->
+        <member name="T:LN.Utilities.ConsoleArgumentParser">
+            <summary>
+            Class for process command line arguments in UNIX style
+            </summary>
+        </member>
+        <member name="F:LN.Utilities.ConsoleArgumentParser.FlagNameRegex">
+            <summary>
+            Regex specifying valid formats for names
+            </summary>
+        </member>
+        <member name="F:LN.Utilities.ConsoleArgumentParser.FlagArgRegex">
+            <summary>
+            Regex specifying how arguments will be processed
+            </summary>
+        </member>
+        <member name="F:LN.Utilities.ConsoleArgumentParser.FlagSpecRegex">
+            <summary>
+            Regex specifying valid formats for flag definitions, roughly --&lt;name&gt;:&lt;type&lt;
+            </summary>
+        </member>
+        <member name="F:LN.Utilities.ConsoleArgumentParser.CustomFlagSpecRegex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LN.Utilities.Collections.ReadOnlyEnumerableView`1">
+            <summary>
+            Class for wrapping an enumeration in a read-only view
+            </summary>
+            <typeparam name="T">The type of enumeration</typeparam>
+        </member>
+        <member name="M:LN.Utilities.Collections.ReadOnlyEnumerableView`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Create a new wrapper based on an existing enumeration
+            </summary>
+            <param name="enumeration"></param>
+        </member>
+        <member name="M:LN.Utilities.Collections.ReadOnlyEnumerableView`1.GetEnumerator">
+            <summary>
+            Get an enumerator
+            </summary>
+            <returns>An enumerator</returns>
+        </member>
+        <member name="T:LN.Utilities.Collections.ReadOnlyListView`1">
+            <summary>
+            Class for wrapping a list in a read-only view
+            </summary>
+            <typeparam name="T">The type of items in the list</typeparam>
+        </member>
+        <member name="M:LN.Utilities.Collections.ReadOnlyListView`1.#ctor(System.Collections.Generic.List{`0})">
+            <summary>
+            Create a new view for the specified list
+            </summary>
+            <param name="list">The list to wrap</param>
+        </member>
+        <member name="M:LN.Utilities.Collections.ReadOnlyListView`1.GetEnumerator">
+            <summary>
+            Get an enumerator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LN.Utilities.Collections.ReadOnlyListView`1.op_Implicit(System.Collections.Generic.List{`0})~LN.Utilities.Collections.ReadOnlyListView{`0}">
+            <summary>
+            Wrap a <c>List&lt;T&gt;</c> with a read-only view
+            </summary>
+            <param name="list">The list to wrap</param>
+            <returns>A wrapped list</returns>
+        </member>
+        <member name="P:LN.Utilities.Collections.ReadOnlyListView`1.Count">
+            <summary>
+            The number of items in the list
+            </summary>
+        </member>
+        <member name="P:LN.Utilities.Collections.ReadOnlyListView`1.Item(System.Int32)">
+            <summary>
+            Gets the ith item of the list
+            </summary>
+            <param name="i">The index to get</param>
+            <returns>The ith item of the list</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Raised if <c>i &gt;= Count</c></exception>
+        </member>
+        <member name="T:LN.Utilities.Collections.ListExtensions">
+            <summary>
+            Extension methods for dealing with <see cref="T:System.Collections.Generic.List`1"/> and <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            </summary>
+        </member>
+        <member name="M:LN.Utilities.Collections.ListExtensions.ToReadOnlyListView``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Wrap a <c>List&lt;T&gt;</c> with a read-only view
+            </summary>
+            <typeparam name="T">The type of items in the list</typeparam>
+            <param name="list">The list to wrap</param>
+            <returns>A wrapped list</returns>
+        </member>
+        <member name="M:LN.Utilities.Collections.ListExtensions.ToReadOnlyEnumerableView``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Wrap an <c>IEnumerable&lt;T&gt;</c> with a read-only view
+            </summary>
+            <typeparam name="T">The type of items in the enumeration</typeparam>
+            <param name="enumeration">The enumeration to wrap</param>
+            <returns>A wrapped enumeration</returns>
+        </member>
+        <member name="M:LN.Utilities.ReadOnlyTuple`2.#ctor(`0,`1)">
+            <summary>
+            Constructs a new tuple with the specified items
+            </summary>
+            <param name="item1">The first item</param>
+            <param name="item2">The second item</param>
+        </member>
+        <member name="P:LN.Utilities.ReadOnlyTuple`2.Item1">
+            <summary>
+            Gets or sets the value of the first item
+            </summary>
+        </member>
+        <member name="P:LN.Utilities.ReadOnlyTuple`2.Item2">
+            <summary>
+            Gets or sets the value of the second item
+            </summary>
+        </member>
+        <member name="T:LN.Utilities.Tuple`2">
+            <summary>
+            A pair of items with specified types
+            </summary>
+            <typeparam name="T1">The type of the first item</typeparam>
+            <typeparam name="T2">The type of the second item</typeparam>
+        </member>
+        <member name="M:LN.Utilities.Tuple`2.#ctor(`0,`1)">
+            <summary>
+            Constructs a new tuple with the specified items
+            </summary>
+            <param name="item1">The first item</param>
+            <param name="item2">The second item</param>
+        </member>
+        <member name="P:LN.Utilities.Tuple`2.Item1">
+            <summary>
+            Gets or sets the value of the first item
+            </summary>
+        </member>
+        <member name="P:LN.Utilities.Tuple`2.Item2">
+            <summary>
+            Gets or sets the value of the second item
+            </summary>
+        </member>
+        <member name="T:LN.Utilities.Tuple`3">
+            <summary>
+            A pair of items with specified types
+            </summary>
+            <typeparam name="T1">The type of the first item</typeparam>
+            <typeparam name="T2">The type of the second item</typeparam>
+            <typeparam name="T3">The type of the third item</typeparam>
+        </member>
+        <member name="M:LN.Utilities.Tuple`3.#ctor(`0,`1,`2)">
+            <summary>
+            Constructs a new tuple with the specified items
+            </summary>
+            <param name="item1">The first item</param>
+            <param name="item2">The second item</param>
+            <param name="item3">The third item</param>
+        </member>
+        <member name="P:LN.Utilities.Tuple`3.Item1">
+            <summary>
+            Gets or sets the value of the first item
+            </summary>
+        </member>
+        <member name="P:LN.Utilities.Tuple`3.Item2">
+            <summary>
+            Gets or sets the value of the second item
+            </summary>
+        </member>
+        <member name="P:LN.Utilities.Tuple`3.Item3">
+            <summary>
+            Gets or sets the value of the third item
+            </summary>
+        </member>
+        <member name="T:LN.Utilities.Vector3Nullable">
+            <summary>
+            nullable version of unity's vector3
+            </summary>
+        </member>
+    </members>
+</doc>

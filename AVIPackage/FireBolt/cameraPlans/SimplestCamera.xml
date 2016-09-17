@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<cameraPlan xmlns="http://liquidnarrative.csc.ncsu.edu/oshmirto/v0.1">
+  <blocks>
+    <block>
+      <shotFragments>
+        <!--<shotFragment anchor="" startTime="5000" endTime="5001">
+          <framings>
+            <framing  framingType="Full" framingTarget="Pudge"/>
+          </framings>
+          <movements/>
+        </shotFragment>-->
+        <!--<shotFragment anchor="0,0" startTime="0" endTime="1">
+          <framings>
+            <framing  framingSize="" framingTarget="0"/>
+          </framings>
+        </shotFragment>
+        <shotFragment anchor="" startTime="1" endTime="3999">
+          <framings>
+            <framing  framingSize="" framingTarget="0"/>
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="To" subject="0,-10"/>
+          </movements>
+        </shotFragment>
+        <shotFragment anchor="" startTime="4000" endTime="8000">
+          <framings>
+            <framing  framingSize="" framingTarget="0"/>
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="Pudge"/>
+            <movement type="Crane" directive="To" subject="5"/>
+            <movement type="Pan" directive="To" subject="-25"/>
+            <movement type="Pan" directive="With" subject="Pudge"/>
+          </movements>
+        </shotFragment>-->
+        <!--<shotFragment anchor="-5,-13" startTime="8000" endTime="10000">
+          <framings>
+            <framing  framingSize="" framingTarget="-10"/>
+          </framings>
+<shotFragement/>
+        </shotFragment>-->
+        <shotFragment anchor="0,-5" startTime="2" endTime="10000" focus="NegZ" f-stop ="22" lens ="25mm" shake ="0">
+          <framings/>
+          <movements>
+            <movement type="Focus" directive="With" subject="Pudge"/>
+            <movement type="Tilt" directive="With" subject="Pudge" />
+            <movement type="Pan" directive="With" subject="Pudge"/>
+          </movements>
+        </shotFragment>
+        <!--<shotFragment anchor="0,-5" startTime="4000" endTime="7000" focus ="PosZ" lens ="25mm" >
+          <framings/>
+          <movements/>
+        </shotFragment>-->
+        <!--<shotFragment anchor="0,-5" startTime="3001" endTime="4500" focus ="Pudge" f-stop ="1.4" lens ="25mm" shake ="5">
+          <framings/>
+          <movements/>
+        </shotFragment>
+        <shotFragment anchor="0,-5" startTime="4501" endTime="6000" focus ="Pudge" f-stop ="1.4" lens ="25mm" shake ="0">
+          <framings/>
+          <movements/>
+        </shotFragment>
+        <shotFragment anchor="0,-5" startTime="6001" endTime="7500" focus ="Pudge" f-stop ="1.4" lens ="25mm" shake ="0">
+          <framings/>
+          <movements/>
+        </shotFragment>
+        <shotFragment anchor="0,-5" startTime="7501" endTime="9000" focus ="Pudge" f-stop ="1.4" lens ="25mm" shake ="0">
+          <framings/>
+          <movements/>
+        </shotFragment>-->
+        <!--<shotFragment anchor="0,-5" startTime="4000" endTime="10000" focus ="(0,0,0)" f-stop ="1.4" lens ="25mm" shake ="0">
+          <framings/>
+          <movements/>
+        </shotFragment>-->
+        <!--<shotFragment anchor="" startTime="1" endTime="8000" focus ="Pudge" f-stop ="4" lens ="25mm" shake ="0">
+          <framings>
+            <framing  framingType="" framingTarget="0"/>
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="To" subject="0,-10"/>
+          </movements>
+        </shotFragment>
+        <shotFragment anchor="" startTime="8001" endTime="10000" focus ="Pudge" f-stop ="8" lens ="12mm" shake ="0">
+          <framings>
+            <framing  framingType="" framingTarget="0"/>
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="Pudge"/>
+            <movement type="Crane" directive="To" subject="5"/>
+          </movements>
+        </shotFragment>-->
+        <!--<shotFragment anchor="0,0" startTime="0" endTime="1" focus ="Pudge" f-stop ="1.4" lens ="25mm" shake ="0">
+          <framings/>            
+          <movements/>
+        </shotFragment>-->
+      </shotFragments>
+    </block>
+  </blocks>
+</cameraPlan>

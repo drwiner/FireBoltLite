@@ -1,0 +1,44 @@
+ManifestFileVersion: 0
+CRC: 2896823921
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3af59749eec3d9b8470e11ca200ec3d6
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 183ec7b014cfcd21a862522b71f253f6
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Animations/skywrath_mage_attack.fbx
+- Assets/Resources/Animations/skywrath_mage_idle.fbx
+- Assets/Resources/Animations/pudge_death.fbx
+- Assets/Resources/Animations/pudge_attack.fbx
+- Assets/Resources/Models/Heroes/pudge/pudge_model.fbx
+- Assets/Resources/Animations/pudge_idle.fbx
+- Assets/Resources/Animations/skywrath_mage_death.fbx
+- Assets/Resources/Animations/crystal_maiden_walk.fbx
+- Assets/Resources/Animations/skywrath_mage_walk.fbx
+- Assets/Resources/Models/Heroes/skywrath_mage/skywrath_mage_model.fbx
+- Assets/Resources/Animations/pudge_walk.fbx
+Dependencies: []

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cinematicModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" millisPerTick="1" domainDistancePerEngineDistance="1" xmlns="http://liquidnarrative.csc.ncsu.edu/cinematicModel/v0.1">
+  <smartModelSettings maxAnimationSearchDepth="2" maxActorSearchDepth="2" />
+  <terrain terrainFileName="warehouse_prefab.prefab" />
+  <domainActions>
+  <domainAction name="whipTo">
+	  <params>
+		<param name="start"/>
+		<param name = "finish"/>
+	  </params>
+	  <createActions/>
+	  <rotateActions/>
+	  <translateActions/>
+	  <attachActions/>
+	  <destroyActions/>
+	  <animateActions/>
+	  <functionActions>
+		<functionAction name="drawWhip" >
+			<args> 
+				<arg argname = "source"  argtype="Vector3" argvalue="start" />
+				<arg argname = "sink"  argtype="Vector3" argvalue="finish" />
+			</args>
+		</functionAction>
+	  </functionActions>
+	</domainAction>
+    <domainAction name="move">
+      <params>
+        <param name="actor" />
+        <param name="origin" />
+        <param name="destination" />
+        <param name="end-angle" />
+      </params>
+      <createActions />
+      <destroyActions />
+      <attachActions />
+      <translateActions>
+        <translateAction actorNameParamName="actor" destinationParamName="destination" originParamName="origin" />
+      </translateActions>
+      <rotateActions>
+        <rotateAction actorNameParamName="actor" maxDuration="400" destinationParamName="end-angle" />
+      </rotateActions>
+      <animateActions />
+    </domainAction>
+    <domainAction name="walk">
+      <params>
+        <param name="actor" />
+        <param name="origin" />
+        <param name="destination" />
+        <param name="end-angle" />
+      </params>
+      <createActions />
+      <destroyActions />
+      <attachActions />
+      <translateActions>
+        <translateAction actorNameParamName="actor" destinationParamName="destination" originParamName="origin" />
+      </translateActions>
+      <rotateActions>
+        <rotateAction actorNameParamName="actor" maxDuration="400" destinationParamName="end-angle" />
+      </rotateActions>
+      <animateActions>
+        <animateAction actorNameParamName="actor" name="walk" />
+      </animateActions>
+    </domainAction>
+    <domainAction name="run">
+      <params>
+        <param name="actor" />
+        <param name="origin" />
+        <param name="destination" />
+        <param name="end-angle" />
+      </params>
+      <createActions />
+      <destroyActions />
+      <attachActions />
+      <translateActions>
+        <translateAction actorNameParamName="actor" destinationParamName="destination" originParamName="origin" />
+      </translateActions>
+      <rotateActions>
+        <rotateAction actorNameParamName="actor" maxDuration="400" destinationParamName="end-angle" />
+      </rotateActions>
+      <animateActions>
+        <animateAction actorNameParamName="actor" name="walk" />
+      </animateActions>
+    </domainAction>
+    <domainAction name="idle">
+      <params>
+        <param name="actor" />
+      </params>
+      <createActions />
+      <destroyActions />
+      <attachActions />
+      <translateActions />
+      <rotateActions />
+      <animateActions>
+        <animateAction actorNameParamName="actor" name="idle" />
+      </animateActions>
+    </domainAction>
+    <domainAction name="create">
+      <params>
+        <param name="actor" />
+        <param name="position" />
+        <param name="end-angle" />
+      </params>
+      <createActions>
+        <createAction actorNameParamName="actor" originParamName="position" orientationParamName="end-angle" />
+      </createActions>
+      <destroyActions />
+      <attachActions />
+      <translateActions />
+      <rotateActions />
+      <animateActions />
+    </domainAction>
+    <domainAction name="remove">
+      <params>
+        <param name="actor" />
+      </params>
+      <createActions />
+      <destroyActions>
+        <destroyAction actorNameParamName="actor" />
+      </destroyActions>
+      <attachActions />
+      <translateActions />
+      <rotateActions />
+      <animateActions />
+    </domainAction>
+    <domainAction name="attack">
+      <params>
+        <param name="actor" />
+      </params>
+      <createActions />
+      <destroyActions />
+      <attachActions />
+      <translateActions />
+      <rotateActions />
+      <animateActions>
+        <animateAction actorNameParamName="actor" name="attack" />
+      </animateActions>
+    </domainAction>
+  </domainActions>
+  <actors>
+    <actor name="pudge" model="pudge_model.fbx" pointOfInterest="0">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="pudge_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="pudge_idle" loopAnimation="true" />
+        <animationMapping animateActionName="attack" animationName="pudge_attack" loopAnimation="true" />
+      </animationMappings>
+    </actor>
+    <actor name="skywrath_mage" model="skywrath_mage_model.fbx" pointOfInterest="0">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="swm_walk" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="swm_idle" loopAnimation="true" />
+        <animationMapping animateActionName="attack" animationName="swm_attack" loopAnimation="true" />
+      </animationMappings>
+    </actor>
+    <actor name="crate" model="Big_box.FBX" pointOfInterest="0">
+      <animationMappings />
+    </actor>
+    <actor name="fire_extinguisher" model="fire_extinguisher.fbx" pointOfInterest="0">
+      <animationMappings />
+    </actor>
+  </actors>
+  <animations>
+    <animation name="swm_walk" fileName="skywrath_mage_walk.fbx">
+      <animationIndices />
+    </animation>
+    <animation name="swm_idle" fileName="skywrath_mage_idle.fbx">
+      <animationIndices />
+    </animation>
+    <animation name="swm_attack" fileName="skywrath_mage_attack.fbx">
+      <animationIndices />
+    </animation>
+    <animation name="pudge_walk" fileName="pudge_walk.fbx">
+      <animationIndices />
+    </animation>
+    <animation name="pudge_idle" fileName="pudge_idle.fbx">
+      <animationIndices />
+    </animation>
+    <animation name="pudge_attack" fileName="pudge_attack1.fbx">
+      <animationIndices />
+    </animation>
+  </animations>
+</cinematicModel>

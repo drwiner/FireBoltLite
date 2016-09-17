@@ -1,0 +1,57 @@
+ManifestFileVersion: 0
+CRC: 985817545
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9869da24d0eb500764935a3b3d6c921c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e875e31cae4bc54b7c1458f03b1118a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 89
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+Assets:
+- Assets/1DragonModel/Animations/EatSandwich.fbx
+- Assets/1DragonModel/Terrain/DesertHouse.prefab
+- Assets/1DragonModel/Animations/Search.fbx
+- Assets/1DragonModel/Objects/Pie.prefab
+- Assets/1DragonModel/Actors/Boy.prefab
+- Assets/1DragonModel/Terrain/Embassy.prefab
+- Assets/1DragonModel/Animations/Boxing.fbx
+- Assets/1DragonModel/Animations/Scared.fbx
+- Assets/1DragonModel/Actors/GrandMother.prefab
+- Assets/1DragonModel/Animations/Hungry.fbx
+- Assets/1DragonModel/Actors/Insurgent.prefab
+- Assets/1DragonModel/Animations/Drag.fbx
+- Assets/1DragonModel/Animations/Walk.fbx
+- Assets/1DragonModel/Actors/Soldier.prefab
+Dependencies: []

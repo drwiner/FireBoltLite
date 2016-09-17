@@ -1,0 +1,1930 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LN.Planning</name>
+    </assembly>
+    <members>
+        <member name="T:LN.Planning.Bindings.Bindings">
+            <summary>
+            Class representing a current set of variable bindings
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Bindings.Bindings.#ctor">
+            <summary>
+            Creates a new <c>Bindings</c> object
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Bindings.Bindings.Copy">
+            <summary>
+            Performs a copy of the current bindings
+            </summary>
+            <returns>A copy of the current bindings</returns>
+        </member>
+        <member name="M:LN.Planning.Bindings.Bindings.AddPositiveBinding(LN.Planning.Bindings.BindingEdge)">
+            <summary>
+            Adds a new binding to the set of known bindings
+            </summary>
+            <param actionName="edge">The edge of two terms to bind</param>
+            <returns><see langword="true"/> if successful, <see langword="false"/> otherwise</returns>
+            <exception cref="T:System.ArgumentNullException">Raised if either <c>one</c> or <c>two</c> is <see langword="null"/></exception>
+        </member>
+        <member name="M:LN.Planning.Bindings.Bindings.AddPositiveBinding(LN.Planning.Term,LN.Planning.Term)">
+            <summary>
+            Adds a new binding to the set of known bindings
+            </summary>
+            <param actionName="one">The first term to bind</param>
+            <param actionName="two">The second term to bind</param>
+            <returns><see langword="true"/> if successful, <see langword="false"/> otherwise</returns>
+            <exception cref="T:System.ArgumentNullException">Raised if either <c>one</c> or <c>two</c> is <see langword="null"/></exception>
+        </member>
+        <member name="M:LN.Planning.Bindings.Bindings.AddNegativeBinding(LN.Planning.Term,LN.Planning.Term)">
+            <summary>
+            Adds a new negative binding to the set of known bindings
+            </summary>
+            <param actionName="one">The first term to bind</param>
+            <param actionName="two">The second term to bind</param>
+            <returns><see langword="true"/> if successful, <see langword="false"/> otherwise</returns>
+            <exception cref="T:System.ArgumentNullException">Raised if either <c>one</c> or <c>two</c> is <see langword="null"/></exception>
+        </member>
+        <member name="M:LN.Planning.Bindings.Bindings.GetBinding(LN.Planning.Term)">
+            <summary>
+            Gets the binding for the specified term
+            </summary>
+            <param actionName="term">The term to check</param>
+            <returns>The binding for the term, or the term itself if there is none</returns>
+            <exception cref="T:System.ArgumentNullException"><c>term</c> must be non-null</exception>
+        </member>
+        <member name="M:LN.Planning.Bindings.Bindings.GetBinding(LN.Planning.Literal)">
+            <summary>
+            Gets the binding for the specified literal
+            </summary>
+            <param actionName="literal">The literal to check</param>
+            <returns>The binding for the literal, or the literal itself if there is none</returns>
+            <exception cref="T:System.ArgumentNullException"><c>literal</c> must be non-null</exception>
+        </member>
+        <member name="M:LN.Planning.Bindings.Bindings.ToString">
+            <summary>
+            Override. Converts the current bindinds to a <c>string</c> representation
+            </summary>
+            <returns>A <c>string</c> representation of the current bindings</returns>
+        </member>
+        <member name="M:LN.Planning.Bindings.Bindings.Negates(LN.Planning.Literal,LN.Planning.Literal)">
+            <summary>
+            Checks to see if one literal negates the other
+            </summary>
+            <param actionName="one">The literal that could be negated</param>
+            <param actionName="two">The literal that may negate one</param>
+            <returns><see langword="true"/> if two negates one, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="P:LN.Planning.Bindings.Bindings.Item(LN.Planning.Term)">
+            <summary>
+            Gets the binding for the specified term
+            </summary>
+            <param actionName="term">The term to check</param>
+            <returns>The binding for the term, or the term itself if there is none</returns>
+            <exception cref="T:System.ArgumentNullException"><c>term</c> must be non-null</exception>
+        </member>
+        <member name="T:LN.Planning.Intention.IntentionFrame">
+            <summary>
+            Represents an IPOCL-style Intention Frame. Note that this is currently only
+            supported for input/output and does not affect the planning process.
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Intention.IntentionFrame.#ctor(LN.Planning.Term,LN.Planning.Literal,System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Constructs an IntentionFrame from its constituent parts.
+            </summary>
+            <param actionName="agent">The agent</param>
+            <param actionName="goal">The goal</param>
+            <param actionName="motivatingStepIDs">The IDs of any steps which motivated this frame, or null</param>
+            <param actionName="stepIDs">The IDs of any steps motivated by this frame, or null</param>
+        </member>
+        <member name="M:LN.Planning.Intention.IntentionFrame.AddMotivatingStep(System.Int32)">
+            <summary>
+            Adds a step to the list of steps which motivated this intention frame
+            </summary>
+            <param actionName="id">The ID of the motivating step</param>
+        </member>
+        <member name="M:LN.Planning.Intention.IntentionFrame.AddStep(System.Int32)">
+            <summary>
+            Adds a step to the list of steps which were motivated by this intention frame
+            </summary>
+            <param actionName="id">The ID of the motivated step</param>
+        </member>
+        <member name="P:LN.Planning.Intention.IntentionFrame.Agent">
+            <summary>
+            Gets the agent of this intention frame
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Intention.IntentionFrame.Goal">
+            <summary>
+            Gets the goal of the intention frame
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Intention.IntentionFrame.MotivatingStepIDs">
+            <summary>
+            Gets an enumeration of the IDs of any steps which motivated this intention
+            frame (i.e. has as an effect the adoption of the goal)
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Intention.IntentionFrame.StepIDs">
+            <summary>
+            Gets an enumeration of the IDs of any steps which were motivated by this
+            intention frame (i.e. has the agent as an agent and were causally chained to
+            the goal of this frame)
+            </summary>
+        </member>
+        <member name="M:LN.Planning.IPredicate.BindLiteralToPredicate(LN.Planning.Literal,LN.Planning.Bindings.Bindings,LN.Planning.Domain,System.Collections.Generic.Dictionary{System.String,LN.Planning.Term})">
+            <summary>
+            Matches a given literal against this predicate
+            </summary>
+            <param actionName="literal">The literal to match</param>
+            <param actionName="bindings">The bindings to use in the context of matching the literal</param>
+            <param actionName="library">The library to use for sub-literals</param>
+            <returns><see langword="true"/> if the match was successful, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.IPredicate.ReduceToDNF(LN.Planning.Literal,LN.Planning.Problem,LN.Planning.ListAllLookup,System.String)">
+            <summary>
+            Gets a disjunction of conjunction of literals that need to be satisfied for this open precondition
+            </summary>
+            <param actionName="literal">The literal open precondition</param>
+            <param actionName="library">The library containing the current step's operator</param>
+            <returns>A disjunction of conjunctions of literals</returns>
+        </member>
+        <member name="M:LN.Planning.IPredicate.ToPddl">
+            <summary>
+            Converts the predicate to its PDDL representation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LN.Planning.IPredicate.Name">
+            <summary>
+            Gets the actionName of the predicate
+            </summary>
+        </member>
+        <member name="P:LN.Planning.IPredicate.TermType">
+            <summary>
+            Gets the Term Type of the predicate
+            </summary>
+        </member>
+        <member name="P:LN.Planning.IPredicate.IsStatic">
+            <summary>
+            Gets a <see langword="bool"/> whether the predicate is static
+            </summary>
+        </member>
+        <member name="T:LN.Planning.PddlExtensionMethods">
+            <summary>
+            Class for extention methods for the Planner namespace for PDDL output
+            </summary>
+            <summary>
+            Class for extention methods for the Domain namespace for PDDL output
+            </summary>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddlStepsOnly(LN.Planning.Plan,System.Boolean,System.Int32)">
+            <summary>
+            Returns a PDDL representation of this Plan as a Solution file.
+            </summary>
+            <param actionName="plan">The Plan</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(LN.Planning.Plan,System.Boolean,System.Int32)">
+            <summary>
+            Returns a PDDL representation of this Plan as a Solution file.
+            </summary>
+            <param actionName="plan">The Plan</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(LN.Planning.Links.LinkGraph{LN.Planning.Links.OrderingLink},System.Boolean,System.Int32)">
+            <summary>
+            Returns a PDDL representation of this OrderingGraph.
+            </summary>
+            <param actionName="graph">The OrderingGraph</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(LN.Planning.Step,LN.Planning.Bindings.Bindings,System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            Returns a PDDL representation of this StepID.
+            </summary>
+            <param actionName="step">The StepID</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(LN.Planning.Links.OrderingLink,System.Boolean,System.Int32)">
+            <summary>
+            Returns a PDDL representation of this OrderingLink.
+            </summary>
+            <param actionName="link">The OrderingLink</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(LN.Planning.Links.CausalLink,System.Boolean,System.Int32,LN.Planning.Bindings.Bindings)">
+            <summary>
+            Returns a PDDL representation of this CausalLink.
+            </summary>
+            <param actionName="link">The CausalLink</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(LN.Planning.Intention.IntentionFrame,System.Boolean,System.Int32)">
+            <summary>
+            Returns a PDDL representation of this IntentionFrame.
+            </summary>
+            <param actionName="frame">The IntentionFrame</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(LN.Planning.Problem,System.Boolean,System.Int32)">
+            <summary>
+            Returns a PDDL representation of this PlanSpace as a problem file.
+            </summary>
+            <param actionName="ps">The PlanSpace</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(LN.Planning.Domain,System.Boolean,System.Int32)">
+            <summary>
+            Returns a PDDL representation of this Domain as a Domain file.
+            </summary>
+            <param actionName="lib">The Domain</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(LN.Planning.TermType,System.Boolean,System.Int32)">
+            <summary>
+            Returns a PDDL representation of this TermType.
+            </summary>
+            <param actionName="type">The TermType</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(System.Collections.Generic.IEnumerable{LN.Planning.Literal},System.Boolean,System.Int32)">
+            <summary>
+            Returns a PDDL representation of this State.
+            </summary>
+            <param actionName="state">The State</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(LN.Planning.Action,System.Boolean,System.Int32)">
+            <summary>
+            Returns a PDDL representation of this Action.
+            </summary>
+            <param actionName="op">The Action</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.ToPddl(LN.Planning.AbstractSteps.ExpandedPlan,System.Boolean,System.Int32)">
+            <summary>
+            Returns a PDDL representation of this decomposition.
+            </summary>
+            <param actionName="decomposition">The decomposition</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.GdToPddl(System.Collections.Generic.IEnumerable{LN.Planning.Literal})">
+            <summary>
+            Returns a PDDL representation of the set of literals, interpreted as a goal definition.
+            Single literals will be returned as literals, and multiple literals will be turned into
+            an "and" statement.
+            </summary>
+            <param actionName="literals">The set of literals</param>
+            <param actionName="multiline">Set to true if the output should have line breaks</param>
+            <param actionName="indent">The amount of indentation to prepend to each line</param>
+            <returns>A string of PDDL output</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.GetTabStr(System.Boolean,System.Int32)">
+            <summary>
+            Helper method to get the tabbing to prepend to a line of PDDL output.
+            The first line should use GetStartTabStr instead.
+            This is public because the PDDL extension methods are in multiple classes
+            and should all use the same function.
+            </summary>
+            <param actionName="multiline">True if the PDDL is multiline</param>
+            <param actionName="indent">The amount of intent</param>
+            <returns>A string to prepend to a line of PDDL</returns>
+        </member>
+        <member name="M:LN.Planning.PddlExtensionMethods.GetStartTabStr(System.Boolean,System.Int32)">
+            <summary>
+            Helper method to get the tabbing to prepend to the first line of PDDL output.
+            This is public because the PDDL extension methods are in multiple classes
+            and should all use the same function.
+            </summary>
+            <param actionName="multiline">True if the PDDL is multiline</param>
+            <param actionName="indent">The amount of intent</param>
+            <returns>A string to prepend to the first line of PDDL</returns>
+        </member>
+        <member name="T:LN.Planning.Serialization.PddlParser">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.PddlParser.DomainTokenParsers">
+            <summary>
+            List of all Domain Token Parsers, stored by their PDDL key. These are the top level elements in a domain definition, and correspond to token types
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.PddlParser.ProblemTokenParsers">
+            <summary>
+            List of all Problem Token Parsers, stored by their PDDL key. These are the top level elements in a problem definition, and correspond to token types
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.PddlParser.KeyPairTokenParsers">
+            <summary>
+            List of all Key Pair Parsers, stored by their PDDL key. These are elements embedded within other types, and do not correspond to token types
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.PddlParser.ListTokenParsers">
+            <summary>
+            List of all List Token Parsers, stored by their token type, then by their first element. These are elements embedded within other types, and correspond to token types
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.PddlParser.DefaultListTokenParsers">
+            <summary>
+            List of all default List Token Parsers, stored by their token type. These are elements embedded within other types, and correspond to token types
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.PddlParser.ValueTokenParsers">
+            <summary>
+            List of all Value Token Parsers, stored by their token type, then identified via regular expression. These are elements embedded within other types, and correspong to token types
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Serialization.Pddl.PddlSupportedExtensions">
+            <summary>
+            Enumeration of PDDL requirements
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.none">
+            <summary>
+            No requirements (subset of all others)
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.strips">
+            <summary>
+            Basic STRIPS-style adds and deletes
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.typing">
+            <summary>
+            Allow type names in declarations of variables
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.disjunctive_preconditions">
+            <summary>
+            Allow <c>or</c> in goal descriptions
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.equality">
+            <summary>
+            Support <c>=</c> as built-in predicate
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.existential_preconditions">
+            <summary>
+            Allow <c>exists</c> in goal descriptions
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.universal_preconditions">
+            <summary>
+            Allow <c>forall</c> in goal descriptions
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.quantified_preconditions">
+            <summary>
+            <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.existential_preconditions"/> and <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.universal_preconditions"/>
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.conditional_effects">
+            <summary>
+            Allow <c>when</c> in action effects
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.adl">
+            <summary>
+            <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.strips"/>, <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.typing"/>,
+            <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.disjunctive_preconditions"/>, <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.equality"/>,
+            <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.quantified_preconditions"/>, and <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.conditional_effects"/>
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.domain_axioms">
+            <summary>
+            Allow domains to have <c>axioms</c>
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.safety_constraints">
+            <summary>
+            Allow <c>safety</c> conditions for a domain
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.ucpop">
+            <summary>
+            <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.adl"/>, <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.domain_axioms"/>
+            and <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.safety_constraints"/>
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.action_expansions">
+            <summary>
+            Allow actions to have <c>expansions</c>
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.foreach_expansions">
+            <summary>
+            Allow action expansions to use <c>foreach</c> (includes <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.action_expansions"/>)
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.dag_expansions">
+            <summary>
+            Allow labeled subactions (includes <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.action_expansions"/>)
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.subgoal_through_axioms">
+            <summary>
+            Given <c>p</c> in <c>q</c>, and goal <c>q</c>, generate subgoal <c>p</c>
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.expression_evaluation">
+            <summary>
+            Support <c>eval</c> predicate in axioms (includes <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.domain_axioms"/>)
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.fluents">
+            <summary>
+            Support type <c>(fluent t)</c>
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.open_world">
+            <summary>
+            Do not make the closed world assumption (things that are nto explicitly true are not assumed to be false)
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.true_negation">
+            <summary>
+            Do not handle <c>not</c> using negation as failure, but treat it as in first-order logic (includes <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.open_world"/>)
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.decomposition">
+            <summary>
+            Decompositions of abstract actions in POCL style
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.nested_predicates">
+            <summary>
+            Allows nested and typed predicates
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.static_predicates">
+            <summary>
+            Allows :static-predicates in the domain and :static literals in the problem
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.constraints">
+            <summary>
+            Allow actions to have a :constraint field, implies <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.static_predicates"/>
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.conditional_components">
+            <summary>
+            Allows decomposition operators to have a variable number of conditional components by using
+            listall to bind lists of variables and foreach to create different instances corresponding
+            to these variables (implies <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.decomposition"/> and
+            <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.constraints"/>
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.dpocl">
+            <summary>
+            <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.nested_predicates"/>, <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.decomposition"/>,
+            <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.constraints"/>, <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.static_predicates"/>,
+            <see cref="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.conditional_components"/>
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.intentionality">
+            <summary>
+            Indicates this domain differentiates between intentional actions, which must have 
+            at least one consenting actor, and unintentional events. Each action in the domain may
+            have an :agents property, which is followed by a list of agents, e.g. ":agents (hero, princess)"
+            <remarks>This is not implemented in the planner, but it will be read and represented in the Domain</remarks>
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Pddl.PddlSupportedExtensions.cpocl">
+            <summary>
+            Support for non-executed steps in plans
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Serialization.IToken">
+            <summary>
+            base interface used by <see cref="T:LN.Planning.Parser"/>
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Serialization.IToken.Text">
+            <summary>
+            Gets the text base of the <c>IToken</c>
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Links.LinkGraph`1.CanAddOrdering(System.Int32,System.Int32)">
+            <summary>
+            Checks if the ordering (fromStepID toStepID) can be added to the graph.
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Links.LinkGraph`1.Add(`0)">
+            <summary>
+            Adds the OrderingLink to the graph as well as any needed vertices
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Links.LinkGraph`1.DirectDescendants(System.Int32)">
+            <summary>
+            Returns an enumeration of all of the vertices that are direct children of the startVertex
+            </summary>
+            <param actionName="startVertex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LN.Planning.Links.LinkGraph`1.DirectAncestors(System.Int32)">
+            <summary>
+            Returns an enumeration of all of the vertices that are direct parents of the startVertex
+            </summary>
+            <param actionName="startVertex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LN.Planning.Links.LinkGraph`1.Descendants(System.Int32)">
+            <summary>
+            returns a hashset of all of the vertices that are children of the startVertex
+            </summary>
+            <param actionName="startVertex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LN.Planning.Links.LinkGraph`1.Ancestors(System.Int32)">
+            <summary>
+            returns a hashset of all of the vertices that are parents of the startVertex
+            </summary>
+            <param actionName="startVertex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LN.Planning.Links.LinkGraph`1.GetTotalOrdering">
+            <summary>
+            returns a total ordering of the vertices using a topological sort
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LN.Planning.Serialization.Xml.TermType.SubTypes">
+            <remarks/>
+        </member>
+        <member name="P:LN.Planning.Serialization.Xml.TermType.Name">
+            <remarks/>
+        </member>
+        <member name="T:LN.Planning.Flaws.BaseFlaw">
+            <summary>
+            Abstract. Base class for representing various types of flaws
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Flaws.BaseFlaw.Equals(System.Object)">
+            <summary>
+            Override. Determines whether this base flaw is equal to another object
+            </summary>
+            <param actionName="obj">An object to compare to</param>
+            <returns><see langword="true"/> if the flaw is equal to this one, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.BaseFlaw.ToString(LN.Planning.Bindings.Bindings)">
+            <summary>
+            Abstract. Converts the base flaw to a string representation based on the specified bindings
+            </summary>
+            <param actionName="bindings">The <c>Bindings</c> object to use</param>
+            <returns>A string representation based on the specified bindings</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.BaseFlaw.ToString">
+            <summary>
+            Override. Converts the base flaw to a string representation
+            </summary>
+            <returns>A string representation of the current base flaw</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.BaseFlaw.GetHashCode">
+            <summary>
+            Abstract. Computes the hash code of this base flaw
+            </summary>
+            <returns>The hash code of this base flaw</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.BaseFlaw.Copy">
+            <summary>
+            Makes a deep copy of the current flaw
+            </summary>
+            <returns>A deep copy of the current flaw</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.BaseFlaw.op_Equality(LN.Planning.Flaws.BaseFlaw,LN.Planning.Flaws.BaseFlaw)">
+            <summary>
+            Determines whether a given threat is equal to another one
+            </summary>
+            <param actionName="left">The first flaw to compare</param>
+            <param actionName="right">The second flaw to compare</param>
+            <returns><see langword="true"/> if two flaws are equal, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.BaseFlaw.op_Inequality(LN.Planning.Flaws.BaseFlaw,LN.Planning.Flaws.BaseFlaw)">
+            <summary>
+            Determines whether a given flaw is equal to another one
+            </summary>
+            <param actionName="left">The first flaw to compare</param>
+            <param actionName="right">The second flaw to compare</param>
+            <returns><see langword="false"/> if two flaws are equal, <see langword="true"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.OpenPreconditionFlaw.#ctor(LN.Planning.Literal,System.Int32)">
+            <summary>
+            Creates an OpenPreconditionFlaw using the provided Precondition and StepID
+            </summary>
+            <param actionName="lit"></param>
+            <param actionName="step"></param>
+        </member>
+        <member name="M:LN.Planning.Flaws.OpenPreconditionFlaw.#ctor(LN.Planning.Flaws.OpenPreconditionFlaw)">
+            <summary>
+            Creates an open precondition flaw based an an old flaw and a new plan
+            </summary>
+            <param actionName="oldFlaw">The old flaw to base the new one on</param>
+        </member>
+        <member name="M:LN.Planning.Flaws.OpenPreconditionFlaw.CopyOPF">
+            <summary>
+            Makes a deep copy of the current open precondition flaw
+            </summary>
+            <returns>A deep copy of the current open precondition flaw</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.OpenPreconditionFlaw.Copy">
+            <summary>
+            Makes a deep copy of the current open precondition flaw
+            </summary>
+            <returns>A deep copy of the current open precondition flaw</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.OpenPreconditionFlaw.ToString(LN.Planning.Bindings.Bindings)">
+            <summary>
+            Override. Converts the causal link threat to a string representation based on the specified bindings
+            </summary>
+            <param actionName="bindings">The <c>Bindings</c> object to use</param>
+            <returns>A string representation based on the specified bindings</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.OpenPreconditionFlaw.ToString">
+            <summary>
+            Override. Converts the causal link threat to a string representation
+            </summary>
+            <returns>A string representation of the current threat</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.OpenPreconditionFlaw.GetHashCode">
+            <summary>
+            Override. Computes the hash code of this open precondition flaw based upon its string representation
+            </summary>
+            <returns>The hash code of this open precondition flaw</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.OpenPreconditionFlaw.Equals(System.Object)">
+            <summary>
+            Determines whether a given open precondition flaw is equal to another one (based on step ID and literal)
+            </summary>
+            <param actionName="obj">The object to compare to</param>
+            <returns><see langword="true"/> if the object is an open precondition flaw is equal to this one, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.OpenPreconditionFlaw.Equals(LN.Planning.Flaws.OpenPreconditionFlaw)">
+            <summary>
+            Determines whether a given open precondition flaw is equal to another one (based on step ID and literal)
+            </summary>
+            <param actionName="other">The open precondition flaw to compare to</param>
+            <returns><see langword="true"/> if the open precondition flaw is equal to this one, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="P:LN.Planning.Flaws.OpenPreconditionFlaw.StepID">
+            <summary>
+            Gets the step ID associated with this open precondition flaw
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Flaws.OpenPreconditionFlaw.Precondition">
+            <summary>
+            Gets the literal associated with this open precondition flaw
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Constant">
+            <summary>
+            Class representing a constant
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Term">
+            <summary>
+            Represents a term in the planner
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Term.#ctor(System.String)">
+            <summary>
+            Sets up a term with specified actionName and whether it is positive
+            </summary>
+            <param actionName="actionName">The actionName of the new term</param>
+        </member>
+        <member name="M:LN.Planning.Term.#ctor(System.String,LN.Planning.TermType)">
+            <summary>
+            Sets up a term with specified actionName and whether it is positive
+            </summary>
+            <param actionName="actionName">The actionName of the new term</param>
+            <param actionName="type">The type of the variable</param>
+        </member>
+        <member name="M:LN.Planning.Term.Equals(System.Object)">
+            <summary>
+            Determines if this term is equal to a given <c>Object</c>, does not unify variables
+            </summary>
+            <param actionName="obj">The <c>Object</c> to compare</param>
+            <returns><see langword="true"/> if this term is equal to the object, <see langword="false"/> if they are not</returns>
+        </member>
+        <member name="M:LN.Planning.Term.Equals(LN.Planning.Term)">
+            <summary>
+            Determines if this term is equal to a given <c>Object</c>, does not unify variables
+            </summary>
+            <param actionName="t">The <c>Term</c> to compare</param>
+            <returns><see langword="true"/> if this term is equal to the term, <see langword="false"/> if they are not</returns>
+        </member>
+        <member name="M:LN.Planning.Term.GetHashCode">
+            <summary>
+            Gets the hash code for the term, based upon the term's actionName and whether it is positive
+            </summary>
+            <returns>The term's hash code</returns>
+        </member>
+        <member name="M:LN.Planning.Term.op_Equality(LN.Planning.Term,LN.Planning.Term)">
+            <summary>
+            Determines if two <c>Term</c> objects are equal, does not unify variables
+            </summary>
+            <param actionName="t1">The first <c>Term</c> to compare</param>
+            <param actionName="t2">The first <c>Term</c> to compare</param>
+            <returns><see langword="true"/> if the two terms are the equal, <see langword="false"/> if they are not</returns>
+        </member>
+        <member name="M:LN.Planning.Term.op_Inequality(LN.Planning.Term,LN.Planning.Term)">
+            <summary>
+            Determines if two <c>Term</c> objects are equal, does not unify variables
+            </summary>
+            <param actionName="t1">The first <c>Term</c> to compare</param>
+            <param actionName="t2">The first <c>Term</c> to compare</param>
+            <returns><see langword="false"/> if the two terms are the equal, <see langword="true"/> if they are not</returns>
+        </member>
+        <member name="M:LN.Planning.Term.Copy">
+            <summary>
+            Abstract. Makes a copy of the current term
+            </summary>
+            <returns>A copy of the current term</returns>
+        </member>
+        <member name="M:LN.Planning.Term.UpdateNames(System.String)">
+            <summary>
+            Abstract. Updates the <c>ActionName</c> by adding the specified string
+            </summary>
+            <param actionName="add">The string to add</param>
+        </member>
+        <member name="M:LN.Planning.Term.ToString(LN.Planning.Bindings.IMapping)">
+            <summary>
+            Abstract. Converts the term to a string representation using the specified bindings
+            </summary>
+            <param actionName="bindings">The <c>Bindings</c> to use</param>
+            <returns>A string representation using the specified bindings</returns>
+        </member>
+        <member name="M:LN.Planning.Term.ToString">
+            <summary>
+            Abstract. Converts the term to a string representation using the specified bindings
+            </summary>
+            <returns>A string representation using the specified bindings</returns>
+        </member>
+        <member name="M:LN.Planning.Term.CanUnify(LN.Planning.Term)">
+            <summary>
+            Unifies <c>term</c> with the current term
+            </summary>
+            <param actionName="term">The term to unify with</param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Term.Unify(LN.Planning.Term,LN.Planning.Term@)">
+            <summary>
+            Abstract. Unifies <c>term</c> with the current term
+            </summary>
+            <param actionName="term">The term to unify with</param>
+            <param actionName="mostGeneralUnifier">The most general unifier of this term with <c>term</c></param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="P:LN.Planning.Term.TermType">
+            <summary>
+            Gets or sets the type of the current term
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Term.Name">
+            <summary>
+            Gets or sets the actionName of the term
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Term.IsGround">
+            <summary>
+            Abstract. Gets a <see langword="bool"/> whether this term is ground
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Constant.#ctor(System.String)">
+            <summary>
+            Creates a new constant with specified actionName
+            </summary>
+            <param actionName="actionName">The actionName of the new term</param>
+        </member>
+        <member name="M:LN.Planning.Constant.#ctor(System.String,LN.Planning.TermType)">
+            <summary>
+            Creates a new constant with specified actionName and term type
+            </summary>
+            <param actionName="actionName">The actionName of the new constant</param>
+            <param actionName="type">The type of the new constant</param>
+        </member>
+        <member name="M:LN.Planning.Constant.Equals(System.Object)">
+            <summary>
+            Determines if two <c>Term</c> objects are equal, does not unify variables
+            </summary>
+            <param actionName="obj">The <c>Object</c> to compare</param>
+            <returns><c>true</c> if the object is equal to the current term, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Constant.Equals(LN.Planning.Term)">
+            <summary>
+            Determines if two <c>Term</c> objects are equal, does not unify variables
+            </summary>
+            <param actionName="t">The <c>Term</c> to compare</param>
+            <returns><c>true</c> if the term is equal to the current term, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Constant.Equals(LN.Planning.Constant)">
+            <summary>
+            Determines if this constant is equal to another constant, does not unify variables
+            </summary>
+            <param actionName="constant">The <c>Constant</c> to compare</param>
+            <returns><c>true</c> if the constant is equal to the current constant, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Constant.Copy">
+            <summary>
+            Override. Makes a copy of the current constant copying actionName and term type
+            </summary>
+            <returns>A copy of the current constant</returns>
+        </member>
+        <member name="M:LN.Planning.Constant.CopyConstant">
+            <summary>
+            Makes a copy of the current variable copying actionName and term type
+            </summary>
+            <returns>A copy of the current variable</returns>
+        </member>
+        <member name="M:LN.Planning.Constant.UpdateNames(System.String)">
+            <summary>
+            Override. Does nothing since constants do not get updated
+            </summary>
+            <param actionName="add">The string to add</param>
+        </member>
+        <member name="M:LN.Planning.Constant.ToString(LN.Planning.Bindings.IMapping)">
+            <summary>
+            Override. Converts the term to a string representation
+            </summary>
+            <param actionName="bindings">The <c>Bindings</c> to use, which are ignored for a constant</param>
+            <returns>A string representation</returns>
+        </member>
+        <member name="M:LN.Planning.Constant.ToString">
+            <summary>
+            Override. Converts the term to a string representation
+            </summary>
+            <returns>A string representation</returns>
+        </member>
+        <member name="M:LN.Planning.Constant.Unify(LN.Planning.Term,LN.Planning.Term@)">
+            <summary>
+            Attempts to unify this constant with a given term
+            </summary>
+            <param actionName="term">The term to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier, will be just this constant or <see langword="null"/></param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Constant.Unify(LN.Planning.Term,LN.Planning.Constant@)">
+            <summary>
+            Attempts to unify this constant with a given term
+            </summary>
+            <param actionName="term">The term to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier, will be just this constant or <see langword="null"/></param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Constant.Unify(LN.Planning.Constant,LN.Planning.Constant@)">
+            <summary>
+            Attempts to unify this constant with a given constant
+            </summary>
+            <param actionName="term">The constant to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier, will be just this constant or <see langword="null"/></param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Constant.Unify(LN.Planning.Variable,LN.Planning.Constant@)">
+            <summary>
+            Attempts to unify this constant with a given variable
+            </summary>
+            <param actionName="term">The variable to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier, will be just this constant or <see langword="null"/></param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Constant.Unify(LN.Planning.Literal,LN.Planning.Constant@)">
+            <summary>
+            Attempts to unify this constant with a given literal, will always fail
+            </summary>
+            <param actionName="term">The literal to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier, will be <see langword="null"/></param>
+            <returns><see langword="false"/></returns>
+        </member>
+        <member name="P:LN.Planning.Constant.IsGround">
+            <summary>
+            Gets a <see langword="bool"/> whether this constant is ground, always <see langword="true"/>
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Variable">
+            <summary>
+            Class representing a variable
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Variable.#ctor(System.String,LN.Planning.TermType,System.Boolean,LN.Planning.AllowedBindingTypes)">
+            <summary>
+            Creates a new term with specified actionName, whether it is positive, and constaint (may be <see langword="null"/>)
+            </summary>
+            <param actionName="actionName">The actionName of the new variable</param>
+            <param actionName="type">The type of the variable</param>
+            <param actionName="isGlobalVariable"><see langword="true"/> to indicate this is a global variable, <see langword="false"/> otherwise</param>
+        </member>
+        <member name="M:LN.Planning.Variable.#ctor(System.String,LN.Planning.TermType,System.Boolean)">
+            <summary>
+            Creates a new term with specified actionName, whether it is positive, and constaint (may be <see langword="null"/>)
+            </summary>
+            <param actionName="actionName">The actionName of the new variable</param>
+            <param actionName="type">The type of the variable</param>
+            <param actionName="isGlobalVariable"><see langword="true"/> to indicate this is a global variable, <see langword="false"/> otherwise</param>
+        </member>
+        <member name="M:LN.Planning.Variable.#ctor(System.String,LN.Planning.TermType)">
+            <summary>
+            Creates a new term with specified actionName, whether it is positive, and constaint (may be <see langword="null"/>)
+            </summary>
+            <param actionName="actionName">The actionName of the new variable</param>
+            <param actionName="type">The type of the variable</param>
+        </member>
+        <member name="M:LN.Planning.Variable.#ctor(System.String)">
+            <summary>
+            Creates a new term with specified actionName, whether it is positive, and constaint (may be <see langword="null"/>)
+            </summary>
+            <param actionName="actionName">The actionName of the new variable</param>
+        </member>
+        <member name="M:LN.Planning.Variable.Equals(System.Object)">
+            <summary>
+            Determines if two <c>Term</c> objects are equal, does not unify variables
+            </summary>
+            <param actionName="obj">The <c>Object</c> to compare</param>
+            <returns><c>true</c> if the object is equal to the current term, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Variable.Equals(LN.Planning.Term)">
+            <summary>
+            Determines if two <c>Term</c> objects are equal, does not unify variables
+            </summary>
+            <param actionName="t">The <c>Term</c> to compare</param>
+            <returns><c>true</c> if the term is equal to the current term, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Variable.Copy">
+            <summary>
+            Override. Makes a copy of the current variable copying actionName and term type
+            </summary>
+            <returns>A copy of the current variable</returns>
+        </member>
+        <member name="M:LN.Planning.Variable.CopyVariable">
+            <summary>
+            Makes a copy of the current variable copying actionName and term type
+            </summary>
+            <returns>A copy of the current variable</returns>
+        </member>
+        <member name="M:LN.Planning.Variable.UpdateNames(System.String)">
+            <summary>
+            Override. Updates the <c>ActionName</c> by adding the specified string
+            </summary>
+            <param actionName="add">The string to add</param>
+        </member>
+        <member name="M:LN.Planning.Variable.ToString(LN.Planning.Bindings.IMapping)">
+            <summary>
+            Override. Converts the term to a string representation using the specified bindings
+            </summary>
+            <param actionName="bindings">The <c>Bindings</c> to use</param>
+            <returns>A string representation using the specified bindings, ignored if <see langword="null"/></returns>
+        </member>
+        <member name="M:LN.Planning.Variable.ToString">
+            <summary>
+            Override. Converts the term to a string representation
+            </summary>
+            <returns>A string representation</returns>
+        </member>
+        <member name="M:LN.Planning.Variable.Unify(LN.Planning.Term,LN.Planning.Term@)">
+            <summary>
+            Attempts to unify this variable with a given term
+            </summary>
+            <param actionName="term">The term to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier</param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Variable.Unify(LN.Planning.Constant,LN.Planning.Constant@)">
+            <summary>
+            Attempts to unify this variable with a given constant
+            </summary>
+            <param actionName="term">The constant to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier, will be just the constant or <see langword="null"/></param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Variable.Unify(LN.Planning.Variable,LN.Planning.Variable@)">
+            <summary>
+            Attempts to unify this variable with a given variable
+            </summary>
+            <param actionName="term">The variable to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier</param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Variable.Unify(LN.Planning.Literal,LN.Planning.Literal@)">
+            <summary>
+            Attempts to unify this variable with a given literal
+            </summary>
+            <param actionName="term">The literal to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier, will be the literal or <see langword="null"/></param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="P:LN.Planning.Variable.IsGround">
+            <summary>
+            Gets a <see langword="bool"/> whether this variable is ground, always <see langword="false"/>
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Domain">
+            <summary>
+            Class encapsulating all <see cref="T:LN.Planning.Action"/>s in the domain
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Domain.BindLiteralToPredicate(LN.Planning.Literal,LN.Planning.Bindings.Bindings,System.Collections.Generic.Dictionary{System.String,LN.Planning.Term},System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Matches a given literal against the defined predicates in this library (static and non-static)
+            </summary>
+            <param actionName="literal">The literal to match</param>
+            <param actionName="bindings">The bindings to use in the context of matching the literal</param>
+            <param actionName="allowStatic"><see langword="true"/> to allow static predicates to be matched, <see langword="false"/> otherwise</param>
+            <param actionName="allowNonStatic"><see langword="true"/> to allow non-static predicates to be matched, <see langword="false"/> otherwise</param>
+            <exception cref="T:LN.Planning.Serialization.InvalidSyntaxException">An invalid syntax exception is raised if no predicate is found, the predicate does not match, or if the predicate found was static and <c>isStatic</c> is <see langword="false"/></exception>
+        </member>
+        <member name="M:LN.Planning.Domain.BindLiteralToPredicate(LN.Planning.Literal,LN.Planning.Bindings.Bindings,System.Boolean@,System.Collections.Generic.Dictionary{System.String,LN.Planning.Term},System.Boolean)">
+            <summary>
+            Matches a given literal against the defined predicates in this library (static and non-static)
+            </summary>
+            <param actionName="literal">The literal to match</param>
+            <param actionName="bindings">The bindings to use in the context of matching the literal</param>
+            <param actionName="hasPredicateDefinition"><see langword="true"/> if a predicate definition with the same <see cref="P:LN.Planning.Precondition.ActionName"/> was found, <see langword="false"/> otherwise</param>
+            <returns><see langword="true"/> if the match was successful, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Domain.BindVariableToGlobalVariable(LN.Planning.Variable,LN.Planning.Bindings.Bindings)">
+            <summary>
+            Binds a given variable against the defined global variables in this library
+            </summary>
+            <param actionName="term">The term to match</param>
+            <param actionName="bindings">The CDG and NCD where the binding should exist</param>
+            <returns><see langword="true"/> if the match was successful, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Domain.BindConstantToDomainConstant(LN.Planning.Constant,LN.Planning.Bindings.Bindings)">
+            <summary>
+            Binds a given constant against the defined constants in this library
+            </summary>
+            <param actionName="term">The term to match</param>
+            <param actionName="bindings">the CDG and NCD of the current domain</param>
+            <returns><see langword="true"/> if the match was successful, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Domain.BindTerm(LN.Planning.Term,LN.Planning.Bindings.Bindings,System.Collections.Generic.Dictionary{System.String,LN.Planning.Term})">
+            <summary>
+            Binds a given term against the defined constants, global variables, and predicates (static and non-static) in this library
+            </summary>
+            <param actionName="term">The term to match</param>
+            <param actionName="bindings">the set of bindings that the new bind will exist in</param>
+            <remarks>A match is required for a constant if domain constants exist, for variables if domain variables exist, and for literals if predicate definitions exist in the domain</remarks>
+        </member>
+        <member name="T:LN.Planning.Literal">
+            <summary>
+            Class represting literal values
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Literal.FromString(System.String)">
+            <summary>
+            Creates a <c>Precondition</c> from a specified PDDL-style string
+            </summary>
+            <param actionName="literal">The literal string</param>
+            <returns>A new <c>Precondition</c> object</returns>
+            <exception cref="T:LN.Planning.InvalidSyntaxException">Raised if the string contains a syntax violation</exception>
+        </member>
+        <member name="M:LN.Planning.Literal.#ctor(System.String,System.Boolean,System.Collections.Generic.IEnumerable{LN.Planning.Term})">
+            <summary>
+            Creates a new literal with the specified actionName and terms, including whether it is positive or negative
+            </summary>
+            <param actionName="actionName">The actionName of the new literal</param>
+            <param actionName="positive">Whether the literal is positive or negative</param>
+            <param actionName="terms">The terms of the literal</param>
+        </member>
+        <member name="M:LN.Planning.Literal.#ctor(System.String,System.Boolean,System.Collections.Generic.IEnumerable{LN.Planning.Term},LN.Planning.TermType)">
+            <summary>
+            Creates a new literal with the specified actionName, terms, term type, and including whether it is positive or negative
+            </summary>
+            <param actionName="actionName">The actionName of the new literal</param>
+            <param actionName="positive">Whether the literal is positive or negative</param>
+            <param actionName="terms">The terms of the literal</param>
+            <param actionName="type">The type of the new literal</param>
+        </member>
+        <member name="M:LN.Planning.Literal.#ctor(System.String,System.Boolean,System.Collections.Generic.IEnumerable{LN.Planning.Term},LN.Planning.TermType,System.Boolean)">
+            <summary>
+            Creates a new literal with the specified actionName, terms, term type, and including whether it is positive or negative
+            </summary>
+            <param actionName="actionName">The actionName of the new literal</param>
+            <param actionName="positive">Whether the literal is positive or negative</param>
+            <param actionName="terms">The terms of the literal</param>
+            <param actionName="type">The type of the new literal</param>
+            <param actionName="isStatic">whether the Precondition is static</param>
+        </member>
+        <member name="M:LN.Planning.Literal.Copy">
+            <summary>
+            Performs a deep copy of the current <c>Precondition</c> object
+            </summary>
+            <returns>A deep copy of the current <c>Precondition</c> object</returns>
+        </member>
+        <member name="M:LN.Planning.Literal.GetHashCode">
+            <summary>
+            The hash code of the <c>Precondition</c> object
+            </summary>
+            <returns>The hash code of the <c>Precondition</c> object</returns>
+        </member>
+        <member name="M:LN.Planning.Literal.Equals(System.Object)">
+            <summary>
+            Override. Determines if the current <c>Precondition</c> object is equal to another <c>Object</c>, does not unify variables
+            </summary>
+            <param actionName="obj">The object to compare</param>
+            <returns><c>true</c> if the object is equal to the current term, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Literal.Equals(LN.Planning.Term)">
+            <summary>
+            Override. Determines if the current <c>Precondition</c> object is equal to another <c>Term</c>, does not unify variables
+            </summary>
+            <param actionName="t">The term to compare</param>
+            <returns><c>true</c> if the term is equal to the current term, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Literal.Equals(LN.Planning.Literal)">
+            <summary>
+            Override. Determines if the current <c>Precondition</c> object is equal to another <c>Precondition</c>, does not unify variables
+            </summary>
+            <param actionName="lit">The literal to compare</param>
+            <returns><c>true</c> if the literal is equal to the current term, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Literal.ToString(LN.Planning.Bindings.IMapping)">
+            <summary>
+            Override. Converts the literal to a string representation using the specified bindings
+            </summary>
+            <param actionName="bindings">The <c>Bindings</c> to use</param>
+            <returns>A string representation using the specified bindings</returns>
+        </member>
+        <member name="M:LN.Planning.Literal.ToString">
+            <summary>
+            Override. Converts the literal to a string representation
+            </summary>
+            <returns>A string representation using the specified bindings</returns>
+        </member>
+        <member name="M:LN.Planning.Literal.UpdateNames(System.String)">
+            <summary>
+            Override. Updates the names of each term by adding the specified string to each
+            </summary>
+            <param actionName="add">The string to add to each actionName</param>
+        </member>
+        <member name="M:LN.Planning.Literal.Unify(LN.Planning.Term,LN.Planning.Term@)">
+            <summary>
+            Attempts to unify this literal with a given term
+            </summary>
+            <param actionName="term">The term to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier</param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Literal.Unify(LN.Planning.Constant,LN.Planning.Term@)">
+            <summary>
+            Attempts to unify this literal with a given constant, will always fail
+            </summary>
+            <param actionName="term">The constant to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier, will be <see langword="null"/></param>
+            <returns><see langword="false"/></returns>
+        </member>
+        <member name="M:LN.Planning.Literal.Unify(LN.Planning.Variable,LN.Planning.Literal@)">
+            <summary>
+            Attempts to unify this literal with a given variable
+            </summary>
+            <param actionName="term">The variable to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier</param>
+            <returns><see langword="true"/> if the terms unify, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Literal.Unify(LN.Planning.Literal,LN.Planning.Literal@)">
+            <summary>
+            Attempts to unify this literal with a given literal
+            </summary>
+            <param actionName="lit">The literal to unify</param>
+            <param actionName="mostGeneralUnifier">The resulting most general unifier, will be <see langword="null"/></param>
+            <returns><see langword="false"/></returns>
+        </member>
+        <member name="P:LN.Planning.Literal.Terms">
+            <summary>
+            Gets the terms of the literal
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Literal.IsStatic">
+            <summary>
+            Gets whether the literal is static or non-static
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Literal.Positive">
+            <summary>
+            Gets or sets a <c>bool</c> indicating whether the term is positive or negative
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Literal.IsGround">
+            <summary>
+            Gets a <see langword="bool"/> whether this literal is ground, which depends on each of its terms being bound
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Action">
+            <summary>
+            Class representing an operator
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Action.#ctor(System.String,System.Collections.Generic.IEnumerable{LN.Planning.Variable},System.Collections.Generic.IEnumerable{LN.Planning.Literal},System.Collections.Generic.IEnumerable{LN.Planning.Literal},System.Collections.Generic.IEnumerable{LN.Planning.Constraints.Constraint},System.Boolean,System.Collections.Generic.IEnumerable{LN.Planning.Variable})">
+            <summary>
+            Creates a new <c>Action</c> using the specified actionName, preconditions, effects, and constraints
+            </summary>
+            <param actionName="actionName">The actionName of the <c>Action</c></param>
+            <param actionName="parameters">The parameters of the operator</param>
+            <param actionName="preconditions">The list of preconditions of the <c>Action</c>, may be <see langword="null"/></param>
+            <param actionName="effects">The list of effects of the <c>Action</c>, may be <see langword="null"/></param>
+            <param actionName="primitive">Whether the operator is primitive, default <see langword="false"/></param>
+        </member>
+        <member name="P:LN.Planning.Action.Agents">
+            <summary>
+            Gets or sets the agents of the action.
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Action.Name">
+            <summary>
+            Gets the <c>ActionName</c> of the <c>Action</c>
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Action.Preconditions">
+            <summary>
+            Gets the list of preconditions
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Action.Effects">
+            <summary>
+            Gets the list of effects
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Action.Constraints">
+            <summary>
+            Gets the list of constraints
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Action.Primitive">
+            <summary>
+            Gets whether the operator is primitive
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Links.CausalLink">
+            <summary>
+            Class representing a causal link
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Links.CausalLink.#ctor(LN.Planning.Literal,LN.Planning.Literal,System.Int32,System.Int32)">
+            <summary>
+            Creates a new causal link
+            </summary>
+            <param actionName="ef">The effect in the causal link</param>
+            <param actionName="pr">The precondition in the causal link</param>
+            <param actionName="efStep">The effect step ID</param>
+            <param actionName="preconditionStepID">The precondition step ID</param>
+        </member>
+        <member name="M:LN.Planning.Links.CausalLink.ToString(LN.Planning.Bindings.Bindings)">
+            <summary>
+            Generates a string representation of the causal link using the specified bindings
+            </summary>
+            <param actionName="bindings">The bindings to use</param>
+            <returns>A string representation of the causal link using the specified bindings</returns>
+        </member>
+        <member name="M:LN.Planning.Links.CausalLink.ToString">
+            <summary>
+            Generates a string representation of the causal link
+            </summary>
+            <returns>A string representation of the causal link</returns>
+        </member>
+        <member name="P:LN.Planning.Links.CausalLink.Effect">
+            <summary>
+            Gets or sets the effect in the causal link
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Links.CausalLink.Precondition">
+            <summary>
+            Gets or sets the precondition in the causal link
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Links.CausalLink.EffectStepID">
+            <summary>
+            Gets or sets the effect step ID
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Links.CausalLink.PreconditionStepID">
+            <summary>
+            Gets or sets the precondition step ID
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Links.OrderingLink">
+            <summary>
+            Class representing an ordering link between two <see cref="!:StepID"/>s
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Links.OrderingLink.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates a new ordering between two steps
+            </summary>
+            <param actionName="first">The first step</param>
+            <param actionName="second">The second step</param>
+        </member>
+        <member name="M:LN.Planning.Links.OrderingLink.GetHashCode">
+            <summary>
+            Override. Gets the hash code for the ordering link
+            </summary>
+            <returns>The hash code</returns>
+        </member>
+        <member name="M:LN.Planning.Links.OrderingLink.Equals(System.Object)">
+            <summary>
+            Checks if the current ordering link is equal to a given object
+            </summary>
+            <param actionName="obj">The object to compare</param>
+            <returns><see langword="true"/> if the object is equal to this ordering link, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Links.OrderingLink.Equals(LN.Planning.Links.BaseLink)">
+            <summary>
+            Checks if the current ordering link is equal to another ordering link
+            </summary>
+            <param actionName="link">The ordering link to compare</param>
+            <returns><see langword="true"/> if the ordering links are equal, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="T:LN.Planning.Plan">
+            <summary>
+            Class representing a plan
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Plan.LogFile">
+            <summary>
+            The log file for the plans
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Plan.#ctor(LN.Planning.Problem,System.Collections.Generic.IEnumerable{LN.Planning.Step},System.Collections.Generic.IEnumerable{LN.Planning.Links.CausalLink},System.Collections.Generic.IEnumerable{LN.Planning.Links.OrderingLink},System.Collections.Generic.IEnumerable{LN.Planning.Intention.IntentionFrame})">
+            <summary>
+            Manually constructs a plan with the given compoenents. Arguments can be null.
+            </summary>
+            <param actionName="planSpace">the PlanSpace containing the plan being created</param>
+            <param actionName="steps">The steps</param>
+            <param actionName="causalLinks">The causal links</param>
+            <param actionName="orderingLinks">The ordering links</param>
+            <param actionName="intentionFrames">The intentional frames</param>
+        </member>
+        <member name="M:LN.Planning.Plan.#ctor(LN.Planning.Problem,LN.Planning.Step,LN.Planning.Step,System.Collections.Generic.IEnumerable{LN.Planning.Flaws.BaseFlaw})">
+            <summary>
+            Creates a new plan with specified intial and goal steps, automatically computes flaws
+            </summary>
+            <param actionName="planSpace">the planspace containing the new plan</param>
+            <param actionName="initialStep">The initial step of the plan</param>
+            <param actionName="goalStep">The goal step of the plan</param>
+        </member>
+        <member name="M:LN.Planning.Plan.#ctor(LN.Planning.Plan,LN.Planning.Flaws.BaseFlaw,LN.Planning.Bindings.Bindings)">
+            <summary>
+            Create a new plan by copying an old plan, without <c>dontAddFlaw</c>
+            </summary>
+            <param actionName="oldPlan">The plan to Copy from</param>
+            <param actionName="dontAddFlaw">The flaw not to Copy, default <see langword="null"/> for none</param>
+            <param actionName="bindings">the CDG and NCD of the plan to copy</param>
+            <exception cref="T:System.ArgumentNullException">oldPlan must not be <see langword="null"/></exception>
+        </member>
+        <member name="M:LN.Planning.Plan.#ctor(LN.Planning.Plan,LN.Planning.Flaws.BaseFlaw)">
+            <summary>
+            Create a new plan by copying an old plan, without <c>dontAddFlaw</c>
+            </summary>
+            <param actionName="oldPlan">The plan to Copy from</param>
+            <param actionName="dontAddFlaw">The flaw not to Copy, default <see langword="null"/> for none</param>
+            <exception cref="T:System.ArgumentNullException">oldPlan must not be <see langword="null"/></exception>
+        </member>
+        <member name="M:LN.Planning.Plan.AddStep(LN.Planning.Step,System.Collections.Generic.IEnumerable{LN.Planning.Flaws.BaseFlaw})">
+            <summary>
+            Adds a step to the plan and adds OpenPreconditionFlaws for each precondition of the step
+            </summary>
+            <param actionName="newStep">The new step to add</param>
+            <param actionName="addFlaws">whether or not to add the OpenPreconditionFlaws from this step</param>
+        </member>
+        <member name="M:LN.Planning.Plan.AddOrderingLink(System.Int32,System.Int32)">
+            <summary>
+            Adds an ordering link to the plan and
+            propagates it to the start and end children of the ordered nodes 
+            in case of decomposed abstract steps
+            </summary>
+            <param actionName="oLink">The new ordering link to add</param>
+        </member>
+        <member name="M:LN.Planning.Plan.AddOrderingLink(LN.Planning.Links.OrderingLink)">
+            <summary>
+            Adds an ordering link to the plan and
+            propagates it to the start and end children of the ordered nodes 
+            in case of decomposed abstract steps
+            </summary>
+            <param actionName="oLink">The new ordering link to add</param>
+        </member>
+        <member name="M:LN.Planning.Plan.ComputeCausalLinkThreats">
+            <summary>
+            Checks to see if there is a threat to a causal link
+            </summary>
+            <returns>List&lt;CausalLinkThreat&gt; of all threats that exist in the plan</returns>
+        </member>
+        <member name="M:LN.Planning.Plan.CanAddOrdering(System.Int32,System.Int32)">
+            <summary>
+            Walks the orderingLinks to see if they cause the plan to be consistent
+            </summary>
+            <param actionName="firstStep">The first step of the ordering</param>
+            <param actionName="secondStep">The second step of the ordering</param>
+            <returns><see langword="true"/> if consistant, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Plan.Negates(LN.Planning.Literal,LN.Planning.Literal)">
+            <summary>
+            Checks to see if one literal negates the other
+            </summary>
+            <param actionName="one">The literal that could be negated</param>
+            <param actionName="two">The literal that may negate one</param>
+            <returns><see langword="true"/> if two negates one, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Plan.ToGraphFile(System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Returns a representation of the plan in dot format (GraphViz)
+            </summary>
+            <param actionName="causalLinksDetailLevel">0: arrows without label, 1: arrows with labels, 
+            2: list of preconditions and effects in steps</param>
+            <param actionName="displayOrderingLinks">hide or display ordering links</param>
+            <param actionName="displayStepsIDs">hide or display IDs of steps</param>
+            <param actionName="displayIntentionFrames">hide or display intention frames</param>
+            <param actionName="displayBeginEndSteps">hide or display begin and end steps of decompositions</param>
+            <param actionName="verticalLayout">vertical or horizontal layout</param>
+            <param actionName="constraintLayoutOrderingLinks">consider ordering links as a layout constraint</param>
+            <param actionName="constraintLayoutCausalLinks">consider causal links as a layout constraint</param>
+            <param actionName="constraintLayoutDecompLinks">consider decomposition links as a layout constraint</param>
+            <returns>String representing plan as dot graph</returns>
+        </member>
+        <member name="M:LN.Planning.Plan.ToString">
+            <summary>
+            Override. Converts the plan to a string representation suitable for printing on a console or text file
+            </summary>
+            <returns>A string representation suitable for printing on a console or text file</returns>
+        </member>
+        <member name="P:LN.Planning.Plan.InitialStepID">
+            <summary>
+            Returns the ID of the dummy initial step
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.GoalStepID">
+            <summary>
+            Returns the ID of the dummy goal step
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.PlanNumber">
+            <summary>
+            Gets or sets the plan number
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.PlanSpace">
+            <summary>
+            Gets the PlanSpace from which this plan was generated
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.Parent">
+            <summary>
+            Gets the parent of the plan
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.Children">
+            <summary>
+            Gets or sets the children of the current plan
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.Steps">
+            <summary>
+            Gets the steps of the plan
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.InitialStep">
+            <summary>
+            Gets the initial step of the plan
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.GoalStep">
+            <summary>
+            Gets the goal step of the plan
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.Flaws">
+            <summary>
+            Gets or sets the flaws of the plan
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.CausalGraph">
+            <summary>
+            Gets the causal links of the plan
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.OrderingGraph">
+            <summary>
+            Gets the graph that contains the ordering edges
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.DecompFrames">
+            <summary>
+            Gets the decomposition links of the plan
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.Bindings">
+            <summary>
+            Gets or sets the bindings of the plan
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Plan.IntentionFrames">
+            <summary>
+            Gets the IntentionFrames for this plan
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Problem">
+            <summary>
+            Represents a space of possible plans and implements search functionality
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Problem.#ctor(System.Collections.Generic.IEnumerable{LN.Planning.Literal},System.Collections.Generic.IEnumerable{LN.Planning.Literal},LN.Planning.Domain,System.Collections.Generic.IEnumerable{LN.Planning.Constant})">
+            <summary>
+            Creates a new <c>PlanSpace</c> object from a start and goal state
+            </summary>
+            <param actionName="start">The starting state</param>
+            <param actionName="goal">The goal state</param>
+            <param actionName="domain"></param>
+            <param actionName="objects"></param>
+        </member>
+        <member name="M:LN.Planning.Problem.GetBindings">
+            <summary>
+            Returns a copy of this PlanSpace's bindings
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LN.Planning.Step">
+            <summary>
+            Class representing a plan step
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Step.#ctor(LN.Planning.Action,System.Int32)">
+            <summary>
+            Creates a new step from an <see cref="T:LN.Planning.Action"/>
+            </summary>
+            <param actionName="template">The <c>Action</c> to use as a template</param>
+            <param actionName="newID">The unique ID of the step</param>
+        </member>
+        <member name="M:LN.Planning.Step.#ctor(System.String,System.Int32,System.Boolean,System.Collections.Generic.IEnumerable{LN.Planning.Variable},System.Collections.Generic.IEnumerable{LN.Planning.Literal},System.Collections.Generic.IEnumerable{LN.Planning.Literal},System.Collections.Generic.IEnumerable{LN.Planning.Constraints.Constraint},System.Boolean,LN.Planning.StepType)">
+            <summary>
+            Creates a new step from a actionName and 
+            </summary>
+            <param actionName="actionName">The actionName of the step</param>
+            <param actionName="id">The unique ID of the step</param>
+            <param actionName="primitive">Whether the step is primitive</param>
+            <param actionName="effects">The literals that result as a consequence of the step being performed</param>
+            <param actionName="parameters">The variables that will be acted upon by thie StepID</param>
+            <param actionName="preconditions">The Literals that must exist in order for the step to be performed</param>
+            <param actionName="updateNames">Whether or not to update the names of the parameters for the step</param>
+        </member>
+        <member name="M:LN.Planning.Step.#ctor(System.String,System.Collections.Generic.IEnumerable{LN.Planning.Literal},System.Collections.Generic.IEnumerable{LN.Planning.Literal},System.Int32)">
+            <summary>
+            Creates a new step with given actionName, preconditions, effects, and unique ID. Used in expanding abstract steps
+            </summary>
+            <param actionName="actionName">The step actionName</param>
+            <param actionName="precondition">The step preconditions</param>
+            <param actionName="effect">The step effects</param>
+            <param actionName="id">The step's unique ID</param>
+        </member>
+        <member name="M:LN.Planning.Step.#ctor(LN.Planning.Step,System.Int32)">
+            <summary>
+            Creates a new step from another <see cref="!:LN.Planning.StepID"/>
+            </summary>
+            <param actionName="template">The <c>StepID</c> to use as a template</param>
+            <param actionName="newID">The unique ID of the step</param>
+        </member>
+        <member name="M:LN.Planning.Step.Copy">
+            <summary>
+            Creates a deep copy of the current step
+            </summary>
+            <returns>A copy of the current step</returns>
+        </member>
+        <member name="M:LN.Planning.Step.ToString(LN.Planning.Bindings.Bindings)">
+            <summary>
+            Converts this step to a string representation using the specified <see cref="T:LN.Planning.Bindings.Bindings"/>
+            </summary>
+            <param actionName="bindings">The <c>Bindings</c> to use</param>
+            <returns>A string representation of the current step</returns>
+        </member>
+        <member name="M:LN.Planning.Step.CreateDummyInitStep(System.Collections.Generic.IEnumerable{LN.Planning.Literal},System.Int32)">
+            <summary>
+            Creates a dummy init step with the given effect state and id
+            </summary>
+            <param actionName="state">The effects of the step</param>
+            <param actionName="id">The id of the step</param>
+            <returns></returns>
+        </member>
+        <member name="M:LN.Planning.Step.CreateDummyGoalStep(System.Collections.Generic.IEnumerable{LN.Planning.Literal},System.Int32)">
+            <summary>
+            Createsa dummy goal step with the given precondition state and id
+            </summary>
+            <param actionName="state">The preconditions of the step</param>
+            <param actionName="id">The id of the step</param>
+            <returns></returns>
+        </member>
+        <member name="P:LN.Planning.Step.IsExecuted">
+            <summary>
+            <see landword="true"/> if the step is executed.
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Step.Preconditions">
+            <summary>
+            Gets the list of preconditions for this step
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Step.Effects">
+            <summary>
+            Gets the list of effects of a step
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Step.ActionName">
+            <summary>
+            Gets the action type of the step
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Step.ID">
+            <summary>
+            Gets the unique ID of the step
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Flaws.CausalLinkThreat">
+            <summary>
+            Class encapsulating a causal link threat
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Flaws.CausalLinkThreat.#ctor(System.Int32,System.Int32,System.Int32,LN.Planning.Literal,LN.Planning.Literal)">
+            <summary>
+            Creates a <c>CausalLinkThreat</c> based on the IDs of the offending step, precondition step, and effect step, along with the offending <c>Precondition</c>
+            </summary>
+            <param actionName="offendingID">The ID of the offending step</param>
+            <param actionName="precondID">The ID of the precondition step</param>
+            <param actionName="effectID">The ID of the effect step</param>
+            <param actionName="offendingLiteral">The offending literal (copied, not referenced)</param>
+            <param actionName="threatenedLiteral">the literal that is being threated</param>
+        </member>
+        <member name="M:LN.Planning.Flaws.CausalLinkThreat.CopyCLT">
+            <summary>
+            Makes a deep copy of the current <c>CausalLinkThreat</c>
+            </summary>
+            <returns>A deep copy of the current <c>CausalLinkThreat</c></returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.CausalLinkThreat.Copy">
+            <summary>
+            Makes a deep copy of the current <c>CausalLinkThreat</c>
+            </summary>
+            <returns>A deep copy of the current <c>CausalLinkThreat</c></returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.CausalLinkThreat.Equals(LN.Planning.Flaws.CausalLinkThreat)">
+            <summary>
+            Determines whether a given threat is equal to another one (based on offending step, precondition step, and effect step)
+            </summary>
+            <param actionName="threat">The threat to compare to</param>
+            <returns><see langword="true"/> if the threat is equal to this threat, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.CausalLinkThreat.Equals(System.Object)">
+            <summary>
+            Override. Determines whether a given threat is equal to another one (based on offending step, precondition step, and effect step)
+            </summary>
+            <param actionName="obj">An object to compare to</param>
+            <returns><see langword="true"/> if the threat is equal to this threat, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.CausalLinkThreat.ToString(LN.Planning.Bindings.Bindings)">
+            <summary>
+            Override. Converts the causal link threat to a string representation based on the specified bindings
+            </summary>
+            <param actionName="bindings">The <c>Bindings</c> object to use</param>
+            <returns>A string representation based on the specified bindings</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.CausalLinkThreat.ToString">
+            <summary>
+            Override. Converts the causal link threat to a string representation
+            </summary>
+            <returns>A string representation of the current threat</returns>
+        </member>
+        <member name="M:LN.Planning.Flaws.CausalLinkThreat.GetHashCode">
+            <summary>
+            Override. Computes the hash code of this causal link threat based upon its string representation
+            </summary>
+            <returns>The hash code of this causal link threat</returns>
+        </member>
+        <member name="P:LN.Planning.Flaws.CausalLinkThreat.OffendingStepID">
+            <summary>
+            Gets the step ID causing the threat
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Flaws.CausalLinkThreat.PreconditionStepID">
+            <summary>
+            Gets the precondition step ID
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Flaws.CausalLinkThreat.EffectStepID">
+            <summary>
+            Gets or sets the effect step ID
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Flaws.CausalLinkThreat.OffendingLiteral">
+            <summary>
+            Gets the offending literal of threatening step
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Flaws.CausalLinkThreat.ThreatenedLiteral">
+            <summary>
+            Gets the threatened literal in the precondition step
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Serialization.InvalidSyntaxException">
+            <summary>
+            Exception encapsulating information from a syntax exception
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Serialization.InvalidSyntaxException.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a new <c>InvalidSyntaxException</c> with give message, source, syntax, and parameter
+            </summary>
+            <param actionName="message">A message describing what happened</param>
+            <param actionName="source">The string that caused the syntax exception</param>
+            <param actionName="syntax">A pattern describing the syntax</param>
+            <param actionName="param">Which parameter contained the violation</param>
+        </member>
+        <member name="M:LN.Planning.Serialization.InvalidSyntaxException.#ctor(System.String,System.String,System.String,System.String,System.Exception)">
+            <summary>
+            Creates a new <c>InvalidSyntaxException</c> with give message, source, syntax, and parameter, along with the exception that was originally raised
+            </summary>
+            <param actionName="message">A message describing what happened</param>
+            <param actionName="source">The string that caused the syntax exception</param>
+            <param actionName="syntax">A pattern describing the syntax</param>
+            <param actionName="param">Which parameter contained the violation</param>
+            <param actionName="innerException">The exception that caused the syntax exception</param>
+        </member>
+        <member name="P:LN.Planning.Serialization.InvalidSyntaxException.SourceString">
+            <summary>
+            The string that caused the syntax exception
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Serialization.InvalidSyntaxException.Syntax">
+            <summary>
+            A pattern describing the syntax
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Serialization.ListToken">
+            <summary>
+            A token representing a LISP-style list
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Serialization.ListToken.#ctor(System.Collections.Generic.IEnumerable{LN.Planning.Serialization.IToken})">
+            <summary>
+            Creates a new <c>ListToken</c> from the list of <c>IToken</c>'s
+            </summary>
+            <param actionName="items">The <c>IToken</c> list which constitutes the list, must be non-null</param>
+            <exception cref="T:System.ArgumentNullException">The <c>items</c> must be non-null</exception>
+        </member>
+        <member name="M:LN.Planning.Serialization.ListToken.#ctor(System.Collections.Generic.IEnumerable{LN.Planning.Serialization.IToken},System.String)">
+            <summary>
+            Creates a new <c>ListToken</c> from the list of <c>IToken</c>'s
+            </summary>
+            <param actionName="items">The <c>IToken</c> list which constitutes the list, must be non-null</param>
+            <param actionName="text">The text used to parse the list, must be non-null</param>
+            <exception cref="T:System.ArgumentNullException">The <c>text</c> and <c>items</c> must be non-null</exception>
+        </member>
+        <member name="M:LN.Planning.Serialization.ListToken.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the <c>ITokens</c> of the list
+            </summary>
+            <returns>An enumerator that iterates through the <c>ITokens</c> of the list</returns>
+        </member>
+        <member name="P:LN.Planning.Serialization.ListToken.Text">
+            <summary>
+            Gets the text which the list was parsed from
+            </summary>
+        </member>
+        <member name="P:LN.Planning.Serialization.ListToken.Item(System.Int32)">
+            <summary>
+            Gets the IToken at the ith place in the list
+            </summary>
+            <param actionName="i">Which index to retrieve</param>
+            <returns>The ith <c>IToken</c> of the <c>ListToken</c></returns>
+            <exception cref="T:System.IndexOutOfRangeException">An exception is raised if the index is out of bounds</exception>
+        </member>
+        <member name="P:LN.Planning.Serialization.ListToken.Count">
+            <summary>
+            Returns the number of items in the <c>ListToken</c>
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Serialization.ValueToken">
+            <summary>
+            A token representing a value (symbol)
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Serialization.ValueToken.#ctor(System.String)">
+            <summary>
+            Creates a new <c>ValueToken</c> from the specified text
+            </summary>
+            <param actionName="text">The text of the new <c>ValueToken</c>, must be non-null</param>
+            <exception cref="T:System.ArgumentNullException">The text must be non-null</exception>
+        </member>
+        <member name="P:LN.Planning.Serialization.ValueToken.Text">
+            <summary>
+            Gets the text of the symbol
+            </summary>
+        </member>
+        <member name="T:LN.Planning.Serialization.Parser">
+            <summary>
+            A static class for parsing LISP-style strings
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Parser.SymbolRegex">
+            <summary>
+            The regular expression denoting a LISP-style symbol
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Parser.ListRegex">
+            <summary>
+            A regular expression denoting a LISP-style list (does not validate sublists)
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Parser.LiteralRegex">
+            <summary>
+            A regular expression denoting a PDDL-style literal (does not validate subexpressions)
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Parser.NegativeLiteralRegex">
+            <summary>
+            A regular expression denoting a PDDL-style negative literal (does not validate subexpressions)
+            </summary>
+        </member>
+        <member name="F:LN.Planning.Serialization.Parser.ParserRegex">
+            <summary>
+            A regular expression denoting all possible parser inputs
+            </summary>
+        </member>
+        <member name="M:LN.Planning.Serialization.Parser.Parse(System.String)">
+            <summary>
+            Parsing a string into LISP-style tokens
+            </summary>
+            <param actionName="input">A LISP-style string</param>
+            <returns>A <see cref="T:LN.Planning.ListToken"/> or <see cref="T:LN.Planning.ValueToken"/> depending on the input.</returns>
+            <exception cref="T:LN.Planning.InvalidSyntaxException">A InvalidSyntaxException is raised if the input string contains a syntax error.</exception>
+        </member>
+        <member name="M:LN.Planning.Serialization.Parser.ToTerm(LN.Planning.Serialization.IToken)">
+            <summary>
+            Converts an <see cref="T:LN.Planning.IToken"/> into an <see cref="T:LN.Planning.Term"/>
+            </summary>
+            <param actionName="token">The <see cref="T:LN.Planning.IToken"/> to convert</param>
+            <returns>An <see cref="T:LN.Planning.Term"/> corresponding to the <see cref="T:LN.Planning.IToken"/></returns>
+            <exception cref="T:System.NotSupportedException">Current this method only supports objects of type <see cref="T:LN.Planning.ListToken"/> or <see cref="T:LN.Planning.ValueToken"/></exception>
+        </member>
+        <member name="M:LN.Planning.Serialization.Parser.ToLiteral(LN.Planning.Serialization.ListToken)">
+            <summary>
+            Converts an <see cref="T:LN.Planning.ListToken"/> into an <see cref="!:LN.Planning.Precondition"/>
+            </summary>
+            <param actionName="list">The <see cref="T:LN.Planning.ListToken"/> to convert</param>
+            <returns>An <see cref="T:LN.Planning.Term"/> corresponding to the <see cref="T:LN.Planning.IToken"/></returns>
+            <exception cref="T:LN.Planning.InvalidSyntaxException"></exception>
+        </member>
+        <member name="M:LN.Planning.Serialization.Parser.ToLISP(LN.Planning.Serialization.IToken)">
+            <summary>
+            Converts an IToken to a LISP-style string
+            </summary>
+            <param actionName="token">The token to convert, must be <see cref="T:LN.Planning.Serialization.ListToken"/> or <see cref="T:LN.Planning.Serialization.ValueToken"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LN.Planning.Serialization.Parser.ToPddl(LN.Planning.Term,System.Boolean,System.Boolean)">
+            <summary>
+            Converts a term to a LISP-style string
+            </summary>
+            <param actionName="term">The term to convert</param>
+            <param actionName="typed">Whether to output the term's type, after a dash</param>
+            <param actionName="withTypedTerms">Whether to output the this term's term's types, after a dash</param>
+            <returns></returns>
+        </member>
+        <member name="M:LN.Planning.Serialization.XmlParser.LoadProblem(System.IO.Stream,LN.Planning.Domain)">
+            <summary>
+            serializes the problem xml into the problem object.
+            </summary>
+            <param actionName="problemFile"></param>
+            <param actionName="library"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LN.Planning.Links.ConflictLink.From">
+            <summary>
+            Gets or sets the effect in the causal link
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,47 @@
+ManifestFileVersion: 0
+CRC: 2458758289
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 162078135fecb1f35188ecdb6731e5f6
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2c091b2f9e5157d57d296ea50bfa344f
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 111
+  Script: {instanceID: 0}
+- Class: 154
+  Script: {instanceID: 0}
+- Class: 156
+  Script: {instanceID: 0}
+- Class: 218
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Terrain/defaultTerrain.prefab
+- Assets/Resources/Terrain/dotaTerrain.prefab
+- Assets/Resources/Terrain/flatDotaTerrain.prefab
+- Assets/Resources/Terrain/redTerrain.prefab
+Dependencies: []

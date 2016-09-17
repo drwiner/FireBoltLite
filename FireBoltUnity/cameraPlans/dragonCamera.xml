@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<cameraPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://liquidnarrative.csc.ncsu.edu/oshmirto/v0.1">
+  <blocks>
+    <block storyTime="0">
+      <shotFragments>
+        <shotFragment duration="1000">
+          <framings>
+            <framing framingType="Full" framingTarget="heroes" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="heroes" />
+            <movement type="Focus" directive="With" subject="heroes" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="1000">
+      <shotFragments>
+        <shotFragment duration="1000">
+          <framings>
+            <framing framingType="CloseUp" framingTarget="heroes" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="heroes" />
+            <movement type="Focus" directive="With" subject="heroes" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="0">
+      <shotFragments>
+        <shotFragment duration="1000">
+          <framings>
+            <framing framingType="Full" framingTarget="dragon" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="dragon" />
+            <movement type="Focus" directive="With" subject="dragon" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="1000">
+      <shotFragments>
+        <shotFragment duration="1000">
+          <framings>
+            <framing framingType="CloseUp" framingTarget="dragon" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="dragon" />
+            <movement type="Focus" directive="With" subject="dragon" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="0">
+      <shotFragments>
+        <shotFragment duration="1000">
+          <framings>
+            <framing framingType="Full" framingTarget="princess" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="princess" />
+            <movement type="Focus" directive="With" subject="princess" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="1000">
+      <shotFragments>
+        <shotFragment duration="1000">
+          <framings>
+            <framing framingType="CloseUp" framingTarget="princess" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="princess" />
+            <movement type="Focus" directive="With" subject="princess" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="8000">
+      <shotFragments>
+        <shotFragment duration="4000">
+          <framings>
+            <framing framingType="Full" framingTarget="dragon" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="dragon" />
+            <movement type="Focus" directive="With" subject="dragon" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="4000">
+      <shotFragments>
+        <shotFragment duration="4000">
+          <framings>
+            <framing framingType="Full" framingTarget="princess" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="princess" />
+            <movement type="Focus" directive="With" subject="princess" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="12000">
+      <shotFragments>
+        <shotFragment duration="4000">
+          <framings>
+            <framing framingType="Full" framingTarget="dragon" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="dragon" />
+            <movement type="Focus" directive="With" subject="dragon" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="16000">
+      <shotFragments>
+        <shotFragment duration="4000">
+          <framings>
+            <framing framingType="Full" framingTarget="princess" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="princess" />
+            <movement type="Focus" directive="With" subject="princess" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="20000">
+      <shotFragments>
+        <shotFragment duration="4000">
+          <framings>
+            <framing framingType="Full" framingTarget="princess" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="princess" />
+            <movement type="Focus" directive="With" subject="princess" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="24000">
+      <shotFragments>
+        <shotFragment duration="4000">
+          <framings>
+            <framing framingType="Full" framingTarget="dragon" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="dragon" />
+            <movement type="Focus" directive="With" subject="dragon" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="28000">
+      <shotFragments>
+        <shotFragment duration="4000">
+          <framings>
+            <framing framingType="Full" framingTarget="princess" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="princess" />
+            <movement type="Focus" directive="With" subject="princess" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="32000">
+      <shotFragments>
+        <shotFragment duration="4000">
+          <framings>
+            <framing framingType="Full" framingTarget="heroes" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="heroes" />
+            <movement type="Focus" directive="With" subject="heroes" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="36000">
+      <shotFragments>
+        <shotFragment duration="4000">
+          <framings>
+            <framing framingType="Full" framingTarget="heroes" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="heroes" />
+            <movement type="Focus" directive="With" subject="heroes" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="40000">
+      <shotFragments>
+        <shotFragment duration="4000">
+          <framings>
+            <framing framingType="Full" framingTarget="heroes" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="heroes" />
+            <movement type="Focus" directive="With" subject="heroes" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="44000">
+      <shotFragments>
+        <shotFragment duration="4000">
+          <framings>
+            <framing framingType="Full" framingTarget="heroes" />
+          </framings>
+          <movements>
+            <movement type="Dolly" directive="With" subject="heroes" />
+            <movement type="Focus" directive="With" subject="heroes" />
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+  </blocks>
+</cameraPlan>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<cameraPlan xmlns="http://liquidnarrative.csc.ncsu.edu/oshmirto/v0.1">
+  <blocks>
+    <block storyTime="0">
+      <shotFragments>
+        <shotFragment duration="4750"  anchor="1,1" focus="m005" >
+          <angle angleSetting="Medium" target="m005"/>
+          <framings>
+            <framing framingTarget="m005" framingType="Full"/>
+          </framings>
+          <movements>
+            <movement type="Pan" directive="With" subject="m005"/>
+            <movement type="Focus" directive="With" subject="m005"/>
+          </movements>
+        </shotFragment>
+        <shotFragment duration="3000" focus="m005" >
+          <angle angleSetting="Medium" target="m005"/>
+          <direction heading="Left" target="m005"/>
+          <framings>
+            <framing framingTarget="m005" framingType="Full"/>
+          </framings>
+          <movements>
+            <movement type="Pan" directive="With" subject="m005"/>
+            <movement type="Focus" directive="With" subject="m005"/>
+          </movements>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="6250">
+      <shotFragments>
+        <shotFragment duration="4000" focus="m005" f-stop="11">
+          <angle angleSetting="Medium" target="m005"/>
+          <direction heading="Away" target="containment_door"/>
+          <framings>
+            <framing framingTarget="containment_door" framingType="Full"/>
+          </framings>
+          <movements/>
+        </shotFragment>
+      </shotFragments>
+    </block>
+  </blocks>
+</cameraPlan>

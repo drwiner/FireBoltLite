@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<cameraPlan xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://liquidnarrative.csc.ncsu.edu/oshmirto/v0.1">
+  <blocks>
+    <block storyTime="11854">
+      <shotFragments>
+        <shotFragment duration="68">
+          <framings>
+            <framing framingType="Full" framingTarget="Pudge" />
+          </framings>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="11610">
+      <shotFragments>
+        <shotFragment duration="66">
+          <framings>
+            <framing framingType="Full" framingTarget="Pudge" />
+          </framings>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="11380">
+      <shotFragments>
+        <shotFragment duration="112">
+          <framings>
+            <framing framingType="Full" framingTarget="Pudge" />
+          </framings>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="11316">
+      <shotFragments>
+        <shotFragment duration="36">
+          <framings>
+            <framing framingType="Full" framingTarget="Pudge" />
+          </framings>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="11082">
+      <shotFragments>
+        <shotFragment duration="8">
+          <framings>
+            <framing framingType="Full" framingTarget="Pudge" />
+          </framings>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="9908">
+      <shotFragments>
+        <shotFragment duration="50">
+          <framings>
+            <framing framingType="Full" framingTarget="Pudge" />
+          </framings>
+        </shotFragment>
+      </shotFragments>
+    </block>
+    <block storyTime="11090">
+      <shotFragments>
+        <shotFragment duration="22">
+          <framings>
+            <framing framingType="Full" framingTarget="Pudge" />
+          </framings>
+        </shotFragment>
+      </shotFragments>
+    </block>
+  </blocks>
+</cameraPlan>

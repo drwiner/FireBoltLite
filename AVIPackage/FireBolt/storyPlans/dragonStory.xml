@@ -1,0 +1,1731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<story xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="dragon dragon 0" xmlns="http://liquidnarrative.csc.ncsu.edu/impulse/v1.336">
+  <objects name="O">
+    <set name="food">
+      <constant value="mushrooms" />
+    </set>
+    <set name="person">
+      <constant value="princess" />
+      <constant value="king" />
+    </set>
+    <set name="lair">
+      <constant value="cave" />
+    </set>
+    <set name="hero">
+      <constant value="heroes" />
+    </set>
+    <set name="monster">
+      <constant value="dragon" />
+    </set>
+    <set name="object" />
+    <set name="place">
+      <constant value="forest" />
+      <constant value="castle" />
+      <constant value="cabin" />
+      <constant value="foreign-land" />
+    </set>
+    <constant value="forest" />
+    <constant value="princess" />
+    <constant value="king" />
+    <constant value="dragon" />
+    <constant value="heroes" />
+    <constant value="castle" />
+    <constant value="cabin" />
+    <constant value="foreign-land" />
+    <constant value="cave" />
+    <constant value="mushrooms" />
+  </objects>
+  <action-types name="Actions">
+    <action-type name="has-from">
+      <action-type-ref name="go" />
+      <action-type-ref name="drag-off" />
+      <action-type-ref name="return-for-reward" />
+    </action-type>
+    <action-type name="has-to">
+      <action-type-ref name="go" />
+      <action-type-ref name="drag-off" />
+      <action-type-ref name="return-for-reward" />
+    </action-type>
+    <action-type name="has-rotation">
+      <action-type-ref name="go" />
+      <action-type-ref name="drag-off" />
+      <action-type-ref name="return-for-reward" />
+    </action-type>
+    <action-type name="has-person">
+      <action-type-ref name="search" />
+      <action-type-ref name="eat" />
+      <action-type-ref name="go" />
+      <action-type-ref name="enjoy-ones-self" />
+      <action-type-ref name="get-hungry" />
+      <action-type-ref name="lose-track-of-time" />
+      <action-type-ref name="stay-too-long" />
+    </action-type>
+    <action-type name="has-obj">
+      <action-type-ref name="search" />
+      <action-type-ref name="eat" />
+    </action-type>
+    <action-type name="has-loc">
+      <action-type-ref name="search" />
+      <action-type-ref name="eat" />
+    </action-type>
+    <action-type name="has-place">
+      <action-type-ref name="stay-too-long" />
+      <action-type-ref name="kidnap" />
+      <action-type-ref name="fight" />
+      <action-type-ref name="rescue" />
+      <action-type-ref name="hear-of-rescue" />
+      <action-type-ref name="reward" />
+    </action-type>
+    <action-type name="has-kidnapper">
+      <action-type-ref name="drag-off" />
+      <action-type-ref name="kidnap" />
+      <action-type-ref name="scream" />
+      <action-type-ref name="fight" />
+      <action-type-ref name="rescue" />
+    </action-type>
+    <action-type name="has-victim">
+      <action-type-ref name="drag-off" />
+      <action-type-ref name="kidnap" />
+      <action-type-ref name="scream" />
+      <action-type-ref name="rescue" />
+      <action-type-ref name="return-for-reward" />
+      <action-type-ref name="hear-of-rescue" />
+    </action-type>
+    <action-type name="has-rescuer">
+      <action-type-ref name="fight" />
+      <action-type-ref name="rescue" />
+      <action-type-ref name="return-for-reward" />
+      <action-type-ref name="hear-of-rescue" />
+    </action-type>
+    <action-type name="search" />
+    <action-type name="eat" />
+    <action-type name="go" />
+    <action-type name="enjoy-ones-self" />
+    <action-type name="get-hungry" />
+    <action-type name="lose-track-of-time" />
+    <action-type name="stay-too-long" />
+    <action-type name="drag-off" />
+    <action-type name="kidnap" />
+    <action-type name="scream" />
+    <action-type name="fight" />
+    <action-type name="rescue" />
+    <action-type name="return-for-reward" />
+    <action-type name="hear-of-rescue" />
+    <action-type name="reward" />
+  </action-types>
+  <action-properties>
+    <action-property name="from" action="has-from" range="coordinate2d" />
+    <action-property name="to" action="has-to" range="coordinate2d" />
+    <action-property name="rotation" action="has-rotation" range="y-degrees" />
+    <action-property name="person" action="has-person" range="person" />
+    <action-property name="obj" action="has-obj" range="object" />
+    <action-property name="loc" action="has-loc" range="place" />
+    <action-property name="place" action="has-place" range="place" />
+    <action-property name="kidnapper" action="has-kidnapper" range="monster" />
+    <action-property name="victim" action="has-victim" range="person" />
+    <action-property name="rescuer" action="has-rescuer" range="hero" />
+    <action-property name="watcher" action="stay-too-long" range="monster" />
+    <action-property name="hearer" action="scream" range="hero" />
+    <action-property name="father" action="hear-of-rescue" range="person" />
+    <action-property name="giver" action="reward" range="person" />
+    <action-property name="taker" action="reward" range="person" />
+  </action-properties>
+  <actions>
+    <action type="go" name="go_1">
+      <property name="person" value="princess" />
+      <property name="from" value="(10, 100)" />
+      <property name="to" value="(10, 0)" />
+      <property name="rotation" value="180" />
+      <property name="time" value="4000-8000" />
+    </action>
+    <action type="get-hungry" name="get-hungry_5">
+      <property name="person" value="dragon" />
+      <property name="time" value="8000-12000" />
+    </action>
+    <action type="go" name="go_6">
+      <property name="person" value="dragon" />
+      <property name="from" value="(100, 90)" />
+      <property name="to" value="(-1.83690953073357E-15, -10)" />
+      <property name="rotation" value="225" />
+      <property name="time" value="12000-16000" />
+    </action>
+    <action type="get-hungry" name="get-hungry_15">
+      <property name="person" value="princess" />
+      <property name="time" value="16000-20000" />
+    </action>
+    <action type="search" name="search_2">
+      <property name="person" value="princess" />
+      <property name="obj" value="mushrooms" />
+      <property name="loc" value="forest" />
+      <property name="time" value="20000-24000" />
+    </action>
+    <action type="drag-off" name="drag-off_7">
+      <property name="kidnapper" value="dragon" />
+      <property name="victim" value="princess" />
+      <property name="from" value="(10, 0)" />
+      <property name="to" value="(110, 100)" />
+      <property name="rotation" value="45" />
+      <property name="time" value="24000-28000" />
+    </action>
+    <action type="scream" name="scream_10">
+      <property name="victim" value="princess" />
+      <property name="hearer" value="heroes" />
+      <property name="kidnapper" value="dragon" />
+      <property name="time" value="28000-32000" />
+    </action>
+    <action type="go" name="go_11">
+      <property name="person" value="heroes" />
+      <property name="from" value="(50, 60)" />
+      <property name="to" value="(100, 110)" />
+      <property name="rotation" value="45" />
+      <property name="time" value="32000-36000" />
+    </action>
+    <action type="fight" name="fight_12">
+      <property name="rescuer" value="heroes" />
+      <property name="kidnapper" value="dragon" />
+      <property name="place" value="cave" />
+      <property name="time" value="36000-40000" />
+    </action>
+    <action type="rescue" name="rescue_13">
+      <property name="rescuer" value="heroes" />
+      <property name="kidnapper" value="dragon" />
+      <property name="victim" value="princess" />
+      <property name="place" value="cave" />
+      <property name="time" value="40000-44000" />
+    </action>
+    <action type="return-for-reward" name="return-for-reward_14">
+      <property name="rescuer" value="heroes" />
+      <property name="victim" value="princess" />
+      <property name="from" value="(110, 100)" />
+      <property name="to" value="(10, 100)" />
+      <property name="rotation" value="-90" />
+      <property name="time" value="44000-48000" />
+    </action>
+  </actions>
+  <sentences>
+    <forall variable="s" set="search">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <and>
+              <predicate name="at">
+                <function name="person" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="loc" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="pre1" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+              <predicate name="at">
+                <function name="obj" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="loc" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="pre2" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="has">
+              <function name="person" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="obj" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="pre3" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+        </and>
+        <and>
+          <predicate name="has">
+            <function name="person" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="obj" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff1" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+          <predicate name="distracted">
+            <function name="person" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff2" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+        </and>
+      </implies>
+    </forall>
+    <forall variable="s" set="eat">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <and>
+              <and>
+                <and>
+                  <predicate name="at">
+                    <function name="person" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="loc" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="pre1" temporal="false">
+                      <variable name="s" />
+                    </function>
+                  </predicate>
+                  <predicate name="at">
+                    <function name="obj" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="loc" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="pre2" temporal="false">
+                      <variable name="s" />
+                    </function>
+                  </predicate>
+                </and>
+                <predicate name="has">
+                  <function name="person" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="obj" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="pre3" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="hungry">
+                <function name="person" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="pre4" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="dead">
+              <function name="person" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="pre5" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+        </and>
+        <predicate name="hungry">
+          <function name="person" temporal="false">
+            <variable name="s" />
+          </function>
+          <function name="eff1" temporal="false">
+            <variable name="s" />
+          </function>
+        </predicate>
+      </implies>
+    </forall>
+    <forall variable="s" set="go">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <and>
+              <and>
+                <predicate name="=" temporal="false">
+                  <function name="from" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="to" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+                <predicate name="at">
+                  <function name="person" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="from" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="pre1" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="bound">
+                <function name="person" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="pre2" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <or>
+              <predicate name="dangerous" temporal="false">
+                <function name="to" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+              <predicate name="weak" temporal="false">
+                <function name="person" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </or>
+          </and>
+        </and>
+        <and>
+          <predicate name="at">
+            <function name="person" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="from" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff1" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+          <predicate name="at">
+            <function name="person" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="to" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff2" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+        </and>
+      </implies>
+    </forall>
+    <forall variable="s" set="enjoy-ones-self">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <predicate name="at">
+            <function name="person" temporal="false">
+              <variable name="s" />
+            </function>
+            <constant value="forest" />
+            <function name="pre1" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+        </and>
+        <predicate name="enjoying-self">
+          <function name="person" temporal="false">
+            <variable name="s" />
+          </function>
+          <function name="eff1" temporal="false">
+            <variable name="s" />
+          </function>
+        </predicate>
+      </implies>
+    </forall>
+    <forall variable="s" set="get-hungry">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <predicate name="hungry">
+            <function name="person" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="pre1" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+        </and>
+        <and>
+          <predicate name="hungry">
+            <function name="person" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff1" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+          <I>
+            <function name="person" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff2" temporal="false">
+              <variable name="s" />
+            </function>
+            <predicate name="hungry">
+              <function name="person" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff3" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </I>
+        </and>
+      </implies>
+    </forall>
+    <forall variable="s" set="lose-track-of-time">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <predicate name="enjoying-self">
+            <function name="person" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="pre1" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+        </and>
+        <predicate name="distracted">
+          <function name="person" temporal="false">
+            <variable name="s" />
+          </function>
+          <function name="eff1" temporal="false">
+            <variable name="s" />
+          </function>
+        </predicate>
+      </implies>
+    </forall>
+    <forall variable="s" set="stay-too-long">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <predicate name="distracted">
+              <function name="person" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="pre1" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+            <predicate name="at">
+              <function name="person" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="place" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="pre2" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+        </and>
+        <and>
+          <I>
+            <function name="watcher" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff1" temporal="false">
+              <variable name="s" />
+            </function>
+            <predicate name="kidnapped">
+              <function name="person" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="watcher" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff2" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </I>
+          <I>
+            <function name="watcher" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff3" temporal="false">
+              <variable name="s" />
+            </function>
+            <predicate name="at">
+              <function name="watcher" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="place" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff4" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </I>
+        </and>
+      </implies>
+    </forall>
+    <forall variable="s" set="drag-off">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <and>
+              <and>
+                <predicate name="at">
+                  <function name="victim" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="from" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="pre1" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+                <predicate name="at">
+                  <function name="kidnapper" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="from" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="pre2" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="distracted">
+                <function name="victim" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="pre3" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="=" temporal="false">
+              <function name="kidnapper" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+        </and>
+        <and>
+          <and>
+            <and>
+              <and>
+                <and>
+                  <and>
+                    <and>
+                      <predicate name="at">
+                        <function name="kidnapper" temporal="false">
+                          <variable name="s" />
+                        </function>
+                        <function name="to" temporal="false">
+                          <variable name="s" />
+                        </function>
+                        <function name="eff1" temporal="false">
+                          <variable name="s" />
+                        </function>
+                      </predicate>
+                      <predicate name="at">
+                        <function name="victim" temporal="false">
+                          <variable name="s" />
+                        </function>
+                        <function name="to" temporal="false">
+                          <variable name="s" />
+                        </function>
+                        <function name="eff2" temporal="false">
+                          <variable name="s" />
+                        </function>
+                      </predicate>
+                    </and>
+                    <predicate name="at">
+                      <function name="kidnapper" temporal="false">
+                        <variable name="s" />
+                      </function>
+                      <function name="from" temporal="false">
+                        <variable name="s" />
+                      </function>
+                      <function name="eff3" temporal="false">
+                        <variable name="s" />
+                      </function>
+                    </predicate>
+                  </and>
+                  <predicate name="at">
+                    <function name="victim" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="from" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="eff4" temporal="false">
+                      <variable name="s" />
+                    </function>
+                  </predicate>
+                </and>
+                <predicate name="enjoying-self">
+                  <function name="victim" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="eff5" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="distracted">
+                <function name="victim" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="eff6" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="kidnapped">
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="kidnapper" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff7" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+          <predicate name="bound">
+            <function name="victim" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff8" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+        </and>
+      </implies>
+    </forall>
+    <forall variable="s" set="kidnap">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <and>
+              <and>
+                <predicate name="weak" temporal="false">
+                  <function name="victim" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+                <predicate name="at">
+                  <function name="kidnapper" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="place" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="pre1" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="at">
+                <function name="victim" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="place" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="pre2" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="=" temporal="false">
+              <function name="kidnapper" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+        </and>
+        <and>
+          <and>
+            <predicate name="kidnapped">
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="kidnapper" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff1" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+            <predicate name="bound">
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff2" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+          <I>
+            <function name="victim" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff3" temporal="false">
+              <variable name="s" />
+            </function>
+            <predicate name="kidnapped">
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="kidnapper" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff4" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </I>
+        </and>
+      </implies>
+    </forall>
+    <forall variable="s" set="scream">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <and>
+              <and>
+                <predicate name="kidnapped">
+                  <function name="victim" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="kidnapper" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="pre1" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+                <predicate name="=" temporal="false">
+                  <function name="victim" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="kidnapper" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="=" temporal="false">
+                <function name="victim" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="hearer" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="=" temporal="false">
+              <function name="kidnapper" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="hearer" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+        </and>
+        <and>
+          <I>
+            <function name="hearer" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff1" temporal="false">
+              <variable name="s" />
+            </function>
+            <predicate name="kidnapped">
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="kidnapper" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff2" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </I>
+          <predicate name="intends-rescue">
+            <function name="hearer" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="victim" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff3" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+        </and>
+      </implies>
+    </forall>
+    <forall variable="s" set="fight">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <and>
+              <and>
+                <predicate name="at">
+                  <function name="rescuer" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="place" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="pre1" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+                <predicate name="at">
+                  <function name="kidnapper" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="place" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="pre2" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="=" temporal="false">
+                <function name="rescuer" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="kidnapper" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="weak" temporal="false">
+              <function name="rescuer" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+        </and>
+        <predicate name="dead">
+          <function name="kidnapper" temporal="false">
+            <variable name="s" />
+          </function>
+          <function name="eff1" temporal="false">
+            <variable name="s" />
+          </function>
+        </predicate>
+      </implies>
+    </forall>
+    <forall variable="s" set="rescue">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <and>
+              <and>
+                <and>
+                  <and>
+                    <predicate name="kidnapped">
+                      <function name="victim" temporal="false">
+                        <variable name="s" />
+                      </function>
+                      <function name="kidnapper" temporal="false">
+                        <variable name="s" />
+                      </function>
+                      <function name="pre1" temporal="false">
+                        <variable name="s" />
+                      </function>
+                    </predicate>
+                    <predicate name="dead">
+                      <function name="kidnapper" temporal="false">
+                        <variable name="s" />
+                      </function>
+                      <function name="pre2" temporal="false">
+                        <variable name="s" />
+                      </function>
+                    </predicate>
+                  </and>
+                  <predicate name="at">
+                    <function name="rescuer" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="place" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="pre3" temporal="false">
+                      <variable name="s" />
+                    </function>
+                  </predicate>
+                </and>
+                <predicate name="intends-rescue">
+                  <function name="rescuer" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="victim" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="pre4" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="at">
+                <function name="victim" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="place" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="pre5" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="=" temporal="false">
+              <function name="rescuer" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+        </and>
+        <and>
+          <and>
+            <and>
+              <predicate name="kidnapped">
+                <function name="victim" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="kidnapper" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="eff1" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+              <predicate name="indebted-to">
+                <function name="victim" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="rescuer" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="eff2" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <I>
+              <function name="rescuer" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff3" temporal="false">
+                <variable name="s" />
+              </function>
+              <predicate name="at-home">
+                <function name="victim" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="eff4" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </I>
+          </and>
+          <predicate name="bound">
+            <function name="victim" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff5" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+        </and>
+      </implies>
+    </forall>
+    <forall variable="s" set="return-for-reward">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <and>
+              <and>
+                <and>
+                  <predicate name="at">
+                    <function name="rescuer" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="from" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="pre1" temporal="false">
+                      <variable name="s" />
+                    </function>
+                  </predicate>
+                  <predicate name="at">
+                    <function name="victim" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="from" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="pre2" temporal="false">
+                      <variable name="s" />
+                    </function>
+                  </predicate>
+                </and>
+                <predicate name="=" temporal="false">
+                  <function name="victim" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="rescuer" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="home">
+                <function name="victim" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="to" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="pre3" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="bound">
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="pre4" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+        </and>
+        <and>
+          <and>
+            <and>
+              <and>
+                <and>
+                  <predicate name="at">
+                    <function name="rescuer" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="from" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="eff1" temporal="false">
+                      <variable name="s" />
+                    </function>
+                  </predicate>
+                  <predicate name="at">
+                    <function name="victim" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="from" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="eff2" temporal="false">
+                      <variable name="s" />
+                    </function>
+                  </predicate>
+                </and>
+                <predicate name="at">
+                  <function name="rescuer" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="to" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="eff3" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="at">
+                <function name="victim" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="to" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="eff4" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="at-home">
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff5" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+          <predicate name="rich">
+            <function name="rescuer" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff6" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+        </and>
+      </implies>
+    </forall>
+    <forall variable="s" set="hear-of-rescue">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <and>
+              <and>
+                <and>
+                  <and>
+                    <and>
+                      <and>
+                        <and>
+                          <predicate name="=" temporal="false">
+                            <function name="rescuer" temporal="false">
+                              <variable name="s" />
+                            </function>
+                            <function name="father" temporal="false">
+                              <variable name="s" />
+                            </function>
+                          </predicate>
+                          <predicate name="=" temporal="false">
+                            <function name="rescuer" temporal="false">
+                              <variable name="s" />
+                            </function>
+                            <function name="victim" temporal="false">
+                              <variable name="s" />
+                            </function>
+                          </predicate>
+                        </and>
+                        <predicate name="=" temporal="false">
+                          <function name="father" temporal="false">
+                            <variable name="s" />
+                          </function>
+                          <function name="victim" temporal="false">
+                            <variable name="s" />
+                          </function>
+                        </predicate>
+                      </and>
+                      <predicate name="indebted-to">
+                        <function name="victim" temporal="false">
+                          <variable name="s" />
+                        </function>
+                        <function name="rescuer" temporal="false">
+                          <variable name="s" />
+                        </function>
+                        <function name="pre1" temporal="false">
+                          <variable name="s" />
+                        </function>
+                      </predicate>
+                    </and>
+                    <predicate name="at">
+                      <function name="victim" temporal="false">
+                        <variable name="s" />
+                      </function>
+                      <function name="place" temporal="false">
+                        <variable name="s" />
+                      </function>
+                      <function name="pre2" temporal="false">
+                        <variable name="s" />
+                      </function>
+                    </predicate>
+                  </and>
+                  <predicate name="at">
+                    <function name="father" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="place" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="pre3" temporal="false">
+                      <variable name="s" />
+                    </function>
+                  </predicate>
+                </and>
+                <predicate name="at">
+                  <function name="rescuer" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="place" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="pre4" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="at-home">
+                <function name="victim" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="pre5" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="parent-of" temporal="false">
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="father" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+        </and>
+        <and>
+          <and>
+            <predicate name="indebted-to">
+              <function name="victim" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="rescuer" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff1" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+            <predicate name="indebted-to">
+              <function name="father" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="rescuer" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff2" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+          <I>
+            <function name="father" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff3" temporal="false">
+              <variable name="s" />
+            </function>
+            <predicate name="indebted-to">
+              <function name="father" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="rescuer" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="eff4" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </I>
+        </and>
+      </implies>
+    </forall>
+    <forall variable="s" set="reward">
+      <implies>
+        <and>
+          <predicate name="occurs" temporal="false">
+            <variable name="s" />
+          </predicate>
+          <and>
+            <and>
+              <and>
+                <and>
+                  <predicate name="=" temporal="false">
+                    <function name="giver" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="taker" temporal="false">
+                      <variable name="s" />
+                    </function>
+                  </predicate>
+                  <predicate name="rich">
+                    <function name="giver" temporal="false">
+                      <variable name="s" />
+                    </function>
+                    <function name="pre1" temporal="false">
+                      <variable name="s" />
+                    </function>
+                  </predicate>
+                </and>
+                <predicate name="indebted-to">
+                  <function name="giver" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="taker" temporal="false">
+                    <variable name="s" />
+                  </function>
+                  <function name="pre2" temporal="false">
+                    <variable name="s" />
+                  </function>
+                </predicate>
+              </and>
+              <predicate name="at">
+                <function name="giver" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="place" temporal="false">
+                  <variable name="s" />
+                </function>
+                <function name="pre3" temporal="false">
+                  <variable name="s" />
+                </function>
+              </predicate>
+            </and>
+            <predicate name="at">
+              <function name="taker" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="place" temporal="false">
+                <variable name="s" />
+              </function>
+              <function name="pre4" temporal="false">
+                <variable name="s" />
+              </function>
+            </predicate>
+          </and>
+        </and>
+        <and>
+          <predicate name="rich">
+            <function name="taker" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff1" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+          <predicate name="indebted-to">
+            <function name="giver" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="taker" temporal="false">
+              <variable name="s" />
+            </function>
+            <function name="eff2" temporal="false">
+              <variable name="s" />
+            </function>
+          </predicate>
+        </and>
+      </implies>
+    </forall>
+    <predicate name="at">
+      <constant value="princess" />
+      <constant value="(10, 100)" />
+      <constant value="0-8000" />
+    </predicate>
+    <predicate name="weak" temporal="false">
+      <constant value="princess" />
+    </predicate>
+    <predicate name="at">
+      <constant value="dragon" />
+      <constant value="(100, 90)" />
+      <constant value="0-16000" />
+    </predicate>
+    <predicate name="at">
+      <constant value="heroes" />
+      <constant value="(50, 60)" />
+      <constant value="0-36000" />
+    </predicate>
+    <predicate name="at">
+      <constant value="mushrooms" />
+      <constant value="(10, 0)" />
+      <constant value="0-52000" />
+    </predicate>
+    <predicate name="at">
+      <constant value="forest" />
+      <constant value="(20, 10)" />
+      <constant value="0-52000" />
+    </predicate>
+    <predicate name="at">
+      <constant value="foreign-land" />
+      <constant value="(110, 0)" />
+      <constant value="0-52000" />
+    </predicate>
+    <predicate name="at">
+      <constant value="castle" />
+      <constant value="(30, 120)" />
+      <constant value="0-52000" />
+    </predicate>
+    <predicate name="at">
+      <constant value="cabin" />
+      <constant value="(60, 50)" />
+      <constant value="0-52000" />
+    </predicate>
+    <predicate name="at">
+      <constant value="cave" />
+      <constant value="(130, 120)" />
+      <constant value="0-52000" />
+    </predicate>
+    <predicate name="home">
+      <constant value="princess" />
+      <constant value="castle" />
+      <constant value="0-52000" />
+    </predicate>
+    <predicate name="dangerous" temporal="false">
+      <constant value="cave" />
+    </predicate>
+    <I>
+      <constant value="princess" />
+      <constant value="0-52000" />
+      <predicate name="at">
+        <constant value="princess" />
+        <constant value="(10, 0)" />
+        <constant value="0-52000" />
+      </predicate>
+    </I>
+    <not>
+      <predicate name="at">
+        <constant value="princess" />
+        <constant value="(10, 100)" />
+        <constant value="8000-48000" />
+      </predicate>
+    </not>
+    <predicate name="at">
+      <constant value="princess" />
+      <constant value="(10, 0)" />
+      <constant value="8000-28000" />
+    </predicate>
+    <predicate name="hungry">
+      <constant value="dragon" />
+      <constant value="12000-52000" />
+    </predicate>
+    <I>
+      <constant value="dragon" />
+      <constant value="12000-52000" />
+      <predicate name="hungry">
+        <constant value="dragon" />
+        <constant value="12000-52000" />
+      </predicate>
+    </I>
+    <not>
+      <predicate name="at">
+        <constant value="dragon" />
+        <constant value="(100, 90)" />
+        <constant value="16000-28000" />
+      </predicate>
+    </not>
+    <predicate name="at">
+      <constant value="dragon" />
+      <constant value="(-1.83690953073357E-15, -10)" />
+      <constant value="16000-28000" />
+    </predicate>
+    <predicate name="hungry">
+      <constant value="princess" />
+      <constant value="20000-52000" />
+    </predicate>
+    <I>
+      <constant value="princess" />
+      <constant value="20000-52000" />
+      <predicate name="hungry">
+        <constant value="princess" />
+        <constant value="20000-52000" />
+      </predicate>
+    </I>
+    <predicate name="has">
+      <constant value="princess" />
+      <constant value="mushrooms" />
+      <constant value="24000-52000" />
+    </predicate>
+    <predicate name="distracted">
+      <constant value="princess" />
+      <constant value="24000-28000" />
+    </predicate>
+    <predicate name="at">
+      <constant value="dragon" />
+      <constant value="(100, 90)" />
+      <constant value="28000-52000" />
+    </predicate>
+    <predicate name="at">
+      <constant value="princess" />
+      <constant value="(110, 100)" />
+      <constant value="28000-48000" />
+    </predicate>
+    <not>
+      <predicate name="at">
+        <constant value="dragon" />
+        <constant value="(-1.83690953073357E-15, -10)" />
+        <constant value="28000-52000" />
+      </predicate>
+    </not>
+    <not>
+      <predicate name="at">
+        <constant value="princess" />
+        <constant value="(10, 0)" />
+        <constant value="28000-52000" />
+      </predicate>
+    </not>
+    <not>
+      <predicate name="enjoying-self">
+        <constant value="princess" />
+        <constant value="28000-52000" />
+      </predicate>
+    </not>
+    <not>
+      <predicate name="distracted">
+        <constant value="princess" />
+        <constant value="28000-52000" />
+      </predicate>
+    </not>
+    <predicate name="kidnapped">
+      <constant value="princess" />
+      <constant value="dragon" />
+      <constant value="28000-44000" />
+    </predicate>
+    <predicate name="bound">
+      <constant value="princess" />
+      <constant value="28000-44000" />
+    </predicate>
+    <I>
+      <constant value="heroes" />
+      <constant value="32000-52000" />
+      <predicate name="kidnapped">
+        <constant value="princess" />
+        <constant value="dragon" />
+        <constant value="32000-52000" />
+      </predicate>
+    </I>
+    <predicate name="intends-rescue">
+      <constant value="heroes" />
+      <constant value="princess" />
+      <constant value="32000-52000" />
+    </predicate>
+    <not>
+      <predicate name="at">
+        <constant value="heroes" />
+        <constant value="(50, 60)" />
+        <constant value="36000-52000" />
+      </predicate>
+    </not>
+    <predicate name="at">
+      <constant value="heroes" />
+      <constant value="(100, 110)" />
+      <constant value="36000-48000" />
+    </predicate>
+    <predicate name="dead">
+      <constant value="dragon" />
+      <constant value="40000-52000" />
+    </predicate>
+    <not>
+      <predicate name="kidnapped">
+        <constant value="princess" />
+        <constant value="dragon" />
+        <constant value="44000-52000" />
+      </predicate>
+    </not>
+    <predicate name="indebted-to">
+      <constant value="princess" />
+      <constant value="heroes" />
+      <constant value="44000-52000" />
+    </predicate>
+    <I>
+      <constant value="heroes" />
+      <constant value="44000-52000" />
+      <predicate name="at-home">
+        <constant value="princess" />
+        <constant value="44000-52000" />
+      </predicate>
+    </I>
+    <not>
+      <predicate name="bound">
+        <constant value="princess" />
+        <constant value="44000-52000" />
+      </predicate>
+    </not>
+    <not>
+      <predicate name="at">
+        <constant value="heroes" />
+        <constant value="(100, 110)" />
+        <constant value="48000-52000" />
+      </predicate>
+    </not>
+    <not>
+      <predicate name="at">
+        <constant value="princess" />
+        <constant value="(110, 100)" />
+        <constant value="48000-52000" />
+      </predicate>
+    </not>
+    <predicate name="at">
+      <constant value="heroes" />
+      <constant value="(6.12303176911189E-16, 110)" />
+      <constant value="48000-52000" />
+    </predicate>
+    <predicate name="at">
+      <constant value="princess" />
+      <constant value="(10, 100)" />
+      <constant value="48000-52000" />
+    </predicate>
+    <predicate name="at-home">
+      <constant value="princess" />
+      <constant value="48000-52000" />
+    </predicate>
+    <predicate name="rich">
+      <constant value="heroes" />
+      <constant value="48000-52000" />
+    </predicate>
+  </sentences>
+</story>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<story name="000000000" xmlns="http://liquidnarrative.csc.ncsu.edu/impulse/v1.336">
+  <actions>
+    <action type="create" name="step1">
+      <property name="position" value="(1.901042,0,6.09375)" />
+      <property name="end-angle" value="0" />
+      <property name="time" value="0-1" />
+      <property name="actor" value="pudge" />
+    </action>
+    <action type="walk" name="step2">
+      <property name="origin" value="(1.901042,0,6.09375)" />
+      <property name="destination" value="(1.979167,0, -5.104168)" />
+      <property name="end-angle" value="-170.9605" />
+      <property name="time" value="2-2800" />
+      <property name="actor" value="pudge" />
+    </action>
+    <action type="idle" name="step3">
+      <property name="time" value="2800-60000" />
+      <property name="actor" value="pudge" />
+    </action>
+    <action type="create" name="step4">
+      <property name="position" value="(3.776042,0,1.640624)" />
+      <property name="end-angle" value="203.3742" />
+      <property name="time" value="0-1" />
+      <property name="actor" value="crate" />
+    </action>
+	<action type="whipTo" name="step6">
+      <property name="start" value="pudge"/>      
+	  <property name="finish" value = "crate"/>
+      <property name="time" value="7000-10000"/>
+    </action>
+	<action type="idle" name="step5">
+      <property name="time" value="1-60000" />
+      <property name="actor" value="crate" />
+    </action>
+	</actions>
+    <action-types>
+   <action-type name="Actions">
+      <action-type-ref name="move" />
+      <action-type-ref name="walk" />
+      <action-type-ref name="run" />
+      <action-type-ref name="idle" />
+      <action-type-ref name="create" />
+      <action-type-ref name="remove" />
+      <action-type-ref name="attack" />
+	  <action-type-ref name="whipTo" />
+    </action-type>
+    <action-type name="has-position">
+      <action-type-ref name="create" />
+    </action-type>
+    <action-type name="has-origin">
+      <action-type-ref name="move" />
+      <action-type-ref name="walk" />
+      <action-type-ref name="run" />
+    </action-type>
+    <action-type name="has-destination">
+      <action-type-ref name="move" />
+      <action-type-ref name="walk" />
+      <action-type-ref name="run" />
+    </action-type>
+    <action-type name="has-end-angle">
+      <action-type-ref name="move" />
+      <action-type-ref name="walk" />
+      <action-type-ref name="run" />
+      <action-type-ref name="create" />
+    </action-type>
+		<action-type name="move" />
+		<action-type name="walk" />
+		<action-type name="run" />
+		<action-type name="idle" />
+		<action-type name="create" />
+		<action-type name="remove" />
+		<action-type name="attack" />
+		<action-type name="whipTo"/>
+	</action-types>
+  <action-properties>
+    <action-property name="actor" action="Actions" range="A" />
+    <action-property name="time" action="Actions" range="T" />
+    <action-property name="position" action="has-position" range="coordinate3d" />
+    <action-property name="origin" action="has-origin" range="coordinate3d" />
+    <action-property name="destination" action="has-destination" range="coordinate3d" />
+    <action-property name="end-angle" action="has-end-angle" range="y-degrees" />
+	<action-property name="start" action="whipTo" range="A"/>
+	<action-property name="finish" action="whipTo" range="A"/>
+  </action-properties>
+  <objects>
+    <set name="A">
+      <constant value="pudge" />
+      <constant value="skywrath_mage" />
+      <constant value="crate" />
+      <constant value="fire_extinguisher" />
+    </set>
+  </objects>
+  <sentences />
+</story>

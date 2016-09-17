@@ -1,0 +1,211 @@
+<cinematicModel xmlns="http://liquidnarrative.csc.ncsu.edu/cinematicModel/v0.1" millisPerTick="1" domainDistancePerEngineDistance="1">
+<!--<cinematicModel xmlns="http://liquidnarrative.csc.ncsu.edu/cinematicModel/v0.1" millisPerTick="33" domainDistancePerEngineDistance="80">-->
+  <smartModelSettings maxActorSearchDepth="2" maxAnimationSearchDepth="2" />
+  <terrain location="(0,0,0)" terrainFileName="defaultTerrain.prefab"/>
+  <!-- animation search depth should generally be at least as deep as actor search depth-->
+  <domainActions>
+	<domainAction name="fight" >
+      <params>
+        <param name="rescuer" />
+      </params>
+      <animateActions>
+        <animateAction name="fight" actorNameParamName="rescuer"/>
+      </animateActions>
+      <createActions/>
+      <destroyActions/>
+      <rotateActions/>
+      <translateActions/>
+    </domainAction>
+	<domainAction name="scream" >
+      <params>
+        <param name="victim" />
+      </params>
+      <animateActions>
+        <animateAction name="scream" actorNameParamName="victim"/>
+      </animateActions>
+      <createActions/>
+      <destroyActions/>
+      <rotateActions/>
+      <translateActions/>
+    </domainAction>
+    <domainAction name="eat" >
+      <params>
+        <param name="person" />
+        <param name="obj" />
+      </params>
+      <animateActions>
+        <animateAction name="eat" actorNameParamName="person" effector="true" />
+      </animateActions>
+      <createActions/>
+      <destroyActions>
+        <destroyAction actorNameParamName="obj" effectorOffsetIndexName="eaten" />
+      </destroyActions>
+      <rotateActions/>
+      <translateActions/>
+    </domainAction>
+  <domainAction name="drag-off" >
+      <params>
+        <param name="kidnapper" />
+		<param name="victim" />
+		<param name="to" />
+		<param name="from" />
+		<param name="rotation" />
+      </params>
+      <animateActions>
+        <animateAction name="drag" actorNameParamName="kidnapper"/>
+		<animateAction name="dragged-off" actorNameParamName="victim"/>
+      </animateActions>
+      <createActions/>
+      <destroyActions/>
+      <rotateActions>
+		<rotateAction actorNameParamName="kidnapper" destinationParamName="rotation" maxDuration="1"/>
+        <rotateAction actorNameParamName="victim" destinationParamName="rotation" maxDuration="1"/>
+	  </rotateActions>
+    <translateActions>
+      <translateAction actorNameParamName="kidnapper" destinationParamName="to" originParamName="from"/>
+      <translateAction actorNameParamName="victim" destinationParamName="to" originParamName="from"/>
+    </translateActions>
+  </domainAction>
+	<domainAction name="search" >
+      <params>
+        <param name="person" />
+      </params>
+      <animateActions>
+        <animateAction name="search" actorNameParamName="person"/>
+      </animateActions>
+      <createActions/>
+      <destroyActions/>
+      <rotateActions/>
+      <translateActions/>
+    </domainAction>
+	<domainAction name="get-hungry" >
+      <params>
+        <param name="person" />
+      </params>
+      <animateActions>
+        <animateAction name="hungry" actorNameParamName="person"/>
+      </animateActions>
+      <createActions/>
+      <destroyActions/>
+      <rotateActions/>
+      <translateActions/>
+    </domainAction>
+    <domainAction name="go" >
+      <params>
+        <param name="person" />
+        <param name="to" />
+        <param name="from" />
+		<param name="rotation" />
+      </params>
+      <createActions/>
+      <destroyActions/>
+      <translateActions>
+        <translateAction  actorNameParamName="person" destinationParamName="to" originParamName="from"/>
+      </translateActions>
+      <animateActions>
+        <animateAction  name="walk" actorNameParamName="person" effector="false"/>
+      </animateActions>
+      <rotateActions>
+		<rotateAction actorNameParamName="person" destinationParamName="rotation" maxDuration="1"/>
+	  </rotateActions>
+    </domainAction>  
+	<domainAction name="return-for-reward" >
+      <params>
+        <param name="rescuer" />
+        <param name="to" />
+        <param name="from" />
+		<param name="rotation" />
+      </params>
+      <createActions/>
+      <destroyActions/>
+      <translateActions>
+        <translateAction  actorNameParamName="rescuer" destinationParamName="to" originParamName="from"/>
+      </translateActions>
+      <animateActions>
+        <animateAction  name="return" actorNameParamName="rescuer" effector="false"/>
+      </animateActions>
+      <rotateActions>
+		<rotateAction actorNameParamName="rescuer" destinationParamName="rotation" maxDuration="1"/>
+	  </rotateActions>
+    </domainAction> 
+  </domainActions>
+  <actors>
+    <actor name="dragon" model="Insurgent.prefab" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="walk" loopAnimation="true" />
+		<animationMapping animateActionName="hungry" animationName="hungry" loopAnimation="true" />
+		<animationMapping animateActionName="drag" animationName="drag" loopAnimation="false" />
+		<animationMapping animateActionName="fight" animationName="fight" loopAnimation="false" />
+		<animationMapping animateActionName="eat" animationName="eat" loopAnimation="false" />
+      </animationMappings>
+    </actor>
+	<actor name="heroes" model="Soldier.prefab" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="walk" loopAnimation="true" />
+		<animationMapping animateActionName="return" animationName="walk" loopAnimation="true" />
+		<animationMapping animateActionName="fight" animationName="fight" loopAnimation="false" />
+      </animationMappings>
+    </actor>
+	<actor name="king" model="GrandMother.prefab" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="walk" loopAnimation="true" />
+      </animationMappings>
+    </actor>
+	<actor name="princess" model="Boy.prefab" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="walk" loopAnimation="true" />
+		<animationMapping animateActionName="hungry" animationName="hungry" loopAnimation="true" />
+		<animationMapping animateActionName="search" animationName="search" loopAnimation="true" />
+		<animationMapping animateActionName="eat" animationName="eat" loopAnimation="true" />
+		<animationMapping animateActionName="scream" animationName="scream" loopAnimation="true" />
+        <animationMapping animateActionName="dragged-off" animationName="scream" loopAnimation="true" />
+      </animationMappings>
+    </actor>
+	
+	
+	<actor name="forest" model="DesertHouse.prefab" >
+		<animationMappings/>
+	</actor>
+	<actor name="castle" model="Embassy.prefab" >
+		<animationMappings/>
+	</actor>
+	<actor name="cabin" model="DesertHouse.prefab" >
+		<animationMappings/>
+	</actor>
+	<actor name="foreign-land" model="DesertHouse.prefab" >
+		<animationMappings/>
+	</actor>
+	<actor name="cave" model="DesertHouse.prefab" >
+		<animationMappings/>
+	</actor>
+	<actor name="mushrooms" model="Pie.prefab" >
+		<animationMappings/>
+	</actor>
+  </actors>
+  
+  <animations>
+    <animation fileName="Walk.fbx" name="walk">
+      <animationIndices/>
+    </animation>
+	<animation fileName="Boxing.fbx" name="fight">
+      <animationIndices/>
+    </animation>
+	<animation fileName="Hungry.fbx" name="hungry">
+      <animationIndices/>
+    </animation>
+	<animation fileName="Search.fbx" name="search">
+      <animationIndices/>
+    </animation>
+	<animation fileName="Drag.fbx" name="drag">
+      <animationIndices/>
+    </animation>
+	<animation fileName="EatSandwich.fbx" name="eat">
+    <animationIndices>
+      <animationIndex name="eaten" timeOffset="600"/>
+    </animationIndices>
+    </animation>
+	<animation fileName="Scared.fbx" name="scream">
+      <animationIndices/>
+    </animation>
+  </animations>
+</cinematicModel>

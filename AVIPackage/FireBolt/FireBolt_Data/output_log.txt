@@ -1,0 +1,323 @@
+Initialize engine version: 5.1.1f1 (2046fc06d4d8)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 680 (ID=0x1180)
+    Vendor:   NVIDIA
+    VRAM:     1994 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\CinematicModel.dll (this message is harmless)
+Loading C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\CinematicModel.dll into Unity Child Domain
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\Impulse.dll (this message is harmless)
+Loading C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\Impulse.dll into Unity Child Domain
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\Impulse.XmlSerializers.dll (this message is harmless)
+Loading C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\Impulse.XmlSerializers.dll into Unity Child Domain
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\LN.Planning.dll (this message is harmless)
+Loading C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\LN.Planning.dll into Unity Child Domain
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\LN.Utilities.dll (this message is harmless)
+Loading C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\LN.Utilities.dll into Unity Child Domain
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\Oshmirto.dll (this message is harmless)
+Loading C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\Oshmirto.dll into Unity Child Domain
+- Completed reload, in  0.038 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 2560x1440 59Hz; virtual: 5120x1440 at 0,0
+<RI> Initialized touch support.
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\System.dll (this message is harmless)
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1715)
+
+reload keyframes[True]
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 38e0 -> priority: 1 
+  Thread -> id: 18e8 -> priority: 1 
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\System.Xml.dll (this message is harmless)
+begin story plan xml load
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\System.Configuration.dll (this message is harmless)
+end story plan xml load
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Platform assembly: C:\Users\Justus\Desktop\AVIPackage\FireBolt\FireBolt_Data\Managed\System.Runtime.Serialization.dll (this message is harmless)
+begin story plan parse
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+end story plan parse
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+loading story plan[storyPlans/defaultStory.xml] @ [14:06:20.25].  last read [14:06:19.76]
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+loading cinematic model[cinematicModels/defaultModel.xml] @ [14:06:20.28].  last read [14:06:20.25]
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+loading actors bundle[AssetBundles/actorsandanimations] @ [14:06:20.28].  last read [14:06:20.25]
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+loading terrain bundle[AssetBundles/terrain] @ [14:06:20.28].  last read [14:06:20.25]
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+building init state creation actions
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+upstream components reloaded, rebuilding actor action queue @ [14:06:20.35].
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+upstream components reloaded, rebuilding camera action queue @ [14:06:20.36].
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 20
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+init create model[pudge_model.fbx] for actor [Pudge]
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+init shot fragment start[0] end[0] anchor[] height[] lens[] fStop[] framing[(Pudge,Full)] direction[(Pudge,Toward)] angle[(Pudge,Medium)] focus[] d:s[20:20]
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+framing target[Pudge] bounds[-0.1041772,1.604177]
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 250
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 583.3333
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 500
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+set story time[0] 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Undo create
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+rewind to 0: Create Pudge
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+rewind to 0: Assets.scripts.SetStoryTime
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+rewind to 1: Assets.scripts.Shake
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 584.3771
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+init create model[pudge_model.fbx] for actor [Pudge]
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 750
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 830.1803
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 1000
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 1076.93
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 1250
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 1328.536
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 1500
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 1578.97
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 1750
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 1822.316
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 2000
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 2082.095
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 2250
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 2328.771
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 2500
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 2612.45
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 2750
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 2821.928
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 3000
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 3068.167
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 3250
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 3317.004
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 3500
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 3568.162
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 3750
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 3817.654
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 4000
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 4069.884
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+translate [Pudge] from [(-2.0, 0.0, 10.0)] to [(-2,_,9)]
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 4250
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 4325.134
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 4500
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 4579.614
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 4750
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 4823.2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto discourse 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+set story time[0] 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+goto story 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Undo create
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+rewind to 0: Create Pudge
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+rewind to 0: Assets.scripts.SetStoryTime
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+rewind to 0: Assets.scripts.ShotFragmentInit
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+

@@ -1,0 +1,273 @@
+<cinematicModel xmlns="http://liquidnarrative.csc.ncsu.edu/cinematicModel/v0.1" millisPerTick="1" domainDistancePerEngineDistance="1">
+<!--<cinematicModel xmlns="http://liquidnarrative.csc.ncsu.edu/cinematicModel/v0.1" millisPerTick="33" domainDistancePerEngineDistance="80">-->
+  <smartModelSettings maxActorSearchDepth="2" maxAnimationSearchDepth="2" />
+  <!-- animation search depth should generally be at least as deep as actor search depth-->
+  <domainActions>
+    <domainAction name="spawn-creep" >
+      <params>
+        <param name="actor" />
+        <param name="position" />
+      </params>      
+      <createActions>
+        <createAction actorNameParamName="actor" originParamName="position" />
+      </createActions>
+      <destroyActions/>
+      <rotateActions/>
+      <translateActions/>
+      <animateActions/>
+    </domainAction>
+    <domainAction name="die" >
+      <params>
+        <param name="actor" />
+      </params>
+      <createActions/>
+      <rotateActions/>
+      <translateActions/>
+      <destroyActions>
+        <destroyAction actorNameParamName="actor" effectorOffsetIndexName="onTheGround"/>
+      </destroyActions>
+      <animateActions>
+        <animateAction name="die" actorNameParamName="actor" effector="true"/>
+      </animateActions>
+    </domainAction>
+    <domainAction name="buy-item" >
+      <params>
+        <param name="actor" />
+      </params>
+      <animateActions>
+        <animateAction name="buy-item1" actorNameParamName="actor"/>
+      </animateActions>
+      <createActions/>
+      <destroyActions/>
+      <rotateActions/>
+      <translateActions/>
+    </domainAction>
+    <domainAction name="idle" >
+      <params>
+        <param name="actor" />
+      </params>
+      <animateActions>
+        <animateAction name="idle" actorNameParamName="actor"/>
+      </animateActions>
+      <createActions/>
+      <destroyActions/>
+      <rotateActions/>
+      <translateActions/>
+    </domainAction>
+    <domainAction name="spawn-hero" >
+      <params>
+        <param name="actor" />
+        <param name="location" />
+      </params>
+      <createActions>
+        <createAction actorNameParamName="actor" originParamName="location" />
+      </createActions>
+      <destroyActions/>
+      <rotateActions/>
+      <translateActions/>
+      <animateActions/>
+    </domainAction>
+    <domainAction name="move" >
+      <params>
+        <param name="actor" />
+        <param name="destination" />
+        <param name="origin" />
+      </params>
+      <createActions/>
+      <destroyActions/>
+      <translateActions>
+        <translateAction  actorNameParamName="actor" destinationParamName="destination" originParamName="origin"/>
+      </translateActions>
+      <animateActions>
+        <animateAction  name="walk" actorNameParamName="actor" effector="false"/>
+      </animateActions>
+      <rotateActions/>
+    </domainAction>
+    <domainAction name="rotate">
+      <params>
+        <param name="actor" />
+        <param name="end-angle" />
+      </params>
+      <createActions/>
+      <destroyActions/>
+      <translateActions/>
+      <rotateActions>
+        <rotateAction actorNameParamName="actor" destinationParamName="end-angle" maxDuration="400"/>
+      </rotateActions>
+      <animateActions/>
+    </domainAction>   
+  </domainActions>
+  <actors>
+    <actor name="secretAgentMan" model="m005.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="observe" animationName="idle" loopAnimation="true" />
+        <animationMapping animateActionName="walk" animationName="cm_walk" loopAnimation="true" />
+      </animationMappings>
+    </actor>
+    <actor name="Pudge" model="pudge_model.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="sneak" animationName="sneak" loopAnimation="true" />
+        <animationMapping animateActionName="walk" animationName="walk" loopAnimation="true" />
+        <animationMapping animateActionName="buy-item1" animationName="verticalSwipe" loopAnimation="true" />
+        <animationMapping animateActionName="idle" animationName="idle" loopAnimation="true" />
+      </animationMappings>
+    </actor>
+
+
+    <actor name="Mirana" model="Heroes/mirana/mirana_model.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="mirana_walk" loopAnimation="true" />
+      </animationMappings>
+    </actor>
+
+    <actor name="Crystal Maiden" model="Heroes/crystal_maiden/crystal_maiden_model.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="cm_walk" loopAnimation="true" />
+        <animationMapping animateActionName="die" animationName="cm_die" loopAnimation="false" />
+      </animationMappings>
+    </actor>
+    <actor name="Skywrath Mage" model="Heroes/skywrath_mage/skywrath_mage_model.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="swm_walk" loopAnimation="true" />
+      </animationMappings>
+    </actor>
+
+    <actor name="Wisp" model="m005.fbx" >
+      <animationMappings/>
+    </actor>
+
+    <actor name="Dazzle" model="m005.fbx" >
+      <animationMappings/>
+    </actor>
+
+    <actor name="Legion Commander" model="m005.fbx" >
+      <animationMappings/>
+    </actor>
+
+    <actor name="Mirana" model="m005.fbx" >
+      <animationMappings/>
+    </actor>
+
+    <actor name="Ancient Apparition" model="m005.fbx" >
+      <animationMappings/>
+    </actor>
+
+    <actor name="Morphling" model="m005.fbx" >
+      <animationMappings/>
+    </actor>
+    <actor name="Ember Spirit" model="m005.fbx" >
+      <animationMappings/>
+    </actor>
+
+    <!--<actor name="GoodGuysRanged" model="Heroes/crystal_maiden/crystal_maiden_model.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="swm_walk" loopAnimation="true" />
+        <animationMapping animateActionName="die" animationName="swm_die" loopAnimation="false" />
+      </animationMappings>
+    </actor>-->
+
+    <actor name="Couriers" model="m005.fbx">
+      <animationMappings/>
+    </actor>
+    <actor name="Creeps" model="m005.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="swm_walk" loopAnimation="true" />
+        <animationMapping animateActionName="die" animationName="swm_die" loopAnimation="false" />
+      </animationMappings>
+    </actor>
+
+    <actor name="Buildings" model="m005.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="swm_walk" loopAnimation="true" />
+      </animationMappings>
+    </actor>
+
+    <actor name="npc_dota_creep_badguys_melee" model="Non-heroes/creep_bad_melee/creep_bad_melee_model.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="bad_melee_walk" loopAnimation="true" />
+        <animationMapping animateActionName="die" animationName="swm_die" loopAnimation="false" />
+      </animationMappings>
+    </actor>
+    <actor name="npc_dota_creep_goodguys_melee" model="Non-heroes/creep_good_melee/creep_good_melee_model.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="good_melee_walk" loopAnimation="true" />
+        <animationMapping animateActionName="die" animationName="die" loopAnimation="false" />
+      </animationMappings>
+    </actor>
+    <actor name="npc_dota_creep_badguys_ranged" model="Non-heroes/creep_bad_ranged/creep_bad_ranged_model.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="die" animationName="die" loopAnimation="false" />
+        <animationMapping animateActionName="walk" animationName="bad_ranged_walk" loopAnimation="true" />
+      </animationMappings>
+    </actor>
+    <actor name="npc_dota_creep_goodguys_ranged" model="Non-heroes/creep_good_ranged/creep_good_ranged_model.fbx" >
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="good_ranged_walk" loopAnimation="true" />
+        <animationMapping animateActionName="die" animationName="die" loopAnimation="false" />
+      </animationMappings>
+    </actor>
+
+    <actor name="radiant_observer_ward" model="Non-heroes/ward/ward_model.fbx" >
+      <animationMappings/>
+    </actor>
+
+    <actor name="Steve Holt" model="Heroes/crystal_maiden/crystal_maiden_model.fbx">
+      <animationMappings>
+        <animationMapping animateActionName="walk" animationName="pudge_walk" loopAnimation="true"/>
+      </animationMappings>
+    </actor>
+  </actors>
+  
+  <animations>
+    <animation fileName="crystal_maiden_die.fbx" name="cm_die">
+      <animationIndices/>
+    </animation>
+    <animation fileName="mirana_walk.fbx" name="mirana_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="crystal_maiden_walk.fbx" name="cm_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="skywrath_mage_walk.fbx" name="swm_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_good_melee_walk.fbx" name="good_melee_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_bad_melee_walk.fbx" name="bad_melee_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_bad_ranged_walk.fbx" name="bad_ranged_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="creep_good_ranged_walk.fbx" name="good_ranged_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="Pudge_attack1.fbx" name="verticalSwipe">
+      <animationIndices>
+        <animationIndex name="maxY" timeOffset="150"/>
+        <animationIndex name="minY" timeOffset="170"/>
+      </animationIndices>
+    </animation>
+    <animation fileName="humanoid_sneak.fbx" name="sneak">
+      <animationIndices>
+        <animationIndex name="sneakAWhile" timeOffset ="2200"/>
+        <animationIndex name="sneakAWhileMore" timeOffset ="2220"/>
+      </animationIndices>
+    </animation>
+    <animation fileName="humanoid_dying.fbx" name="die">
+      <animationIndices>
+        <animationIndex name="onTheGround" timeOffset ="3125"/>
+      </animationIndices>
+    </animation>
+    <animation fileName="Pudge_walk.fbx" name="walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="Pudge_walk.fbx" name="pudge_walk">
+      <animationIndices/>
+    </animation>
+    <animation fileName="humanoid_idle.fbx" name="idle">
+      <animationIndices/>
+    </animation>
+  </animations>
+</cinematicModel>

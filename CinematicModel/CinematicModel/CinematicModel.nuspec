@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>CinematicModel</id>
+    <version>1.0.0.0</version>
+    <title>Cinematic Model</title>
+    <authors>Liquid Narrative Group</authors>
+    <description>Cinematic Model Representation and Serialization</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <dependencies>
+      <dependency id="LN.Utilities" version="0.1.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="CinematicModel.xsd" target="tools" />
+    
+    <file src="bin\Release\CinematicModel.dll" target="lib\net35" />
+    <file src="bin\Release\CinematicModel.XmlSerializers.dll" target="lib\net35" />
+    <file src="bin\Release\CinematicModel.xml" target="lib\net35" />
+    
+    <file src="bin\Unity Release\CinematicModel.dll" target="lib\net35-Unity Full v3.5" />
+    <file src="bin\Unity Release\CinematicModel.XmlSerializers.dll" target="lib\net35-Unity Full v3.5" />
+    <file src="bin\Unity Release\CinematicModel.xml" target="lib\net35-Unity Full v3.5" />
+    
+    <file src="bin\Release .NET 4.5\CinematicModel.dll" target="lib\net45" />
+    <file src="bin\Release .NET 4.5\CinematicModel.XmlSerializers.dll" target="lib\net45" />
+    <file src="bin\Release .NET 4.5\CinematicModel.xml" target="lib\net45" />
+  </files>
+</package>

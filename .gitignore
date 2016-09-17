@@ -17,6 +17,10 @@ FireBoltUnity/*.booproj
 
 AVIPackage/
 AssetBundleBuilder/
+FireBoltUnity/CSharp60Support/
+Status/
+CinematicModel/
+Oshmirto/
 
 #===============================
 #AssetBundleBuilder Unity Project stuff

@@ -147,5 +147,10 @@ namespace Assets.scripts
             }
             targetOrientation.Y = yOrientation;
         }
+
+        public override string GetMainActorName()
+        {
+            return actorName;
+        }
     }
 }

@@ -29,6 +29,14 @@ namespace Assets.scripts
             {"1.4",0}, {"2",1}, {"2.8",2}, {"4",3}, {"5.6",4}, {"8",5}, {"11",6}, {"16",7}, {"22",8}
         };
 
+        /// <summary>
+        /// angle measures are in degrees
+        /// </summary>
+        public static Dictionary<AngleSetting, float> angles = new Dictionary<AngleSetting, float>()
+        {
+            {AngleSetting.High, 30}, {AngleSetting.Medium, 0}, {AngleSetting.Low, -30}
+        };
+
         public static void CreateActions(Story<UintV, UintT, IIntervalSet<UintV, UintT>> story, CM.CinematicModel cinematicModel, string cameraPlanPath, 
                                                      out CameraActionList cameraActionList, out FireBoltActionList discourseActionList)
         {

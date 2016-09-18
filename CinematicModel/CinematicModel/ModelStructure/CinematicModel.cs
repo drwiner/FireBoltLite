@@ -11,17 +11,82 @@ namespace CinematicModel
         private Dictionary<string, Actor> actors;
         private Dictionary<string, Animation> animations;
 
+        private float domainDistancePerEngineDistanceX;
+        private float domainDistancePerEngineDistanceY;
+        private float domainDistancePerEngineDistanceZ;
+
         public CinematicModel()
         {
             actors = new Dictionary<string, Actor>();
             animations = new Dictionary<string, Animation>();
+            domainDistancePerEngineDistanceX = 1f;
+            domainDistancePerEngineDistanceY = 1f;
+            domainDistancePerEngineDistanceZ = 1f;
         }
 
         [XmlAttribute("millisPerTick")]
         public uint MillisPerTick { get; set; }
 
-        [XmlAttribute("domainDistancePerEngineDistance")]
-        public float DomainDistancePerEngineDistance { get; set; }
+        [XmlAttribute("domainDistancePerEngineDistance")] 
+        public string DomainDistancePerEngineDistanceString
+        {
+            get
+            {
+                return string.Format("{0},{1},{2}", domainDistancePerEngineDistanceX,
+                                                    domainDistancePerEngineDistanceY,
+                                                    domainDistancePerEngineDistanceZ);
+            }
+            set
+            {
+                string[] dimensions = value.Split(new char[] { ',' });
+                float parsed;
+                if (float.TryParse(dimensions[0], out parsed))
+                {
+                    domainDistancePerEngineDistanceX = parsed;
+                }
+                if (float.TryParse(dimensions[1], out parsed))
+                {
+                    domainDistancePerEngineDistanceY = parsed;
+                }
+                if (float.TryParse(dimensions[2], out parsed))
+                {
+                    domainDistancePerEngineDistanceZ = parsed;
+                }
+            }
+        }
+
+        /// <summary>
+        /// x,z plane is floor/terrain
+        /// </summary>
+        public float DomainDistancePerEngineDistanceX
+        {
+            get
+            {
+                return domainDistancePerEngineDistanceX;
+            }
+        }
+
+        /// <summary>
+        /// vertical
+        /// </summary>
+        public float DomainDistancePerEngineDistanceY
+        {
+            get
+            {
+                return domainDistancePerEngineDistanceY;
+            }
+        }
+
+        /// <summary>
+        /// x,z plane is floor/terrain
+        /// </summary>
+        public float DomainDistancePerEngineDistanceZ
+        {
+            get
+            {
+                return domainDistancePerEngineDistanceZ;
+            }
+        }
 
         [XmlElement("smartModelSettings")]
         public SmartModelSettings SmartModelSettings { get; set; }

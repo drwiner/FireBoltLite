@@ -32,6 +32,7 @@ namespace Assets.scripts
         public virtual void Undo() { }
         public virtual void Skip() { }
 
+        public abstract string GetMainActorName();
 
         /// <summary>
         /// finds requested actor and sets it active

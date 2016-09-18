@@ -129,7 +129,7 @@
 
   </domainActions>
   <actors>
-    <actor name="cowboy" model="cowboy.prefab" pointOfInterest="-1">
+    <actor name="cowboy" model="cowboy.prefab" pointOfInterest="2.5">
       <animationMappings>
         <animationMapping animateActionName="walk" animationName="cowboy_walk" loopAnimation="false" />
         <animationMapping animateActionName="idle" animationName="cowboy_idle" loopAnimation="true" />

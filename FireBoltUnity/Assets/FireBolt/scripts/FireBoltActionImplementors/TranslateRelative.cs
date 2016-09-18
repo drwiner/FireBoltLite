@@ -74,5 +74,19 @@ namespace Assets.scripts
         {
 
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0} translate with {1}", actorName, trackedActorName);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>tracked actorname.  camera oriented</returns>
+        public override string GetMainActorName()
+        {
+            return trackedActorName;
+        }
     }
 }

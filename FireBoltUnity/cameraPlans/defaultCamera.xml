@@ -17,68 +17,22 @@
 	
 	<block storyTime="2000">
       <shotFragments>
-        <shotFragment duration="6000" focus="cowboy" f-stop="5.6" lens="25mm" shake="0">
-          <framings>
-			<framing framingType="Full" framingTarget="cowboy" />
-		  </framings>
-		  <direction heading="Right" target="cowboy"/> 
-          <movements >
-            <movement type="Dolly" directive="With" subject="cowboy"/>
-          </movements>
-        </shotFragment>
-      </shotFragments>
-    </block>
-	
-	<block storyTime="8000">
-      <shotFragments>
-        <shotFragment height = "2" duration="3000" lens = "28mm" f-stop="f5.6" focus="cowboy" >
-          <framings>
-			<framing framingType="CloseUp" framingTarget="cowboy" />
-		  </framings>
-
-        </shotFragment>
-      </shotFragments>
-    </block>
-	<!-- note to self: for closeup - only worked when I took away angle and manually set height -->
-	
-
-	
-	<block storyTime="1000">
-      <shotFragments>
-        <shotFragment height = "2" anchor = "12, 12" duration="3300" lens = "28mm" f-stop="f5.6" focus="cowboy" >
+        <shotFragment duration="6000" focus="cowboy" >
+		<direction heading="Left" target="cowboy"/>
 		
           <framings>
 			<framing framingType="Waist" framingTarget="cowboy" />
 		  </framings>
 		  
-		  <movements >
-            <movement type="Pan" directive="With" subject="cowboy"/>
+          <movements >
+            <movement type="Dolly" directive="With" subject="cowboy"/>
           </movements>
 		  
-		  <!-- <direction heading="Right" target="cowboy"/> -->
-
         </shotFragment>
       </shotFragments>
     </block>
 	
-	<!-- holster shot -->
-	<block storyTime="1000">
-      <shotFragments>
-        <shotFragment height = "1"  duration="4000" lens = "28mm" f-stop="f5.6" focus="cowboy" >
-		
-          <framings>
-			<framing framingType="ExtremeCloseUp" framingTarget="cowboy" />
-		  </framings>
-		  
-		  <movements >
-            <movement type="Pan" directive="With" subject="cowboy"/>
-          </movements>
-		  
-		  <direction heading="Right" target="cowboy"/> 
 
-        </shotFragment>
-      </shotFragments>
-    </block>
 	
   </blocks>
 </cameraPlan>

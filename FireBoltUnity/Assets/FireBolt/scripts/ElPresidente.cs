@@ -111,29 +111,6 @@ public class ElPresidente : MonoBehaviour {
         return lensIndex;
     }
 
-    /// <summary>
-    /// wrapper for default args Init to use from UI button as default args methods are not visible in UI click event assignment in inspector
-    /// </summary>
-    /// <param name="a"></param>
-    [Obsolete("write your own script to interact with Init(InputSet, uint?, bool, bool")]
-    public void Init(float a)
-    {
-        Init(null, null, true);
-    }
-
-    /// <summary>
-    /// re Initialize using default paths and only reloading files when 
-    /// they are updated
-    /// </summary>
-    /// <param name="generateKeyframes">toggles keyframe generation.  
-    /// Keyframe generation runs the entire story through and may take 
-    /// a large amount of time to initialize.</param>
-    [Obsolete("write your own script to interact with Init(InputSet, uint?, bool, bool")]
-    public void Init(bool generateKeyframes)
-    {
-        Debug.Log(string.Format("reload keyframes[{0}]",generateKeyframes));
-        Init(null, null, false, generateKeyframes);
-    }
 
     /// <summary>
     /// Use this method to start FireBolt.
@@ -150,7 +127,6 @@ public class ElPresidente : MonoBehaviour {
     {
         this.timeUpdateIncrement = timeUpdateIncrement;
         this.implicitActorCreation = implicitActorCreation;
-
 
         //if we didn't get handed one, generate an input set with the default paths
         if (newInputSet == null) 

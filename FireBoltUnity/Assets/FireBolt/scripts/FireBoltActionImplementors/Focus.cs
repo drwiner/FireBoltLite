@@ -99,5 +99,10 @@ namespace Assets.scripts
             //nothing to stop
         }
 
+        public override string GetMainActorName()
+        {
+            return targetName;
+        }
+
     }
 }

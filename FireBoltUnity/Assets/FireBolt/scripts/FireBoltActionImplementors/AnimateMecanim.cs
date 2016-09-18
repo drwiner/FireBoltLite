@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using CM = CinematicModel;
 using UnityEditor;
+using System.Collections.Generic;
 
 namespace Assets.scripts
 {
@@ -20,6 +20,8 @@ namespace Assets.scripts
         private static readonly string animationToOverride = "_87_a_U1_M_P_idle_Neutral__Fb_p0_No_1";
         private static readonly string stateToOverride = "state";
         bool assignEndState = false;
+
+        private static Dictionary<string, AnimationClip> cachedAnimationClips = new Dictionary<string, AnimationClip>();
 
         public static bool ValidForConstruction(string actorName, CM.Animation animation)
         {
@@ -54,6 +56,8 @@ namespace Assets.scripts
             }
 
             if (!findAnimations()) return false;
+            animation.wrapMode = loop ? WrapMode.Loop : WrapMode.Once;
+
             //get the actor this animate action is supposed to affect
             if(actor == null &&
                !getActorByName(actorName, out actor))
@@ -68,7 +72,7 @@ namespace Assets.scripts
             {
                 animator = actor.AddComponent<Animator>();
             }
-            animator.applyRootMotion = false;
+            
 
             //find or make an override controller
             if (animator.runtimeAnimatorController is AnimatorOverrideController)
@@ -83,6 +87,7 @@ namespace Assets.scripts
             }
 
             assignAnimations();
+            animator.applyRootMotion = false;
             return true;
         }
 
@@ -95,28 +100,45 @@ namespace Assets.scripts
 
         private bool findAnimations()
         {
-            //find animations
-            animation = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/FireBolt/Resources/Animations/" + animName) as AnimationClip;
-            if (animation == null)
+            AnimationClip animationClip;
+            if (!lookupAnimation(animName, out animationClip))
             {
-                Debug.LogError(string.Format("unable to find animation [{0}] in animations folder", animName));
                 return false;
             }
-            animation.wrapMode = loop ? WrapMode.Loop : WrapMode.Once;
-            
-         
 
+            animation = animationClip;
+
+            AnimationClip stateClip;
             if (!string.IsNullOrEmpty(stateName))
             {
-                assignEndState = true;
-                state = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/FireBolt/Resources/Animations/" + stateName);
-                //state = ElPresidente.Instance.GetActiveAssetBundle().LoadAsset<AnimationClip>(stateName);
-                if (state == null)
+                if (!lookupAnimation(stateName, out stateClip))
                 {
-                    Debug.LogError(string.Format("unable to find animation [{0}] in animations folder", stateName));
-                    if (state == null) return false;
+                    return false;
                 }
+                state = stateClip;
             }
+            return true;
+        }
+
+        private bool lookupAnimation(string animationName, out AnimationClip clip)
+        {
+            clip = null;
+            if (cachedAnimationClips.ContainsKey(animationName))
+            {
+                clip = cachedAnimationClips[animationName];
+            }
+            else
+            {
+                clip = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/FireBolt/Resources/Animations/" + animName) as AnimationClip;
+                if (clip == null)
+                {
+                    Debug.LogError(string.Format("unable to find animation [{0}] in animations folder", animationName));
+                    return false;
+                }
+
+                cachedAnimationClips.Add(animationName, clip);
+            }
+            
             return true;
         }
 
@@ -126,7 +148,12 @@ namespace Assets.scripts
 
         public override void Skip()
         {
-            animator.SetTrigger(stopTriggerHash);
+            //animator.SetTrigger(stopTriggerHash);
+        }
+
+        public override string GetMainActorName()
+        {
+            return actorName;
         }
 
         public override void Execute(float currentTime) 
@@ -138,7 +165,12 @@ namespace Assets.scripts
 
         public override void Stop()
         {
-            animator.SetTrigger(stopTriggerHash);
+           // animator.SetTrigger(stopTriggerHash);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("animate {0} with {1}", actorName, animName);
         }
     }
 }

@@ -51,11 +51,23 @@ namespace Assets.scripts
             return false;
         }
 
+        public static void RenderColliders()
+        {
+            foreach (GameObject obj in UnityEngine.Object.FindObjectsOfType(typeof(GameObject)))
+            {
+                BoxCollider collider = obj.GetComponent<BoxCollider>();
+                if (collider != null)
+                {
+                    collider.bounds.BuildDebugBox(5, Color.green);
+                }
+            }
+        }
+
         /// <summary>
         /// gives a pretty cyan box at the bounds...only in scene view as it's a debug thinger
         /// </summary>
         /// <param name="bounds"></param>
-        public static void BuildDebugBox(this Bounds bounds)
+        public static void BuildDebugBox(this Bounds bounds, float duration, Color color)
         {
             //add some debugging box for the area we think we are framing
             Vector3 center = bounds.center;
@@ -101,29 +113,28 @@ namespace Assets.scripts
             return radians * 180/Mathf.PI;
         }
 
-        public static Vector3 ToVector3(this Impulse.v_1_336.Constants.Coordinate2D from)
+        public static Vector3 ToVector3(this Impulse.v_1_336.Constants.Coordinate2D from,
+                                         float domainToEngineX, float domainToEngineY, float domainToEngineZ)
         {
-            return new Vector3((float)from.X, 0, (float)from.Y);
+            return new Vector3((float)(from.X / domainToEngineX), 0, (float)(from.Y / domainToEngineZ));
         }
 
-        public static Vector3 ToVector3(this Impulse.v_1_336.Constants.Coordinate2D from, float domainToEngine)
+        public static Vector3Nullable ToVector3Nullable(this Impulse.v_1_336.Constants.Coordinate2D from,
+                                                        float domainToEngineX, float domainToEngineY, float domainToEngineZ)
         {
-            return new Vector3((float)from.X, 0, (float)from.Y)*1/domainToEngine;
+            return new Vector3Nullable((float)(from.X / domainToEngineX), null, (float)(from.Y / domainToEngineZ));
         }
 
-        public static Vector3Nullable ToVector3Nullable(this Impulse.v_1_336.Constants.Coordinate2D from, float domainToEngine)
+        public static Vector3Nullable ToVector3Nullable(this Impulse.v_1_336.Constants.Coordinate3D from,
+                                                        float domainToEngineX, float domainToEngineY, float domainToEngineZ)
         {
-            return new Vector3Nullable((float)from.X * 1 / domainToEngine, null, (float)from.Y * 1 / domainToEngine);
+            return new Vector3Nullable((float)(from.X / domainToEngineX), (float)(from.Y / domainToEngineY), (float)(from.Z / domainToEngineZ));
         }
 
-        public static Vector3Nullable ToVector3Nullable(this Impulse.v_1_336.Constants.Coordinate3D from, float domainToEngine)
+        public static Vector3 ToVector3(this Impulse.v_1_336.Constants.Coordinate3D from,
+                                        float domainToEngineX, float domainToEngineY, float domainToEngineZ)
         {
-            return new Vector3Nullable((float)from.X * 1 / domainToEngine, (float)from.Y * 1 / domainToEngine, (float)from.Z * 1 / domainToEngine);
-        }
-
-        public static Vector3 ToVector3(this Impulse.v_1_336.Constants.Coordinate3D from, float domainToEngine)
-        {
-            return new Vector3((float)from.X, (float)from.Y, (float)from.Z) * 1 / domainToEngine;
+            return new Vector3((float)(from.X / domainToEngineX), (float)(from.Y / domainToEngineY), (float)(from.Z / domainToEngineZ));
         }
 
         public static float ToMillis(this uint tick, uint millisPerTick)
@@ -149,15 +160,6 @@ namespace Assets.scripts
         {
             float unityDegrees = -sourceDegrees + 90;
             unityDegrees = unityDegrees.BindToSemiCircle();
-            //% 360;
-            //while (unityDegrees > 180)
-            //{
-            //    unityDegrees -= 360;
-            //}
-            //while (unityDegrees < -180)
-            //{
-            //    unityDegrees += 360;
-            //}
             return unityDegrees;
         }
 

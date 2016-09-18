@@ -119,14 +119,17 @@ namespace Assets.scripts
                     //Debug.Log(string.Format("not instantiating actor[{0}] as he does nothing in this impulse", actorName));
                     continue;
                 }
-                string modelFileName;
-                if (!getAbstractActorModelName(actorName, out modelFileName))
+
+                CinematicModelMetaData metaData = new CinematicModelMetaData();
+
+                if (!getActorMetaData(actorName, out metaData))
                 {
-                    Debug.Log(string.Format("cannot auto-create actor[{0}]", actorName));
+                    Debug.Log(String.Format("cannot auto-create actor[{0}]", actorName));
                     continue;
                 }
+
                 Debug.Log(string.Format("building object set based create for actor[{0}]", actorName));
-                Create create = new Create(0, actorName, modelFileName, new Vector3(-10000, 0, -10000), null, true);
+                Create create = new Create(0, actorName, metaData.ModelName, new Vector3(-10000, 0, -10000), metaData, null, true);
                 aaq.Add(create);
                 implicitActorInstantiations.Add(actorName, true);
             }
@@ -230,9 +233,9 @@ namespace Assets.scripts
                         if (storyAction.TryGetProperty(domainActionParameter.Name, out coord))
                         {
                             if (coord.Value.Value is Coordinate2D)
-                                origin = ((Coordinate2D)coord.Value.Value).ToVector3(cm.DomainDistancePerEngineDistance);
+                                origin = ((Coordinate2D)coord.Value.Value).ToVector3(1f,1f,1f);
                             else if (coord.Value.Value is Coordinate3D)
-                                origin = ((Coordinate3D)coord.Value.Value).ToVector3(cm.DomainDistancePerEngineDistance);
+                                origin = ((Coordinate3D)coord.Value.Value).ToVector3(1f, 1f, 1f);
                         }
                         else
                         {
@@ -245,9 +248,9 @@ namespace Assets.scripts
                         if (storyAction.TryGetProperty(domainActionParameter.Name, out coord))
                         {
                             if(coord.Value.Value is Coordinate2D)
-                                destination = ((Coordinate2D)coord.Value.Value).ToVector3Nullable(cm.DomainDistancePerEngineDistance);
+                                destination = ((Coordinate2D)coord.Value.Value).ToVector3Nullable(1f, 1f, 1f);
                             else if (coord.Value.Value is Coordinate3D)
-                                destination = ((Coordinate3D)coord.Value.Value).ToVector3Nullable(cm.DomainDistancePerEngineDistance);                            
+                                destination = ((Coordinate3D)coord.Value.Value).ToVector3Nullable(1f, 1f, 1f);                            
                         }
                         else
                         {
@@ -497,6 +500,53 @@ namespace Assets.scripts
             return false;
         }
 
+        private static float getActorPointOfInterestScalar(string actorName)
+        {
+            CM.Actor actor;
+            if (!cm.TryGetActor(actorName, out actor))
+            {
+                Debug.Log(String.Format("could not find actor [{0}] in cinematic model to retrieve point of interest scalar",
+                               actorName));
+                return 0f;
+            }
+            return actor.PointOfInterest;
+        }
+
+        private static bool getActorMetaData(string actorName, out CinematicModelMetaData metaData)
+        {
+            metaData = new CinematicModelMetaData();
+            metaData.ActorName = actorName;
+            metaData.AbstractActorName = actorName;
+
+            if (getActorModel(actorName, out metaData.ModelName))
+            {
+                metaData.PointOfInterestScalar = getActorPointOfInterestScalar(actorName);
+                return true;
+            }
+
+            int objectSetIndex = 0;
+            int actorHierarchyStepLevel = 1;
+            while (string.IsNullOrEmpty(metaData.ModelName) &&
+                  objectSetIndex < orderedObjectSets.Length &&
+                  actorHierarchyStepLevel <= cm.SmartModelSettings.ActorMaxSearchDepth)
+            {
+                if (story.ObjectSets[orderedObjectSets[objectSetIndex]].
+                        Contains(new ClassConstant<string>(actorName)))
+                {
+                    if (getActorModel(orderedObjectSets[objectSetIndex], out metaData.ModelName))
+                    {
+                        Debug.Log(String.Format("using abstract actor[{0}] for actor[{1}] level[{2}] above exact actor", orderedObjectSets[objectSetIndex], actorName, actorHierarchyStepLevel));
+                        metaData.AbstractActorName = story.ObjectSets[orderedObjectSets[objectSetIndex]].Name;
+                        metaData.PointOfInterestScalar = getActorPointOfInterestScalar(metaData.AbstractActorName);
+                        return true;//quit looking up the hierarchy.  we found a more generic actor
+                    }
+                    actorHierarchyStepLevel++;
+                }
+                objectSetIndex++;
+            }
+            Debug.Log(String.Format("could not find actor def in hierarchy for [{0}]", actorName));
+            return false;//didn't find actor definition.  give up on this create action and move to the next one
+        }
 
         private static bool getAbstractActorModelName(string actorName, out string modelName)
         {
@@ -563,10 +613,10 @@ namespace Assets.scripts
             {
                 float startTick = 0;
                 string actorName = null;
-                string modelName = null;
                 Vector3 destination = new Vector3();
                 Vector3? Orientation = null;
-                float targetDegrees; 
+                float targetDegrees;
+                CinematicModelMetaData metaData = new CinematicModelMetaData();
 
                 foreach (CM.DomainActionParameter domainActionParameter in domainAction.Params)
                 {
@@ -574,8 +624,10 @@ namespace Assets.scripts
                     {
                         if (getActionParameterValue(storyAction, domainActionParameter, out actorName))//actorName is defined, we can look up a model
                         {
-                            if (!getAbstractActorModelName(actorName, out modelName))
+                            if (!getActorMetaData(actorName, out metaData))
+                            {
                                 break; //we failed to find the actor within the hierarchy
+                            }  
                         }
                     }
                     else if (domainActionParameter.Name == ca.OriginParamName)
@@ -583,10 +635,12 @@ namespace Assets.scripts
                         IActionProperty coord;
                         if(storyAction.TryGetProperty(domainActionParameter.Name, out coord))
                         {
-                            if(coord.Value.Value is Coordinate2D)
-                                destination = ((Coordinate2D)coord.Value.Value).ToVector3(cm.DomainDistancePerEngineDistance);
+                            if (coord.Value.Value is Coordinate2D)
+                            {
+                                destination = ((Coordinate2D)coord.Value.Value).ToVector3(1f,1f,1f);
+                            }
                             if (coord.Value.Value is Coordinate3D)
-                                destination = ((Coordinate3D)coord.Value.Value).ToVector3(cm.DomainDistancePerEngineDistance);
+                                destination = ((Coordinate3D)coord.Value.Value).ToVector3(1f,1f,1f);
                         }
                         else
                         {
@@ -609,9 +663,9 @@ namespace Assets.scripts
 
                 }
                 startTick = getStartTick(storyAction, ca, effectingAnimation);                
-                if(Create.ValidForConstruction(actorName,modelName))
+                if(Create.ValidForConstruction(actorName,metaData.ModelName))
                 {
-                    aaq.Add(new Create(startTick, actorName, modelName, destination, Orientation));
+                    aaq.Add(new Create(startTick, actorName, metaData.ModelName, destination, metaData, Orientation));
                 }                
             }
         }

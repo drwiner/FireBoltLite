@@ -75,5 +75,10 @@ namespace Assets.scripts
         public override void Stop()
         {
         }
+
+        public override string GetMainActorName()
+        {
+            return objectName;
+        }
     }
 }

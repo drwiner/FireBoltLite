@@ -57,5 +57,10 @@ namespace Assets.scripts
             Debug.Log(string.Format("set story time[{0}] ", endTick + storyTimeOffset));
             ElPresidente.Instance.goToStoryTime(endTick + storyTimeOffset);
         }
+
+        public override string GetMainActorName()
+        {
+            return string.Empty;
+        }
     }
 }

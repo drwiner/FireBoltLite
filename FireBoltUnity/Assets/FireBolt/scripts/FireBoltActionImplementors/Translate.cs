@@ -11,7 +11,7 @@ namespace Assets.scripts
 {
     public class Translate : FireBoltAction
     {
-        string actorName;
+        protected string actorName;
         protected GameObject actor;
         /// <summary>
         /// intended position of the actor when the interval begins
@@ -99,6 +99,16 @@ namespace Assets.scripts
         public override void Stop()
         {
             //nothing to stop
+        }
+
+        public override string GetMainActorName()
+        {
+            return actorName;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("translate {0} from {1} to {2}", actorName, origin, destination);
         }
     }
 }

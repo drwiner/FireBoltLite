@@ -61,5 +61,10 @@ namespace Assets.scripts
         {
             //intentionally blank
         }
+
+        public override string GetMainActorName()
+        {
+            return string.Empty;
+        }
     }
 }

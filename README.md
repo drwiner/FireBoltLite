@@ -20,4 +20,6 @@ Instructions to get test started:
 
 Instructions to create your own:
 
-1) Look in "Input Set" for which of 3 scripts are being used to drive the story, drive camera, and cinematic model to associate story with specific assets.
+- Look in script "Input Set" for which of 3 XML files are being used to drive the story, drive camera, and cinematic model to associate story with specific assets.
+
+- The story plan is a timeline of domain actions with specific constants. Domain actions are found in the cinematic model. At the bottom of the story plan, the attribute values of story actions are designated their datatypes. The cinematic model also includes which models and what animations to play for each model. The camera plan is the set of camera actions to play at which story time, and for how long. Camera actions - called shot fragments - are contained in blocks. The targets for camera actions are names corresponding to asset models specified in the cinematic model. 

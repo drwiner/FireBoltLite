@@ -9,10 +9,6 @@ public class SliderManager : MonoBehaviour
     //slider we are putting thumbnail over
     private Slider slider;
 
-    // The slider's transform rectangle.
-    private RectTransform sliderRect;
-
-
     // Stores whether initialization has occurred.
     private bool hasInitialized;
 
@@ -31,8 +27,6 @@ public class SliderManager : MonoBehaviour
             return;
         }
 
-        // Get the slider's transform rectangle.
-        sliderRect = slider.GetComponent<RectTransform>();
 
         // Remember that initialization has not occurred.
         hasInitialized = false;

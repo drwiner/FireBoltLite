@@ -37,8 +37,6 @@ public class ElPresidente : MonoBehaviour {
 
     public static ElPresidente Instance;
 
-    private AssetBundle actorsAndAnimations = null;
-    private AssetBundle terrain = null;
     private bool initialized = false;
     private bool initNext = false;
     private bool initTriggered = false;
@@ -47,11 +45,6 @@ public class ElPresidente : MonoBehaviour {
 
     public List<ProCamsLensDataTable.FOVData> lensFovData;
 
-    private bool keyframesGenerated = false;
-    public bool KeyframesGenerated
-    {
-        get { return keyframesGenerated; }
-    }
 
     private CM.CinematicModel cinematicModel = null;
     public CM.CinematicModel CinematicModel { get { return cinematicModel; } }
@@ -65,14 +58,6 @@ public class ElPresidente : MonoBehaviour {
     
     DateTime cinematicModelPlanLastReadTimeStamp = DateTime.Now;
     bool reloadCinematicModel = false;
-
-    DateTime actorsAndAnimationsBundleLastReadTimeStamp = DateTime.Now;
-    bool reloadActorsAndAnimationsBundle = false;
-
-    DateTime terrainBundleLastReadTimeStamp = DateTime.Now;
-    bool reloadTerrainBundle = false;
-
-    bool generateKeyframes = true;
 
     /// <summary>
     /// story time.  controlled by discourse actions
@@ -91,8 +76,6 @@ public class ElPresidente : MonoBehaviour {
 
     //number of milliseconds to advance the story and discourse time on update
     private uint? timeUpdateIncrement;
-    private bool generateVideoFrames;
-    private uint videoFrameNumber;
 
     private bool implicitActorCreation;
 
@@ -163,12 +146,9 @@ public class ElPresidente : MonoBehaviour {
     /// and reloads the whole shebang...almost like you would expect.</param>
     /// <param name="generateKeyframes">optional default false. makes keyframes for display over scrubber.
     /// locks down the UI for some time at startup to execute whole cinematic once all speedy like</param>
-    public void Init(InputSet newInputSet=null, uint? timeUpdateIncrement=null, bool forceFullReload=false, 
-        bool generateKeyframes=false, bool generateVideoFrames=false, bool implicitActorCreation=false)
+    public void Init(InputSet newInputSet=null, uint? timeUpdateIncrement=null, bool forceFullReload=false, bool implicitActorCreation=false)
     {
         this.timeUpdateIncrement = timeUpdateIncrement;
-        this.generateKeyframes = generateKeyframes;
-        this.generateVideoFrames = generateVideoFrames;
         this.implicitActorCreation = implicitActorCreation;
 
 
@@ -244,9 +224,6 @@ public class ElPresidente : MonoBehaviour {
                                      currentInputSet.CinematicModelPath, DateTime.Now.ToString(timestampFormat), storyPlanLastReadTimeStamp.ToString(timestampFormat)));
             cinematicModelPlanLastReadTimeStamp = DateTime.Now;
         }
-
-        if (actorsAndAnimations != null )
-            actorsAndAnimations.Unload(true);
 
 
         if (reloadStoryPlan || reloadCinematicModel)
@@ -384,36 +361,6 @@ public class ElPresidente : MonoBehaviour {
         executingDiscourseActions.ExecuteList(ElPresidente.currentDiscourseTime);
         executingActorActions.ExecuteList(ElPresidente.currentStoryTime);
         executingCameraActions.ExecuteList(ElPresidente.currentDiscourseTime);
-
-        if (generateVideoFrames)
-        {
-            // Initialize the render texture and texture 2D.
-            RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
-            Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-
-            // Render the texture.
-            Camera.main.targetTexture = rt;
-            Camera.main.Render();
-
-            // Read the rendered texture into the texture 2D.
-            RenderTexture.active = rt;
-            screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-
-            // Clean everything up.
-            Camera.main.targetTexture = null;
-            RenderTexture.active = null;
-            Destroy(rt);
-            Destroy(screenShot);
-
-            // Save the texture 2D as a PNG.
-            byte[] bytes = screenShot.EncodeToPNG();
-            File.WriteAllBytes(@".screens/" + videoFrameNumber + ".png", bytes);
-            videoFrameNumber++;
-
-            // Quit if we have passed the end of the discourse.
-            if (cameraActionList.EndDiscourseTime < currentDiscourseTime)
-                Application.Quit();
-        }
     }
 
     /// <summary>

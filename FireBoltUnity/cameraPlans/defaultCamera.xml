@@ -61,6 +61,7 @@
       </shotFragments>
     </block>
 	
+	<!-- holster shot -->
 	<block storyTime="1000">
       <shotFragments>
         <shotFragment height = "1"  duration="4000" lens = "28mm" f-stop="f5.6" focus="cowboy" >

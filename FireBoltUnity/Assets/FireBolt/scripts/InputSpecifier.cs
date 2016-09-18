@@ -15,8 +15,6 @@ namespace Assets.scripts
         public InputField storyField;
         public InputField modelField;
         public InputField cameraField;
-        public InputField actorField;
-        public InputField terrainField;
 
         void Start()
         {
@@ -41,16 +39,7 @@ namespace Assets.scripts
                 input.CameraPlanPath = cameraField.text;
             }
 
-            if (!string.IsNullOrEmpty(actorField.text))
-            {
-                input.ActorsAndAnimationsBundlePath = actorField.text;
-            }
-
-            if (!string.IsNullOrEmpty(terrainField.text))
-            {
-                input.TerrainBundlePath = terrainField.text;
-            }
-            ElPresidente.Instance.Init(input, null, false, false, false, true);
+            ElPresidente.Instance.Init(input, null, false, true);
         }
 
         void setNewDefaults()
@@ -58,8 +47,6 @@ namespace Assets.scripts
             storyField.text = "storyPlans/shakespeare.xml";
             modelField.text = "cinematicModels/DotaHierarchyModel.xml";
             cameraField.text = "cameraPlans/dotaCamera.xml";
-            actorField.text = "AssetBundles/actorsandanimations";
-            terrainField.text = "AssetBundles/terrain";
         }
 
         

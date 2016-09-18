@@ -171,22 +171,6 @@ public class ElPresidente : MonoBehaviour {
         this.generateVideoFrames = generateVideoFrames;
         this.implicitActorCreation = implicitActorCreation;
 
-        if (generateVideoFrames)
-        {
-            // Find the canvase game object.
-            GameObject canvasGO = GameObject.Find("Canvas");
-
-            // Get the canvas component from the game object.
-            Canvas canvas = canvasGO.GetComponent<Canvas>();
-
-            // Toggle the canvas display off.
-            canvas.enabled = false;
-
-        }
-        if (whereWeAt == null) //if there is no slider to display them on, don't generate keyframes
-        {
-            this.generateKeyframes = false;
-        }
 
         //if we didn't get handed one, generate an input set with the default paths
         if (newInputSet == null) 
@@ -200,20 +184,16 @@ public class ElPresidente : MonoBehaviour {
             reloadStoryPlan = true;
             reloadCameraPlan = true;
             reloadCinematicModel = true;
-            reloadActorsAndAnimationsBundle = true;
-            reloadTerrainBundle = true;
         }
         else //we actually should figure out what's changed so we can reload only those required inputs
         {
             reloadStoryPlan = requiresReload(currentInputSet.StoryPlanPath, newInputSet.StoryPlanPath, storyPlanLastReadTimeStamp);
             reloadCameraPlan = requiresReload(currentInputSet.CameraPlanPath, newInputSet.CameraPlanPath, cameraPlanLastReadTimeStamp);
             reloadCinematicModel = requiresReload(currentInputSet.CinematicModelPath, newInputSet.CinematicModelPath, cinematicModelPlanLastReadTimeStamp);
-            reloadActorsAndAnimationsBundle = requiresReload(currentInputSet.ActorsAndAnimationsBundlePath, newInputSet.ActorsAndAnimationsBundlePath, actorsAndAnimationsBundleLastReadTimeStamp);
-            reloadTerrainBundle = requiresReload(currentInputSet.TerrainBundlePath, newInputSet.TerrainBundlePath, terrainBundleLastReadTimeStamp);
         }
 
         if(createdGameObjects!=null)createdGameObjects.Destroy("InstantiatedObjects");
-        if (reloadTerrainBundle&&createdGameObjects!=null) createdGameObjects.Destroy("Terrain");
+
         initialized = false;
         initTriggered = true;
         currentInputSet = newInputSet;
@@ -265,31 +245,11 @@ public class ElPresidente : MonoBehaviour {
             cinematicModelPlanLastReadTimeStamp = DateTime.Now;
         }
 
-        if (actorsAndAnimations != null && reloadActorsAndAnimationsBundle)
+        if (actorsAndAnimations != null )
             actorsAndAnimations.Unload(true);
 
 
-        if (reloadActorsAndAnimationsBundle)
-        {
-            //actorsAndAnimations = AssetBundle.LoadFromFile(currentInputSet.ActorsAndAnimationsBundlePath);
-            //Debug.Log(string.Format("loading actors bundle[{0}] @ [{1}].  last read [{2}]",
-            //             currentInputSet.ActorsAndAnimationsBundlePath, DateTime.Now.ToString(timestampFormat), storyPlanLastReadTimeStamp.ToString(timestampFormat)));
-            //actorsAndAnimationsBundleLastReadTimeStamp = DateTime.Now;
-        }            
-
-        if (terrain != null && reloadTerrainBundle)
-            terrain.Unload(true);
-
-        if (reloadTerrainBundle)
-        {
-           // terrain = AssetBundle.LoadFromFile(currentInputSet.TerrainBundlePath);
-            //Debug.Log(string.Format("loading terrain bundle[{0}] @ [{1}].  last read [{2}]",
-            //                        currentInputSet.TerrainBundlePath, DateTime.Now.ToString(timestampFormat), storyPlanLastReadTimeStamp.ToString(timestampFormat)));
-            //terrainBundleLastReadTimeStamp = DateTime.Now;
-            //instantiateTerrain();
-        }  
-
-        if (reloadStoryPlan || reloadActorsAndAnimationsBundle || reloadCinematicModel)
+        if (reloadStoryPlan || reloadCinematicModel)
         {        
             actorActionList = ActorActionFactory.CreateStoryActions(story, cinematicModel, implicitActorCreation);
             Debug.Log(string.Format("upstream components reloaded, rebuilding actor action queue @ [{0}].",
@@ -317,37 +277,16 @@ public class ElPresidente : MonoBehaviour {
         instantiatedObjects.transform.SetParent((GameObject.Find("FireBolt") as GameObject).transform);
         createdGameObjects.Add(instantiatedObjects.name, instantiatedObjects);
 
-        if (generateKeyframes) 
-        {
-            // Call the screenshot coroutine to create keyframe images for scrubbing.
-            StartCoroutine(CreateScreenshots());
-        }       
 
         initialized = true;
         initNext = false;
         initTriggered = false;
 
-        reloadActorsAndAnimationsBundle = false;
         reloadCameraPlan = false;
         reloadCinematicModel = false;
         reloadStoryPlan = false;
-        reloadTerrainBundle = false;
     }
 
-    private void instantiateTerrain()
-    {
-        var terrainPrefab = terrain.LoadAsset(cinematicModel.Terrain.TerrainFileName);
-        if (!terrainPrefab)
-        {
-            Debug.Log(string.Format("terrain [{0}] not found in asset bundle", cinematicModel.Terrain.TerrainFileName));
-        }
-        Vector3 v;
-        cinematicModel.Terrain.Location.TryParseVector3(out v);
-        var t = Instantiate(terrainPrefab,v,Quaternion.identity)as GameObject;
-        t.name = "Terrain";
-        t.transform.SetParent(GameObject.Find("FireBolt").transform,true);
-        createdGameObjects.Add(t.name, t);
-    }
 
     private void loadStructuredImpulsePlan(string storyPlanPath)
     {
@@ -360,16 +299,7 @@ public class ElPresidente : MonoBehaviour {
         Debug.Log("end story plan parse");
     }
 
-    public AssetBundle GetActiveAssetBundle()
-    {
-        if (actorsAndAnimations == null)
-        {
-            Debug.Log("attempting to load from asset bundle before it is set. " +
-                      "use ElPresidente.SetActiveAssetBundle() to load an asset bundle");
-            return null;
-        }
-        return actorsAndAnimations;
-    }
+
 
 
 
@@ -641,83 +571,4 @@ public class ElPresidente : MonoBehaviour {
         return action.EndTick() < referenceTime;
     }
 
-    /// <summary>
-    /// Creates a series of screenshots to be used as keyframes for scrubbing.
-    /// </summary>
-    private IEnumerator CreateScreenshots ()
-    {
-        // Find the canvase game object.
-        GameObject canvasGO = GameObject.Find("Canvas");
-
-        // Get the canvas component from the game object.
-        Canvas canvas = canvasGO.GetComponent<Canvas>();
-
-        // Toggle the canvas display off.
-        canvas.enabled = false;
-
-        // Store the main camera's default settings.
-        CameraClearFlags defClearFlags = Camera.main.clearFlags;
-        Color defBackgroundColor = Camera.main.backgroundColor;
-        int defCullingMask = Camera.main.cullingMask;
-
-        // Make the main camera display a black screen while the system iterates through the keyframes.
-        Camera.main.clearFlags = CameraClearFlags.SolidColor;
-        Camera.main.backgroundColor = Color.black;
-        Camera.main.cullingMask = 0;
-
-        int pic = 1;
-
-        // Loop through discourse time at intervals of 5%.
-        for (float i = 0; i < 100; i = i + 5)
-        {
-            // Set the time based on the current loop.
-            setTime(i / 100);
-
-            // Allow the frame to process.
-            yield return new WaitForEndOfFrame();
-
-            // Initialize the render texture and texture 2D.
-            RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
-            Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-
-            // Create a new camera object and position it where the main camera is.
-            GameObject testCameraGO = new GameObject();
-            testCameraGO.transform.position = Camera.main.transform.position;
-            testCameraGO.transform.rotation = Camera.main.transform.rotation;
-            Camera test = testCameraGO.AddComponent<Camera>();
-
-            // Render the texture.
-            test.targetTexture = rt;
-            test.Render();
-
-            // Read the rendered texture into the texture 2D and reset the camera.
-            RenderTexture.active = rt;
-            screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-            test.targetTexture = null;
-            RenderTexture.active = null;
-            Destroy(rt);
-            Destroy(testCameraGO);
-
-            // Save the texture 2D as a PNG.
-            byte[] bytes = screenShot.EncodeToPNG();
-            File.WriteAllBytes(@".screens/" + pic++ + ".png", bytes);
-        }
-
-        // Reset the main camera to its default configuration.
-        Camera.main.clearFlags = defClearFlags;
-        Camera.main.backgroundColor = defBackgroundColor;
-        Camera.main.cullingMask = defCullingMask;
-
-        // Toggle the canvas display back on.
-        canvas.enabled = true;
-
-        // Reset the time to zero.
-        setTime(0);
-
-        // Set that the keyframes have been generated.
-        keyframesGenerated = true;
-
-        //UnityEditor.EditorApplication.isPlaying = false;
-        Application.Quit();
-    }
 }

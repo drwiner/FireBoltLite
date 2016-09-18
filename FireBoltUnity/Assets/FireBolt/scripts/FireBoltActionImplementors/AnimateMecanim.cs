@@ -113,7 +113,7 @@ namespace Assets.scripts
                 //state = ElPresidente.Instance.GetActiveAssetBundle().LoadAsset<AnimationClip>(stateName);
                 if (state == null)
                 {
-                    Debug.LogError(string.Format("unable to find animation [{0}] in asset bundle[{1}]", stateName, ElPresidente.Instance.GetActiveAssetBundle().name));
+                    Debug.LogError(string.Format("unable to find animation [{0}] in animations folder", stateName));
                     if (state == null) return false;
                 }
             }
